@@ -1,17 +1,11 @@
 //////////////////////////BASE URLS/////////////////////////////////////////////////////////////////////
-BASE_URL = "https://myfpl-proxy.herokuapp.com/http://fantasy.premierleague.com/api/";
-IMAGE_URL = "https://myfpl-proxy.herokuapp.com/http://resources.premierleague.com/premierleague/photos/players/110x140/p";
-//TEAM_IMAGE_URL = 'https://myfpl-proxy.herokuapp.com/http://resources.premierleague.com/premierleague/badges/50/t'
-
-//BASE_URL = "http://fantasy.premierleague.com/api/";
-//IMAGE_URL =
-//  "http://resources.premierleague.com/premierleague/photos/players/110x140/p";
-//TEAM_IMAGE_URL = "http://resources.premierleague.com/premierleague/badges/50/t";
-////////////////////////////////////////////////////////////////////////////////////////////////////////
+BASE_URL =
+  "https://myfpl-proxy.herokuapp.com/http://fantasy.premierleague.com/api/";
+IMAGE_URL =
+  "https://myfpl-proxy.herokuapp.com/http://resources.premierleague.com/premierleague/photos/players/110x140/p";
 ////////////////GOOGLE CHARTS CODE//////////////////////////////////////////////////////////////////////
 google.charts.load("current", { packages: ["table"] });
 google.charts.load("current", { packages: ["corechart"] });
-//google.charts.load("current", { packages: ["line"] });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 var teamId = "";
 var leagueId = "";
@@ -117,9 +111,6 @@ async function getBootstrap() {
           previousGwDeadline = bootstrap.events[i].deadline_time;
         }
       }
-      //console.log('Bootstrap Data...')
-      //console.log(bootstrap)
-      //console.log("Current Game Week is " + currentGw)
     },
     error: function (data) {
       console.log(
@@ -133,8 +124,6 @@ async function getBootstrap() {
       type: "GET",
       success: function (data) {
         gameweekLiveData = data;
-        console.log('Gameweek Live Data...')
-        console.log(gameweekLiveData)
       },
       error: function (data) {
         alert(
@@ -174,9 +163,6 @@ async function loadTeam(teamId) {
       url: BASE_URL + "/entry/" + teamId + "/",
       type: "GET",
       success: function (managerData) {
-        //resolve(data)
-        console.log("Manager data...");
-        console.log(managerData);
         teamName = managerData.name;
         managerName = managerData.player_first_name;
         overallPoints = managerData.summary_overall_points;
@@ -189,24 +175,22 @@ async function loadTeam(teamId) {
         reject(error);
       },
     });
-    //console.log("Team data...");
-    //console.log(team);
-    document.getElementById("table").innerHTML = ('<div class="w3-light-grey">' +
-   '<div id="myBar" class="w3-container w3-center" style="width:20%; background-color:var(--fplblue)">20%</div></div>')
-   leagueLoader();
+    document.getElementById("table").innerHTML =
+      '<div class="w3-light-grey">' +
+      '<div id="myBar" class="w3-container w3-center" style="width:20%; background-color:var(--fplblue)">20%</div></div>';
+    leagueLoader();
     setTimeout(showLeagues, 2000);
   });
 }
 
 function showLeagues() {
-  // CREATES TABLE WITH AVAILABLE LEAGUES
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
   data.addColumn("string", "League");
   for (var i = 0; i < managerLeagues.length; i++) {
     data.addRows([[managerLeagues[i].id, managerLeagues[i].name]]);
   }
-  data.addRows([[00000, 'Log Out']]);
+  data.addRows([[00000, "Log Out"]]);
   var options = {
     alternatingRowStyle: false,
     allowHtml: true,
@@ -226,7 +210,7 @@ function showLeagues() {
 
   google.visualization.events.addListener(table, "select", selectHandler);
   var view = new google.visualization.DataView(data);
-  view.hideColumns([0]); // array of column indexes to hide
+  view.hideColumns([0]);
   table.draw(view, options);
 
   function selectHandler() {
@@ -234,46 +218,30 @@ function showLeagues() {
     if (selectedItem) {
       var selectedLeague = data.getValue(selectedItem.row, 0);
     }
-    if(selectedLeague == 00000){
+    if (selectedLeague == 00000) {
       location.reload();
-    }else{
-      submitLeague(selectedLeague);        
+    } else {
+      submitLeague(selectedLeague);
     }
   }
 }
 
 function submitLeague(selectedLeague) {
-  //document.getElementById("table").innerHTML = "";
   hideMenu();
-   document.getElementById("table").innerHTML = ('<div class="w3-light-grey">' +
-   '<div id="myBar" class="w3-container w3-center" style="width:20%; background-color:var(--fplblue);">0%</div></div>')
-   leagueLoader();
-  //setTimeout(function() {document.getElementById('view2').innerHTML='';},1000);
+  document.getElementById("table").innerHTML =
+    '<div class="w3-light-grey">' +
+    '<div id="myBar" class="w3-container w3-center" style="width:20%; background-color:var(--fplblue);">0%</div></div>';
+  leagueLoader();
   league = [];
   leagueInfo = [];
-  //setTimeout(function(){ clearLeagueViews(); }, 1000);
-  //document.getElementById('enter_button').innerHTML='';
-
   createLeague(selectedLeague)
     .then((data) => {
-      //addGameWeeksPoints();
       addChips();
-      //addPreviousSeasons();
+
       setTimeout(function () {
         addCurrentWeekData();
-      }, 500);
-      //addTransferHistory();
-      //addGameWeeksTransfers();
-      //addGameWeeksBenchPoints();
-      //addGameWeeksTransfersCost();
-      //setTimeout(function () {
-      //  addAllGw();
-      //}, 600);
-      console.log("League information...");
-      console.log(leagueInfo);
+      }, 1500);
       leagueName = leagueInfo[0].name;
-      console.log("League details...");
-      console.log(league);
     })
     .catch((error) => {
       console.log(error);
@@ -290,8 +258,10 @@ async function createLeague(selectedLeague) {
       type: "GET",
       success: function (league_data) {
         resolve(league_data);
-        console.log(league_data);
-        if (league_data.standings.has_next == true || league_data.standings.results.length > 50) {
+        if (
+          league_data.standings.has_next == true ||
+          league_data.standings.results.length > 50
+        ) {
           alert(
             "League too big to compare, please try another league with fewer teams"
           );
@@ -301,12 +271,16 @@ async function createLeague(selectedLeague) {
           leagueInfo.push(league_data.league);
           for (var i = 0; i < league_data.standings.results.length; i++) {
             league.push(league_data.standings.results[i]);
-          }    
+          }
 
-            document.getElementById("username").innerHTML = "<p>Welcome, " + managerName + "!</p>";
-            document.getElementById("league-name").innerHTML ="<p>" + league_data.league.name + "</p>";
-            
-            setTimeout(function(){ createMenu(); }, 5000);
+          document.getElementById("username").innerHTML =
+            "<p>Welcome, " + managerName + "!</p>";
+          document.getElementById("league-name").innerHTML =
+            "<p>" + league_data.league.name + "</p>";
+
+          setTimeout(function () {
+            createMenu();
+          }, 5000);
         }
       },
       error: function (error) {
@@ -322,44 +296,58 @@ function toggleMobileMenu(menu) {
 function hideMenu() {
   document.getElementById("table").innerHTML = "";
 
-  
-  document.getElementById("league-table").innerHTML ='';
-  document.getElementById("m-league-table").innerHTML ='';
+  document.getElementById("league-table").innerHTML = "";
+  document.getElementById("m-league-table").innerHTML = "";
 
-  document.getElementById("gameweek-activity").innerHTML ='';
-  document.getElementById("m-gameweek-activity").innerHTML ='';
+  document.getElementById("gameweek-activity").innerHTML = "";
+  document.getElementById("m-gameweek-activity").innerHTML = "";
 
-  document.getElementById("chip-usage").innerHTML ='';
-  document.getElementById("m-chip-usage").innerHTML ='';
+  document.getElementById("chip-usage").innerHTML = "";
+  document.getElementById("m-chip-usage").innerHTML = "";
 
-  document.getElementById("change-league").innerHTML ='';
-  document.getElementById("m-change-league").innerHTML ='';
+  document.getElementById("change-league").innerHTML = "";
+  document.getElementById("m-change-league").innerHTML = "";
 }
 function createMenu() {
   document.getElementById("table").innerHTML = "";
 
-  
-  document.getElementById("league-table").innerHTML ='<p onclick="leagueTable()">League Table</p>';
-  document.getElementById("m-league-table").innerHTML ='<p onclick="leagueTable()">League Table</p>';
+  document.getElementById("league-table").innerHTML =
+    '<p onclick="leagueTable()">League Table</p>';
+  document.getElementById("m-league-table").innerHTML =
+    '<p onclick="leagueTable()">League Table</p>';
 
-  document.getElementById("gameweek-activity").innerHTML ='<p onclick="gameweekActivty()">Gameweek Activty</p>';
-  document.getElementById("m-gameweek-activity").innerHTML ='<p onclick="gameweekActivty()">Gameweek Activty</p>';
+  document.getElementById("gameweek-activity").innerHTML =
+    '<p onclick="gameweekActivty()">Gameweek Activty</p>';
+  document.getElementById("m-gameweek-activity").innerHTML =
+    '<p onclick="gameweekActivty()">Gameweek Activty</p>';
 
-  document.getElementById("chip-usage").innerHTML ='<p onclick="chipUsage()">Chip Usage</p>';
-  document.getElementById("m-chip-usage").innerHTML ='<p onclick="chipUsage()">Chip Usage</p>';
+  document.getElementById("chip-usage").innerHTML =
+    '<p onclick="chipUsage()">Chip Usage</p>';
+  document.getElementById("m-chip-usage").innerHTML =
+    '<p onclick="chipUsage()">Chip Usage</p>';
 
-  document.getElementById("change-league").innerHTML ='<p onclick="showLeagues()">Change League</p>';
-  document.getElementById("m-change-league").innerHTML ='<p onclick="showLeagues()">Change League</p>';
-  
-  document.getElementById("logout").innerHTML ='<p onclick="location.reload()">Log Out</p>';
-  document.getElementById("m-logout").innerHTML ='<p onclick="location.reload()">Log Out</p>';
+  document.getElementById("change-league").innerHTML =
+    '<p onclick="showLeagues()">Change League</p>';
+  document.getElementById("m-change-league").innerHTML =
+    '<p onclick="showLeagues()">Change League</p>';
 
+  document.getElementById("logout").innerHTML =
+    '<p onclick="location.reload()">Log Out</p>';
+  document.getElementById("m-logout").innerHTML =
+    '<p onclick="location.reload()">Log Out</p>';
 
-  document.getElementById("score").innerHTML =('<div class="score center">' +
-  '<d class="center"><p>' + gWAverageScore + '</p><p>Avg.</p></d>' +
-  '<d class="center"><p>' + eventPoints + '</p><p>Points</p></d>' +
-  '<d class="center"><p>' + gwHighestScore + '</p><p>Highest</p></d></div>');
-
+  document.getElementById("score").innerHTML =
+    '<div class="score center">' +
+    '<d class="center"><p>' +
+    gWAverageScore +
+    "</p><p>Avg.</p></d>" +
+    '<d class="center"><p>' +
+    eventPoints +
+    "</p><p>Points</p></d>" +
+    '<d class="center"><p>' +
+    gwHighestScore +
+    "</p><p>Highest</p></d></div>";
+  leagueTable();
 }
 
 const average = (array) => array.reduce((a, b) => a + b) / array.length;
@@ -372,19 +360,17 @@ const mostFrequent = (arr) =>
     }, {})
   ).reduce((a, v) => (v[1] >= a[1] ? v : a), [null, 0])[0];
 
-  function leagueLoader() {
-    var elem = document.getElementById("myBar");   
-    var width = 0;
-    var id = setInterval(frame, 100);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);        
-      } else {
-        width++; 
-        elem.style.width = width + '%'; 
-        elem.innerHTML = width * 1  + '%';
-      }
+function leagueLoader() {
+  var elem = document.getElementById("myBar");
+  var width = 0;
+  var id = setInterval(frame, 100);
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + "%";
+      elem.innerHTML = width * 1 + "%";
     }
-
   }
-  
+}

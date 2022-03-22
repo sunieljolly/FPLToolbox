@@ -37,10 +37,10 @@ async function chipUsage() {
     } else {
       chip5 = league[i].chips[4].name;
     }
-    if(typeof league[i].chips[5] !== 'undefined'){
-      chip6 = league[i].chips[5].name;
-    }else{
+    if (league[i].chips[5] === null) {
       chip6 = "✅";
+    } else {
+      chip6 = league[i].chips[5].name;
     }
 
 
