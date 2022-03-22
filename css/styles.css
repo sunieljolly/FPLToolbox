@@ -130,19 +130,18 @@ footer {
   font-size: 36px !important;
 }
 .table {
-  width: 90%;
+  width: 98%;
   text-align: center;
   font-family: "PremierSans-Regular", Arial, "Helvetica Neue", Helvetica,
     sans-serif;
   font-weight: bolder;
-  padding-bottom: 10px;
-  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
 }
 .headerRow {
-  background-color: #efefef;
-  background-image: none !important;
+  background-color: var(--fplpurple);
   height: 50px;
-  color: black;
+  color: white;
 }
 .tableRow {
   background-color: white;
@@ -187,4 +186,7 @@ footer {
   color: white;
   font-weight: bolder;
   font-size: larger;
+}
+.google-visualization-table .gradient {
+  background-image: none !important;
 }

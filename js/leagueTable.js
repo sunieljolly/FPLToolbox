@@ -1,4 +1,5 @@
 async function leagueTable() {
+  console.log(league)
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
   data.addColumn("string", "Team");

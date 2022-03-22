@@ -77,7 +77,7 @@ async function getStatus() {
       },
       error: function (data) {
         alert(
-          data.statusText + ": Something went wrong. Please try again later"
+          data.statusText + ": Something went wrong. Please try again later (line 80)"
         );
         location.reload();
       },
@@ -113,9 +113,10 @@ async function getBootstrap() {
       }
     },
     error: function (data) {
-      console.log(
-        data.statusText + ": Something went wrong. Please try again later"
+      alert(
+        data.statusText + ": Something went wrong. Please try again later (line 117)"
       );
+      location.reload()
     },
   });
   setTimeout(function () {
@@ -127,8 +128,9 @@ async function getBootstrap() {
       },
       error: function (data) {
         alert(
-          data.statusText + ": Something went wrong. Please try again later"
+          data.statusText + ": Something went wrong. Please try again later (line 131)"
         );
+        location.reload()
       },
     });
   }, 900);

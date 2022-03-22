@@ -62,7 +62,7 @@ async function chipUsage() {
     alternatingRowStyle: true,
     showRowNumber: false,
     width: "100%",
-    height: "50%",
+    height: "100%",
     title: "chips",
     allowHtml: true,
     frozenColumns: 2,
