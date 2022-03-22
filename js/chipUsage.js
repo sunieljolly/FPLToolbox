@@ -13,32 +13,32 @@ async function chipUsage() {
   //POPULATES TABLE
   for (var i = 0; i < league.length; i++) {
     if (league[i].chips[0] === null) {
-      chip1 = "✅";
+      chip1 = "";
     } else {
       chip1 = league[i].chips[0].name;
     }
     if (league[i].chips[1] === null) {
-      chip2 = "✅";
+      chip2 = "";
     } else {
       chip2 = league[i].chips[1].name;
     }
     if (league[i].chips[2] === null) {
-      chip3 = "✅";
+      chip3 = "";
     } else {
       chip3 = league[i].chips[2].name;
     }
     if (league[i].chips[3] === null) {
-      chip4 = "✅";
+      chip4 = "";
     } else {
       chip4 = league[i].chips[3].name;
     }
     if (league[i].chips[4] === null) {
-      chip5 = "✅";
+      chip5 = "";
     } else {
       chip5 = league[i].chips[4].name;
     }
     if (league[i].chips[5] === null) {
-      chip6 = "✅";
+      chip6 = "";
     } else {
       chip6 = league[i].chips[5].name;
     }
@@ -73,11 +73,11 @@ async function chipUsage() {
     },
   };
   var formatter = new google.visualization.ColorFormat();
-  formatter.addRange("✅", "✅ ", "black", fplgreen);
-  formatter.addRange("3xc", "3xc ", "white", fpldarkred);
-  formatter.addRange("bboost", "bboost ", "white", fpldarkred);
-  formatter.addRange("wildcard", "wildcard ", "white", fplpink);
-  formatter.addRange("freehit", "freehit ", "white", fpldarkred);
+  formatter.addRange("", " ", "black", fplgreen);
+  formatter.addRange("3xc", "3xc ", "white", fplpink);
+  formatter.addRange("bboost", "bboost ", "black", fplblue);
+  formatter.addRange("wildcard", "wildcard ", "white", fpldarkred);
+  formatter.addRange("freehit", "freehit ", "black", fplyellow);
   formatter.format(data, 2);
   formatter.format(data, 3);
   formatter.format(data, 4);

@@ -243,10 +243,10 @@ async function gameweekActivty() {
     var formatter = new google.visualization.ColorFormat();
     formatter.addRange(0.1, 10.8, "black", fplgreen);
     formatter.addRange(10.9, 11.1, "black", fplpink);
-    formatter.addRange("3xc", "3xc  ", "black", fplgreen);
-    formatter.addRange("freehit", "freehit  ", "black", fplgreen);
-    formatter.addRange("wildcard", "wildcard  ", "black", fplgreen);
-    formatter.addRange("bboost", "bboost ", "black", fplgreen);
+    formatter.addRange("3xc", "3xc ", "white", fplpink);
+    formatter.addRange("bboost", "bboost ", "black", fplblue);
+    formatter.addRange("wildcard", "wildcard ", "white", fpldarkred);
+    formatter.addRange("freehit", "freehit ", "black", fplyellow);
 
     formatter.format(data, 8);
     formatter.format(data, 2);

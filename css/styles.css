@@ -125,7 +125,8 @@ footer {
 }
 
 .fa-twitter {
-  color: #ffffff;
+  margin-top: 10px;
+  color: #1A8CD8;
   font-size: 36px !important;
 }
 .table {
@@ -183,7 +184,7 @@ footer {
 }
 
 .help{
-  color: var(--fplyellow);
+  color: white;
   font-weight: bolder;
   font-size: larger;
 }

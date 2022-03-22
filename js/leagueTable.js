@@ -19,7 +19,6 @@ async function leagueTable() {
         '<p class="player-name">' + league[i].player_name + '</p>' ,
         league[i].event_total,
         league[i].total,
-
       ],
     ]);
   }
