@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PBR659G");
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3XLGXFHQSS"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-3XLGXFHQSS");
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link rel="stylesheet" href="/FPLToolbox/css/styles.css" />
+    <link rel="stylesheet" href="/FPLToolbox/css/navbar.css" />
+    <link rel="stylesheet" href="/FPLToolbox/css/modal.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>FPL Toolbox</title>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PBR659G"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header>
+      <div id="brand">FPL Toolbox</div>
+      <nav>
+        <ul>
+          <li id="league-table"></li>
+          <li id="gameweek-activity"></li>
+          <li id="chip-usage"></li>
+          <li id="change-league"></li>
+          <li id="logout"></li>
+        </ul>
+      </nav>
+      <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+        <ul class="mobile-menu">
+          <li id="m-league-table"></li>
+          <li id="m-gameweek-activity"></li>
+          <li id="m-chip-usage"></li>
+          <li id="m-change-league"></li>
+          <li id="m-logout"></li>
+        </ul>
+      </div>
+    </header>
+
+    <div class="page">
+      <div class="user-details">
+        <p class="left" id="username"></p>
+        <p class="right" id="league-name"></p>
+      </div>
+      <div id="score"></div>
+      <div id="table" class="table center"></div>
+      <div class="login" id="login">
+        <div class="form" id="form">
+          <input
+            class="input"
+            type="number"
+            id="teamId"
+            placeholder="Enter Team Id here"
+          />
+          <button class="button" onclick="submitTeamId()">
+            <i class="material-icons">send</i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>FPL Toolbox</h2>
+        </div>
+        <div class="modal-body">
+          <p>
+            This league is too big to compare, please try another league with 50
+            or fewer teams.
+          </p>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+    <footer class="center">
+      <script
+        type="text/javascript"
+        src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+      ></script>
+      <script type="text/javascript">
+        kofiwidget2.init("Support Me on Ko-fi", "#00ae55", "Z8Z3BP5RN");
+        kofiwidget2.draw();
+      </script>
+      <br />
+      <a href="http://www.twitter.com/sunieljolly" target="_blank"
+        ><i class="fa fa-twitter"></i>
+      </a>
+    </footer>
+  </body>
+  <script src="/FPLToolbox/js/index.js"></script>
+  <script src="/FPLToolbox/js/modal.js"></script>
+  <script src="/FPLToolbox/js/helpers.js"></script>
+  <script src="/FPLToolbox/js/chipUsage.js"></script>
+  <script src="/FPLToolbox/js/leagueTable.js"></script>
+  <script src="/FPLToolbox/js/gamweekActivity.js"></script>
+</html>

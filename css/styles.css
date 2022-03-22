@@ -1,0 +1,180 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --fplpurple: #37003c;
+  --fplblue: #81bcff;
+  --fplgreen: #01fc7a;
+  --fplpink: #ff1751;
+  --fpldarkred: #80072d;
+  --fplyellow: #d8bd14;
+  --fpllightpurple: #963CFF;
+}
+body {
+  background-color: #ffffff;
+  color: white;
+  font-family: "Poppins", sans-serif;
+}
+.page {
+  min-height: 95vh;
+  text-align: center;
+  width: 100%;
+  margin: auto;
+  background: repeating-linear-gradient(
+    to bottom,
+    #01ba5c 0px,
+    #01ba5c 50px,
+    #00ae55 50px,
+    #00ae55 100px
+  );
+}
+
+.user-details {
+  width: 100%;
+  min-height: 20px;
+  display: flex;
+  color: black;
+  border-radius: 10px;
+}
+
+.user-details .left {
+  min-height: 100%;
+  width: 50%;
+  text-align: left;
+  float: left;
+  background-color: var(--fplblue);
+  padding: 10px;
+  border: 2px solid #ffffff;
+}
+
+.user-details .right {
+  min-height: 100%;
+  width: 50%;
+  text-align: right;
+  float: right;
+  background-color: var(--fplblue);
+  padding: 10px;
+  border: 2px solid #ffffff;
+}
+
+.form {
+  background-color: var(--fplpurple);
+  padding: 20px;
+  margin: auto;
+  width: 70%;
+  margin-top: 50px;
+  height: 100px;
+
+  max-width: 600px;
+  display: flex;
+  flex-direction: row;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input {
+  border: none;
+  width: 70%;
+  height: 50px;
+  font-weight: bolder;
+  flex-grow: 2;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+button {
+  background-color: var(--fplgreen);
+  width: 20%;
+  border: none;
+  height: 50px;
+  vertical-align: middle;
+  color: white;
+}
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+.score {
+  background-color: var(--fplpurple);
+  width: 75%;
+  max-width: 800px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+footer {
+  text-align: center;
+  background-color: var(--fplpurple);
+  min-width: 100%;
+  height: 100%;
+  padding-bottom: 30px;
+  padding-top: 30px;
+}
+
+.fa-twitter {
+  color: #ffffff;
+  font-size: 36px !important;
+}
+.table {
+  width: 90%;
+  text-align: center;
+  font-family: "PremierSans-Regular", Arial, "Helvetica Neue", Helvetica,
+    sans-serif;
+  font-weight: bolder;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+.headerRow {
+  background-color: #efefef;
+  background-image: none !important;
+  height: 50px;
+  color: black;
+}
+.tableRow {
+  background-color: white;
+  color: black;
+  height: 50px;
+}
+.oddTableRow {
+  background-color: #efefef;
+  color: black;
+  height: 50px;
+}
+.tableCell {
+  border: none !important;
+  border-bottom: 1px solid #efefef !important;
+  background-image: none !important;
+}
+.selectedTableRow {
+  background-color: red;
+}
+.hoverTableRow {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.rank-down {
+  color: var(--fplpink);
+}
+.rank-up {
+  color: var(--fplgreen);
+}
+
+.entry-name{
+  font-weight: bolder;
+  text-align: left;
+}
+.player-name{
+  font-weight: lighter;
+  text-align: left;
+}
