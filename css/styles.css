@@ -82,6 +82,7 @@ input {
   height: 50px;
   font-weight: bolder;
   flex-grow: 2;
+  padding-left: 20px;
 }
 input:focus,
 textarea:focus,
