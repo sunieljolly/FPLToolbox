@@ -11,6 +11,8 @@
   --fpldarkred: #80072d;
   --fplyellow: #d8bd14;
   --fpllightpurple: #963CFF;
+  --fplgreenstripelight: #01ba5c;
+  --fplgreenstripedark: #00ae55;
 }
 body {
   background-color: #ffffff;
@@ -24,10 +26,10 @@ body {
   margin: auto;
   background: repeating-linear-gradient(
     to bottom,
-    #01ba5c 0px,
-    #01ba5c 50px,
-    #00ae55 50px,
-    #00ae55 100px
+    var(--fplgreenstripelight) 0px,
+    var(--fplgreenstripelight) 50px,
+    var(--fplgreenstripedark) 50px,
+    var(--fplgreenstripedark) 100px
   );
 }
 
@@ -90,7 +92,7 @@ select:focus {
   outline: none;
 }
 button {
-  background-color: var(--fplgreen);
+  background-color: var(--fplgreenstripelight);
   width: 20%;
   border: none;
   height: 50px;
