@@ -179,3 +179,9 @@ footer {
   font-weight: lighter;
   text-align: left;
 }
+
+.help{
+  color: var(--fplyellow);
+  font-weight: bolder;
+  font-size: larger;
+}
