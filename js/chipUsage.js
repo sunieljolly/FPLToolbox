@@ -37,10 +37,10 @@ async function chipUsage() {
     } else {
       chip5 = league[i].chips[4].name;
     }
-    if (league[i].chips[5] === null) {
-      chip6 = "✅";
-    } else {
+    if(typeof league[i].chips[5] !== 'undefined'){
       chip6 = league[i].chips[5].name;
+    }else{
+      chip6 = "✅";
     }
 
 
@@ -82,7 +82,7 @@ async function chipUsage() {
   formatter.format(data, 3);
   formatter.format(data, 4);
   formatter.format(data, 5);
-  formatter.format(data, 6);
+  formatter.format(data, 6); // Apply formatter to 7th column
   formatter.format(data, 7);
 
   var table = new google.visualization.Table(document.getElementById("table"));
