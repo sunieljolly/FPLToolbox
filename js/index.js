@@ -246,10 +246,7 @@ async function createLeague(selectedLeague) {
       success: function (league_data) {
         resolve(league_data);
         if (league_data.standings.has_next == true || league_data.standings.results.length > 50) {
-          modal.style.display = "block";
-          span.onclick = function() {
-            modal.style.display = "none";
-          }
+          alert('This league is too big to compare, please try another league with 50 or fewer teams.');
           showLeagues(teamId);
           return;
         } else {
