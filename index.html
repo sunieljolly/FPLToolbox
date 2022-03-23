@@ -84,9 +84,8 @@
         </ul>
       </div>
     </header>
-
     <div class="page">
-      <div class="user-details">
+       <div class="user-details">
         <p class="left" id="username"></p>
         <p class="right" id="league-name"></p>
       </div>
@@ -107,7 +106,9 @@
                     
         </div>
         <p class="help" onclick="alert('First login to your account at https://fantasy.premierleague.com and click on the Pick Team tab. Once here you will see on the right there is a link titled. View gameweek history. If you click on that, when the page reloads look in the address bar and you will now see your numerical team ID')">How do I find my ID?</p>
+        <p class="help" onclick="setup()">How do I find my ID?</p>
       </div>
+      <div id="myModal"></div>
     </div>
     <footer class="center">
       <script
@@ -129,4 +130,5 @@
   <script src="js/chipUsage.js"></script>
   <script src="js/leagueTable.js"></script>
   <script src="js/gamweekActivity.js"></script>
+  <script src="js/setup.js"></script>
 </html>
