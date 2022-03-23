@@ -159,6 +159,7 @@ footer {
   font-weight: bolder;
   padding-bottom: 5px;
   padding-top: 5px;
+  
 }
 .headerRow {
   background-color: var(--fplpurple);
@@ -170,19 +171,17 @@ footer {
   background-color: var(--tableRow);
   color: var(--text);
   height: 50px;
-  
-
 }
 .oddTableRow {
   background-color: var(--oddTableRow);
   color: var(--text);
   height: 50px;
-
 }
 .tableCell {
   border: none !important;
   border-bottom: 1px solid #efefef !important;
   background-image: none !important;
+  background-color: var(--oddTableRow);
 }
 .selectedTableRow {
   background-color: var(--highlight);
