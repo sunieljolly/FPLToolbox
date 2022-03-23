@@ -73,7 +73,7 @@ async function chipUsage() {
     },
   };
   var formatter = new google.visualization.ColorFormat();
-  formatter.addRange("", " ", "black", fplgreen);
+  //formatter.addRange("", " ", "black", fplgreen);
   formatter.addRange("3xc", "3xc ", "white", fplpink);
   formatter.addRange("bboost", "bboost ", "black", fplblue);
   formatter.addRange("wildcard", "wildcard ", "white", fpldarkred);

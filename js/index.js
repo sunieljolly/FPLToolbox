@@ -113,9 +113,9 @@ async function getBootstrap() {
       }
     },
     error: function (data) {
-      alert(
-        data.statusText + ": Something went wrong. Please try again later (line 117)"
-      );
+      // alert(
+      //   data.statusText + ": Something went wrong. Please try again later (line 117)"
+      // );
       location.reload()
     },
   });
@@ -127,9 +127,9 @@ async function getBootstrap() {
         gameweekLiveData = data;
       },
       error: function (data) {
-        alert(
-          data.statusText + ": Something went wrong. Please try again later (line 131)"
-        );
+        // alert(
+        //   data.statusText + ": Something went wrong. Please try again later (line 131)"
+        // );
         location.reload()
       },
     });
