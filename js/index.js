@@ -408,3 +408,4 @@ window.onclick = function(event) {
 function exit(){
   modal.style.display = "none";
 }
+

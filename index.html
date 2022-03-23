@@ -49,6 +49,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
   </head>
+
   <body>
     <!-- Google Tag Manager (noscript) -->
     <noscript
@@ -60,6 +61,7 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
     <header>
       <div id="brand">FPL Toolbox</div>
       <nav>
@@ -85,15 +87,15 @@
       </div>
     </header>
     <div class="page">
-       <div class="user-details">
+      <div class="user-details">
         <p class="left" id="username"></p>
         <p class="right" id="league-name"></p>
       </div>
+
       <div id="score"></div>
       <div id="table" class="table center"></div>
       <div class="login" id="login">
-        
-        <div class="form" id="form">          
+        <div class="form" id="form">
           <input
             class="input"
             type="number"
@@ -103,12 +105,29 @@
           <button class="button" onclick="submitTeamId()">
             <i class="material-icons">send</i>
           </button>
-                    
         </div>
-        <p class="help" onclick="alert('First login to your account at https://fantasy.premierleague.com and click on the Pick Team tab. Once here you will see on the right there is a link titled. View gameweek history. If you click on that, when the page reloads look in the address bar and you will now see your numerical team ID')">How do I find my ID?</p>
-        <p class="help" onclick="setup()">How do I find my ID?</p>
+        <p id="myBtn" class="help">How do I find my ID?</p>
       </div>
-      <div id="myModal"></div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+          <h2>Modal Header</h2>
+        </div>
+        <div class="modal-body">
+          <p>Login to your account at the official </p>
+          <a href="https://fantasy.premierleague.com" target="_blank" >FPL Website.</a>
+          <p>Click on the "Pick Team tab".</p>
+          <p>You will see on the right (below if using a mobile browser) that there is a link titled "View gameweek history".<p>
+          <p>If you click on that and the page will reload and you will find your numerical team ID in the address bar.</p>
+        </div>
+        <div class="modal-footer">
+          <h3>Modal Footer</h3>
+        </div>
+      </div>
     </div>
     <footer class="center">
       <script
@@ -130,5 +149,4 @@
   <script src="js/chipUsage.js"></script>
   <script src="js/leagueTable.js"></script>
   <script src="js/gamweekActivity.js"></script>
-  <script src="js/setup.js"></script>
 </html>
