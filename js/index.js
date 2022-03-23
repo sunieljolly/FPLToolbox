@@ -133,7 +133,7 @@ async function getBootstrap() {
         location.reload()
       },
     });
-  }, 900);
+  }, 1500);
 }
 getBootstrap();
 
