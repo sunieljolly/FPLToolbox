@@ -77,16 +77,18 @@ async function getStatus() {
       },
       error: function (data) {
         alert(
-          data.statusText + ": Something went wrong. Please try again later (line 80)"
+          data.statusText +
+            ": Something went wrong. Please try again later (line 80)"
         );
         location.reload();
       },
     })
   );
 }
-setTimeout(function () { getStatus();  }, 100);
+setTimeout(function () {
+  getStatus();
+}, 100);
 async function getBootstrap() {
-  
   $.ajax({
     url: BASE_URL + "bootstrap-static/",
     type: "GET",
@@ -117,7 +119,7 @@ async function getBootstrap() {
       // alert(
       //   data.statusText + ": Something went wrong. Please try again later (line 117)"
       // );
-      location.reload()
+      location.reload();
     },
   });
   setTimeout(function () {
@@ -131,12 +133,14 @@ async function getBootstrap() {
         // alert(
         //   data.statusText + ": Something went wrong. Please try again later (line 131)"
         // );
-        location.reload()
+        location.reload();
       },
     });
   }, 1500);
 }
-setTimeout(function () { getBootstrap(); }, 1000);
+setTimeout(function () {
+  getBootstrap();
+}, 1000);
 
 async function submitTeamId() {
   teamId = document.getElementById("teamId").value;
@@ -193,7 +197,7 @@ function showLeagues() {
   for (var i = 0; i < managerLeagues.length; i++) {
     data.addRows([[managerLeagues[i].id, managerLeagues[i].name]]);
   }
-  data.addRows([[00000, "Log Out"]]);
+  data.addRows([[00000, '<i class="material-icons">logout</i>']]);
   var options = {
     alternatingRowStyle: false,
     allowHtml: true,
@@ -205,7 +209,7 @@ function showLeagues() {
       tableRow: "tableRow",
       oddTableRow: "oddTableRow",
       tableCell: "tableCell",
-      hoverTableRow: "hoverTableRow",
+      hoverTableRow: "hoverTableRow1",
     },
   };
 
@@ -310,6 +314,7 @@ function hideMenu() {
 
   document.getElementById("change-league").innerHTML = "";
   document.getElementById("m-change-league").innerHTML = "";
+
 }
 function createMenu() {
   document.getElementById("table").innerHTML = "";
@@ -343,10 +348,10 @@ function createMenu() {
     '<div class="score center">' +
     '<d class="center"><p>' +
     gWAverageScore +
-    "</p><p>Avg.</p></d>" +
+    "</p><p>Average</p></d>" +
     '<d class="center"><p>' +
     eventPoints +
-    "</p><p>Points</p></d>" +
+    "</p><p>Score</p></d>" +
     '<d class="center"><p>' +
     gwHighestScore +
     "</p><p>Highest</p></d></div>";
@@ -377,35 +382,3 @@ function leagueLoader() {
     }
   }
 }
-
-
-// Get the modal
-var modal = document.getElementById("myModal");
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-  
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
- 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-  
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-   
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-function exit(){
-  modal.style.display = "none";
-}
-

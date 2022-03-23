@@ -1,11 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
-:root {
-  --fpl-purple: #37003C;
-}
+
 
 header {
   padding: 0 20px;
-  background-color: var(--fpl-purple);
+  background-color: var(--fplpurple);
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -90,7 +88,7 @@ ul li:hover {
   left: 0;
   height: calc(100vh - 50px);
   width: 100%;
-  background-color: var(--fpl-purple);;
+  background-color: var(--fplpurple);;
   z-index: 1000;
 }
 

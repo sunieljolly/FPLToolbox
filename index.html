@@ -70,7 +70,9 @@
           <li id="gameweek-activity"></li>
           <li id="chip-usage"></li>
           <li id="change-league"></li>
+          <li id="theme" onclick="switchTheme()" class="material-icons">brightness_medium</li>
           <li id="logout"></li>
+          
         </ul>
       </nav>
       <div id="hamburger-icon" onclick="toggleMobileMenu(this)">
@@ -82,7 +84,9 @@
           <li id="m-gameweek-activity"></li>
           <li id="m-chip-usage"></li>
           <li id="m-change-league"></li>
+          <li id="m-theme" onclick="switchTheme()" class="material-icons">brightness_medium</li>
           <li id="m-logout"></li>
+          
         </ul>
       </div>
     </header>
@@ -102,11 +106,11 @@
             id="teamId"
             placeholder="Enter Team Id here"
           />
-          <button class="button" onclick="submitTeamId()">
+          <button id="submit" class="button" onclick="submitTeamId()">
             <i class="material-icons">send</i>
           </button>
         </div>
-        <p id="myBtn" class="help">How do I find my ID?</p>
+        <p id="myBtn" class="help">How do I find my Team ID?</p>
       </div>
     </div>
     <!-- The Modal -->
@@ -115,17 +119,16 @@
       <div class="modal-content">
         <div class="modal-header">
           <span class="close">&times;</span>
-          <h2>Modal Header</h2>
+          <h2>Team ID</h2>
         </div>
         <div class="modal-body">
-          <p>Login to your account at the official </p>
-          <a href="https://fantasy.premierleague.com" target="_blank" >FPL Website.</a>
-          <p>Click on the "Pick Team tab".</p>
-          <p>You will see on the right (below if using a mobile browser) that there is a link titled "View gameweek history".<p>
-          <p>If you click on that and the page will reload and you will find your numerical team ID in the address bar.</p>
+          <p>Login to your account at the official <a href="https://fantasy.premierleague.com" target="_blank" >FPL Website.</a></p>
+          <p>Select the 'Pick Team' tab.</p>
+          <p>On the right (below if using a mobile browser), you will see a link titled 'View gameweek history'.<p>
+          <p>Click on the link. The page will then reload and your numerical team ID will be revealed in the address bar.</p>
         </div>
         <div class="modal-footer">
-          <h3>Modal Footer</h3>
+          <p>www.fpltool.box</p>
         </div>
       </div>
     </div>

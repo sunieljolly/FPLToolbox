@@ -5,7 +5,7 @@
 }
 :root {
   --fplpurple: #37003c;
-  --fplblue: #81bcff;
+  --fplblue: #963CFF;
   --fplgreen: #01fc7a;
   --fplpink: #ff1751;
   --fpldarkred: #80072d;
@@ -13,7 +13,26 @@
   --fpllightpurple: #963CFF;
   --fplgreenstripelight: #01ba5c;
   --fplgreenstripedark: #00ae55;
+  --tableRow: #FFFFFF;
+  --oddTableRow: #FAFAFA;
+  --text: black;
 }
+[data-theme="dark"] {
+  --fplpurple: #0F3460;
+  --fplblue: #0F3460;
+  --fplgreen: green;
+  --fplpink: pink;
+  --fpldarkred: darkred;
+  --fplyellow: yellow;
+  --fpllightpurple: darkblue;
+  --fplgreenstripelight: #16213E;
+  --fplgreenstripedark: #1A1A2E;
+  --tableRow: #16213E;
+  --oddTableRow: #1A1A2E;
+  --text: whitesmoke;
+}
+
+
 body {
   background-color: #ffffff;
   color: white;
@@ -38,7 +57,7 @@ body {
   width: 100%;
   min-height: 20px;
   display: flex;
-  color: black;
+  color: whitesmoke;
   border-radius: 10px;
 }
 
@@ -113,7 +132,6 @@ button {
   display: grid;
   grid-template-columns: auto auto auto;
   margin-top: 10px;
-  border-radius: 10px;
 }
 
 footer {
@@ -131,6 +149,7 @@ footer {
   font-size: 36px !important;
 }
 .table {
+  max-width: 800px;
   width: 98%;
   text-align: center;
   font-family: "PremierSans-Regular", Arial, "Helvetica Neue", Helvetica,
@@ -143,16 +162,20 @@ footer {
   background-color: var(--fplpurple);
   height: 50px;
   color: white;
+  border-right: none !important;
 }
 .tableRow {
-  background-color: white;
-  color: black;
+  background-color: var(--tableRow);
+  color: var(--text);
   height: 50px;
+  
+
 }
 .oddTableRow {
-  background-color: #efefef;
-  color: black;
+  background-color: var(--oddTableRow);
+  color: var(--text);
   height: 50px;
+
 }
 .tableCell {
   border: none !important;
@@ -162,9 +185,12 @@ footer {
 .selectedTableRow {
   background-color: red;
 }
-.hoverTableRow {
-  background-color: transparent;
+.hoverTableRow1 {
+  background-color: none!important;
   text-decoration: underline;
+}
+.hoverTableRow {
+  background-color: none!important;
 }
 
 .rank-down {
@@ -205,7 +231,7 @@ footer {
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -214,7 +240,6 @@ footer {
   background-color: var(--fplpurple);
   margin: auto;
   padding: 0;
-  border: 1px solid #888;
   width: 80%;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
@@ -251,7 +276,7 @@ footer {
 
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: var(--fplgreenstripedark);
   color: white;
 }
 
@@ -259,14 +284,6 @@ footer {
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: var(--fplgreenstripelight);
   color: white;
-}
-.exitbutton{
-  width: 100%;
-  text-align: right;
-  font-size: 44px;
-  margin-top: 0;
-  margin-bottom: 0;
-  
 }

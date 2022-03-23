@@ -167,3 +167,60 @@ function addChips(){
 		chipLooper[j](); // and now let's run each one to see
 	}
 }
+
+
+
+
+
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+function exit() {
+  modal.style.display = "none";
+}
+
+// Get the input field
+var input = document.getElementById("teamId");
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function (event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("submit").click();
+  }
+});
+
+function switchTheme() {
+  x = document.documentElement.getAttribute("data-theme");
+  if (x === null || x === "light") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+}

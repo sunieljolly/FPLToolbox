@@ -31,9 +31,11 @@ async function leagueTable() {
     allowHtml: true,
     frozenColumns: 2,
     cssClassNames : {
-      headerRow :'headerRow',
-      tableRow: 'tableRow',
-      oddTableRow: 'oddTableRow'
+      headerRow: "headerRow",
+      tableRow: "tableRow",
+      oddTableRow: "oddTableRow",
+      tableCell: "tableCell",
+      hoverTableRow: "hoverTableRow",
     },
   }
   var table = new google.visualization.Table(document.getElementById('table'));
