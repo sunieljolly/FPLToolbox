@@ -270,7 +270,7 @@ async function createLeague(selectedLeague) {
           league_data.standings.results.length > 50
         ) {
           alert(
-            "League too big to compare, please try another league with fewer teams"
+            "This league too big to compare! Please try another league with 50 or fewer teams"
           );
           showLeagues(teamId);
           return;
