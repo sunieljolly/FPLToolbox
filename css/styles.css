@@ -25,12 +25,13 @@ body {
   width: 100%;
   margin: auto;
   background: repeating-linear-gradient(
-    to bottom,
+    135deg,
     var(--fplgreenstripelight) 0px,
     var(--fplgreenstripelight) 50px,
     var(--fplgreenstripedark) 50px,
     var(--fplgreenstripedark) 100px
   );
+  
 }
 
 .user-details {

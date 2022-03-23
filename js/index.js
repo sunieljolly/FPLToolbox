@@ -84,8 +84,9 @@ async function getStatus() {
     })
   );
 }
-getStatus();
+setTimeout(function () { getStatus();  }, 100);
 async function getBootstrap() {
+  
   $.ajax({
     url: BASE_URL + "bootstrap-static/",
     type: "GET",
@@ -135,7 +136,7 @@ async function getBootstrap() {
     });
   }, 1500);
 }
-getBootstrap();
+setTimeout(function () { getBootstrap(); }, 1000);
 
 async function submitTeamId() {
   teamId = document.getElementById("teamId").value;
