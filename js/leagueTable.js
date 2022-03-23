@@ -36,6 +36,7 @@ async function leagueTable() {
       oddTableRow: "oddTableRow",
       tableCell: "tableCell",
       hoverTableRow: "hoverTableRow",
+      selectedTableRow: "selectedTableRow"
     },
   }
   var table = new google.visualization.Table(document.getElementById('table'));

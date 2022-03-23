@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-
 header {
   padding: 0 20px;
   background-color: var(--fplpurple);
@@ -36,11 +35,13 @@ ul a {
 }
 
 ul li {
+  
   padding: 5px;
   margin-left: 10px;
 }
 
 ul li:hover {
+  background-color: var(--fplblue);
   transform: scale(1.1);
   transition: 0.3s;
 }

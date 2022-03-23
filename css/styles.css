@@ -16,12 +16,13 @@
   --tableRow: #FFFFFF;
   --oddTableRow: #FAFAFA;
   --text: black;
+  --highlight: lightgrey;
 }
 [data-theme="dark"] {
   --fplpurple: #0F3460;
-  --fplblue: #0F3460;
-  --fplgreen: green;
-  --fplpink: pink;
+  --fplblue: #16213E;
+  --fplgreen: #01fc7a;
+  --fplpink: #ff1751;
   --fpldarkred: darkred;
   --fplyellow: yellow;
   --fpllightpurple: darkblue;
@@ -30,6 +31,7 @@
   --tableRow: #16213E;
   --oddTableRow: #1A1A2E;
   --text: whitesmoke;
+  --highlight: #270082;
 }
 
 
@@ -183,7 +185,7 @@ footer {
   background-image: none !important;
 }
 .selectedTableRow {
-  background-color: red;
+  background-color: var(--highlight);
 }
 .hoverTableRow1 {
   background-color: none!important;

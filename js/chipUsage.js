@@ -70,6 +70,9 @@ async function chipUsage() {
       headerRow: "headerRow",
       tableRow: "tableRow",
       oddTableRow: "oddTableRow",
+      tableCell: "tableCell",
+      hoverTableRow: "hoverTableRow",
+      selectedTableRow: "selectedTableRow"
     },
   };
   var formatter = new google.visualization.ColorFormat();

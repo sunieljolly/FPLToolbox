@@ -238,11 +238,14 @@ async function gameweekActivty() {
         headerRow: "headerRow",
         tableRow: "tableRow",
         oddTableRow: "oddTableRow",
+        tableCell: "tableCell",
+        hoverTableRow: "hoverTableRow",
+        selectedTableRow: "selectedTableRow"
       },
     };
     var formatter = new google.visualization.ColorFormat();
-    formatter.addRange(0.1, 10.8, "black", fplgreen);
-    formatter.addRange(10.9, 11.1, "black", fplpink);
+    formatter.addRange(0.1, 10.8, "black", fplpink);
+    formatter.addRange(10.9, 11.1, "black", fplgreen);
     formatter.addRange("3xc", "3xc ", "white", fplpink);
     formatter.addRange("bboost", "bboost ", "black", fplblue);
     formatter.addRange("wildcard", "wildcard ", "white", fpldarkred);
