@@ -184,7 +184,7 @@ async function loadTeam(teamId) {
     });
     document.getElementById("table").innerHTML =
       '<div class="w3-light-grey">' +
-      '<div id="myBar" class="w3-container w3-center" style="width:20%; color:white; background-color:var(--fplblue)">20%</div></div>';
+      '<div id="myBar"  w3-center" style="width:20%; height:70px; color:var(--fplpurple); background-color:var(--fplpurple)">20%</div></div>';
     leagueLoader();
     setTimeout(showLeagues, 2000);
   });
@@ -237,7 +237,7 @@ function submitLeague(selectedLeague) {
   hideMenu();
   document.getElementById("table").innerHTML =
     '<div class="w3-light-grey">' +
-    '<div id="myBar" class="w3-container w3-center" style="width:20%; color:white; background-color:var(--fplblue);">0%</div></div>';
+    '<div id="myBar"  w3-center" style="width:20%; height:70px; color:var(--fplpurple); background-color:var(--fplpurple);">0%</div></div>';
   leagueLoader();
   league = [];
   leagueInfo = [];
@@ -270,7 +270,7 @@ async function createLeague(selectedLeague) {
           league_data.standings.results.length > 50
         ) {
           alert(
-            "This league too big to compare! Please try another league with 50 or fewer teams"
+            "This league is too big to compare! Please try another league with 50 teams or less."
           );
           showLeagues(teamId);
           return;
@@ -386,10 +386,45 @@ function leagueLoader() {
 
 if("serviceWorker" in navigator){
 navigator.serviceWorker.register("sw.js").then(registration => {
-  console.log("SW Registered!");
-  console.log(registration);
+  //console.log("SW Registered!");
+  //console.log(registration);
 }).catch(error => {
   console.log("SW Registered Failed!");
-  console.log(error);
+  //console.log(error);
 });
+}
+
+
+
+function test(){
+
+  html2canvas(document.getElementById('table')).then(function(canvas){
+    console.log(canvas)
+    saveAs(canvas.toDataURL(), 'file-name.png');
+  })
+
+}
+function saveAs(uri, filename) {
+
+  var link = document.createElement('a');
+
+  if (typeof link.download === 'string') {
+
+      link.href = uri;
+      link.download = filename;
+
+      //Firefox requires the link to be in the body
+      document.body.appendChild(link);
+
+      //simulate click
+      link.click();
+
+      //remove the link when done
+      document.body.removeChild(link);
+
+  } else {
+
+      window.open(uri);
+
+  }
 }

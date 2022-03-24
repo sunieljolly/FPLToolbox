@@ -1,9 +1,9 @@
 {
   "name": "FPL Toolbox",
   "short_name": "FPL Toolbox",
-  "start_url": ".",
-  "background_color": "whiteSmoke",
-  "theme_color": "whiteSmoke",
+  "start_url": "/",
+  "background_color": "black",
+  "theme_color": "black",
   "display": "standalone",
   "icons": [
     {
