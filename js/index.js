@@ -402,11 +402,8 @@ function captureTable() {
     let link = document.createElement('a');
     link.setAttribute('download', 'screenshot.png');
     link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-    link.save('test.png')
     link.click();
-    link.save('test.png')
-
-    //window.open().document.write('<img src="' + canvas.toDataURL() + '" />');
+    window.open().document.write('<img src="' + canvas.toDataURL() + '" />');
   });
 
 
