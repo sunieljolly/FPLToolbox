@@ -1,4 +1,5 @@
 async function gameweekActivty() {
+  
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
   data.addColumn("number", "#");
@@ -257,4 +258,5 @@ async function gameweekActivty() {
 
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
+  addCaptureButton();
 }

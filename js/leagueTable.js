@@ -41,4 +41,5 @@ async function leagueTable() {
   }
   var table = new google.visualization.Table(document.getElementById('table'));
   table.draw(data, options);
+  addCaptureButton();
 }
