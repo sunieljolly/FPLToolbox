@@ -91,5 +91,4 @@ async function chipUsage() {
   var table = new google.visualization.Table(document.getElementById("table"));
 
   table.draw(data, options);
-  addCaptureButton();
 }

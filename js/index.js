@@ -142,6 +142,8 @@ setTimeout(function () {
   getBootstrap();
 }, 1000);
 
+
+
 async function submitTeamId() {
   teamId = document.getElementById("teamId").value;
   document.getElementById("login").innerHTML = "";
@@ -395,25 +397,6 @@ navigator.serviceWorker.register("sw.js").then(registration => {
 }
 
 
-
-function captureTable() {
-  const div = document.getElementById('table');
-  html2canvas(div, {scale: 0.8}).then(canvas =>  {
-    let link = document.createElement('a');
-    link.setAttribute('download', 'screenshot.png');
-    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-    link.click();
-    window.open().document.write('<img src="' + canvas.toDataURL() + '" />');
-  });
-
-
-}
-
-
-function addCaptureButton(){
-  document.getElementById("share-button").innerHTML =
-    '<i class="material-icons center" onclick="captureTable()">share</i>';
-}
 
 
 
