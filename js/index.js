@@ -398,21 +398,18 @@ navigator.serviceWorker.register("sw.js").then(registration => {
 
 function captureTable() {
   const div = document.getElementById('table');
-  // html2canvas(div, {scale: 0.8}).then(canvas =>  {
-  //   let link = document.createElement('a');
-  //   link.setAttribute('download', 'screenshot.png');
-  //   link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
-  //   link.save('test.png')
-  //   link.click();
-  //   link.save('test.png')
+  html2canvas(div, {scale: 0.8}).then(canvas =>  {
+    let link = document.createElement('a');
+    link.setAttribute('download', 'screenshot.png');
+    link.setAttribute('href', canvas.toDataURL("image/png").replace("image/png", "image/octet-stream"));
+    link.save('test.png')
+    link.click();
+    link.save('test.png')
 
-  //   //window.open().document.write('<img src="' + canvas.toDataURL() + '" />');
-  // });
-
-  html2canvas(div).then(function(canvas) {
-    console.log(canvas);
-    simulateDownloadImageClick(canvas.toDataURL(), 'file-name.png');
+    //window.open().document.write('<img src="' + canvas.toDataURL() + '" />');
   });
+
+
 }
 
 
@@ -423,37 +420,3 @@ function addCaptureButton(){
 
 
 
-
-
-setUpDownloadPageAsImage();
-
-function setUpDownloadPageAsImage() {
-  document.getElementById("table").addEventListener("click", function() {
-    html2canvas(document.body).then(function(canvas) {
-      console.log(canvas);
-      simulateDownloadImageClick(canvas.toDataURL(), 'file-name.png');
-    });
-  });
-}
-
-function simulateDownloadImageClick(uri, filename) {
-  var link = document.createElement('a');
-  if (typeof link.download !== 'string') {
-    window.open(uri);
-  } else {
-    link.href = uri;
-    link.download = filename;
-    accountForFirefox(clickLink, link);
-  }
-}
-
-function clickLink(link) {
-  link.click();
-}
-
-function accountForFirefox(click) { // wrapper function
-  let link = arguments[1];
-  document.body.appendChild(link);
-  click(link);
-  document.body.removeChild(link);
-}
