@@ -147,10 +147,12 @@ function checkUser(){
     teamId = localStorage.getItem('existing-user');
     document.getElementById("last-user").innerHTML = (
     '<div class="previous-user center" onclick="loadTeam(' + teamId + ')">' + 
+    '<span class="close" onclick="logout()">&times;</span>' +
     '<i class="material-icons">account_circle</i><br>' +
     '<p>' + teamId + '</p>' +
     '</div>'
      );
+     document.getElementById("myBtn").innerHTML = ''
      
   }
 }
@@ -295,11 +297,14 @@ async function createLeague(selectedLeague) {
           for (var i = 0; i < league_data.standings.results.length; i++) {
             league.push(league_data.standings.results[i]);
           }
-
-          document.getElementById("username").innerHTML =
-            "<p>Welcome, " + managerName + "!</p>";
-          document.getElementById("league-name").innerHTML =
-            "<p>" + league_data.league.name + "</p>";
+          document.getElementById("user-details").innerHTML =
+          '<div class="user-details">' +
+          '<p class="left" id="username">Welcome, ' + managerName + '!</p>' +
+          '<p class="right" id="league-name">' + league_data.league.name + '</p><d/iv>'
+          // document.getElementById("username").innerHTML =
+          //   "<p>Welcome, " + managerName + "!</p>";
+          // document.getElementById("league-name").innerHTML =
+          //   "<p>" + league_data.league.name + "</p>";
 
           setTimeout(function () {
             createMenu();
@@ -400,15 +405,15 @@ function leagueLoader() {
 }
 
 
-if("serviceWorker" in navigator){
-navigator.serviceWorker.register("sw.js").then(registration => {
-  //console.log("SW Registered!");
-  //console.log(registration);
-}).catch(error => {
-  console.log("SW Registered Failed!");
-  //console.log(error);
-});
-}
+// if("serviceWorker" in navigator){
+// navigator.serviceWorker.register("sw.js").then(registration => {
+//   //console.log("SW Registered!");
+//   //console.log(registration);
+// }).catch(error => {
+//   console.log("SW Registered Failed!");
+//   //console.log(error);
+// });
+// }
 
 
 
