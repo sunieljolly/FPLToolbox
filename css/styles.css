@@ -139,7 +139,7 @@ input[type="search"] {
 .score {
   background-color: var(--fplpurple);
   width: 75%;
-  max-width: 800px;
+  max-width: 900px;
   height: 50px;
   display: grid;
   grid-template-columns: auto auto auto;
@@ -161,7 +161,7 @@ footer {
   font-size: 36px !important;
 }
 .table {
-  max-width: 800px;
+  max-width: 900px;
   width: 98%;
   text-align: center;
   font-family: "PremierSans-Regular", Arial, "Helvetica Neue", Helvetica,
