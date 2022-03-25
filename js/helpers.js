@@ -119,7 +119,11 @@ function addChips(){
 				success: function (team_data){
 					league[i].chips = [];
 					league[i].seasons = team_data.past.length;
-					league[i].seasons_managed = team_data.past[0].season_name;
+					if(team_data.past[0]){
+						league[i].seasons_managed = team_data.past[0].season_name;
+					} else {
+						league[i].seasons_managed = "NEW"
+					}
 					//CHIP 1
 					if(team_data.chips[0]){
 						league[i].chips.push({name: team_data.chips[0].name, time: team_data.chips[0].time, gw: team_data.chips[0].event});

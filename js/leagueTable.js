@@ -43,6 +43,11 @@ async function leagueTable() {
       selectedTableRow: "selectedTableRow"
     },
   }
+
+  var formatter = new google.visualization.ColorFormat();
+  formatter.addRange("NEW", "NEW ", "black", fplgreen);
+  formatter.format(data, 5);
+  
   var table = new google.visualization.Table(document.getElementById('table'));
   table.draw(data, options);
 }
