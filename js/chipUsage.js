@@ -47,7 +47,8 @@ async function chipUsage() {
     data.addRows([
       [
         league[i].rank,
-        league[i].player_name,
+        '<p class="entry-name">' + league[i].entry_name + '</p>' + '\n' +
+        '<p class="player-name">' + league[i].player_name + '</p>' ,
         chip1,
         chip2,
         chip3,

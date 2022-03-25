@@ -210,7 +210,8 @@ async function gameweekActivty() {
     data.addRows([
       [
         league[i].rank,
-        league[i].player_name,
+        '<p class="entry-name">' + league[i].entry_name + '</p>' + '\n' +
+        '<p class="player-name">' + league[i].player_name + '</p>' ,
         active_chip,
         getPlayerWebName(league[i].captain),
         captainPoints,

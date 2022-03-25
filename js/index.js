@@ -142,15 +142,29 @@ setTimeout(function () {
   getBootstrap();
 }, 1000);
 
+function checkUser(){
+  if(localStorage.getItem('existing-user')){
+    teamId = localStorage.getItem('existing-user');
+    document.getElementById("last-user").innerHTML = (
+    '<div class"previous-user" onclick="loadTeam(' + teamId + ')">' + 
+    '<i class="material-icons">account_circle</i><br>' +
+    '<p>' + teamId + '</p>' +
+    '</div>'
+     );
+     
+  }
+}
+setTimeout(checkUser, 500);
 
 
 async function submitTeamId() {
   teamId = document.getElementById("teamId").value;
-  document.getElementById("login").innerHTML = "";
+  localStorage.setItem("existing-user", teamId);  
   loadTeam(teamId);
 }
 
 async function loadTeam(teamId) {
+  document.getElementById("login").innerHTML = "";
   return new Promise((resolve, reject) => {
     $.ajax({
       url: BASE_URL + "/entry/" + teamId + "/event/" + currentGw + "/picks/",
@@ -228,7 +242,7 @@ function showLeagues() {
       var selectedLeague = data.getValue(selectedItem.row, 0);
     }
     if (selectedLeague == 00000) {
-      location.reload();
+      logout()
     } else {
       submitLeague(selectedLeague);
     }
@@ -342,9 +356,9 @@ function createMenu() {
     '<p onclick="showLeagues()">Change League</p>';
 
   document.getElementById("logout").innerHTML =
-    '<p onclick="location.reload()">Log Out</p>';
+    '<p onclick="logout()">Log Out</p>';
   document.getElementById("m-logout").innerHTML =
-    '<p onclick="location.reload()">Log Out</p>';
+    '<p onclick="logout()">Log Out</p>';
 
   document.getElementById("score").innerHTML =
     '<div class="score center">' +
@@ -399,4 +413,7 @@ navigator.serviceWorker.register("sw.js").then(registration => {
 
 
 
-
+function logout(){
+  location.reload()
+  localStorage.removeItem("existing-user");
+}

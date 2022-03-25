@@ -48,6 +48,7 @@
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="/img/icon192.png">
     <title>FPL Toolbox</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -99,11 +100,12 @@
         <p class="left" id="username"></p>
         <p class="right" id="league-name"></p>
       </div>
-
       <div id="score"></div>
       <div id="table" class="table center"></div>
       <div class="login" id="login">
+        <p id="myBtn" class="help">How do I find my Team ID?</p>
         <div class="form" id="form">
+          
           <input
             class="input"
             type="number"
@@ -113,10 +115,13 @@
           <button id="submit" class="send-button" onclick="submitTeamId()">
             <i class="material-icons">send</i>
           </button>
+          
         </div>
-        <p id="myBtn" class="help">How do I find my Team ID?</p>
+        
+        <div id="last-user"></div>
       </div>
     </div>
+    
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
@@ -132,7 +137,7 @@
           <p>Click on the link. The page will then reload and your numerical team ID will be revealed in the address bar.</p>
         </div>
         <div class="modal-footer">
-          <p>www.fpltoolbox.com</p>
+          <p>fpltoolbox.com</p>
         </div>
       </div>
     </div>

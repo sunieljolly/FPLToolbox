@@ -5,7 +5,7 @@
 }
 :root {
   --fplpurple: #37003c;
-  --fplblue: #963CFF;
+  --fplblue: #1A8CD8;
   --fplgreen: #01fc7a;
   --fplpink: #ff1751;
   --fpldarkred: #80072d;
@@ -39,9 +39,9 @@ body {
   background-color: #ffffff;
   color: white;
   font-family: "Poppins", sans-serif;
-  
 }
 .page {
+  
   min-height: 95vh;
   text-align: center;
   width: 100%;
@@ -53,6 +53,7 @@ body {
     var(--fplgreenstripedark) 50px,
     var(--fplgreenstripedark) 100px
   );
+  
 }
 
 .user-details {
@@ -87,13 +88,12 @@ body {
   background-color: var(--fplpurple);
   padding: 20px;
   margin: auto;
-  width: 70%;
-  margin-top: 50px;
+  width: 70%;  
   height: 100px;
-
   max-width: 600px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 20px;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -192,6 +192,7 @@ footer {
   border-bottom: 1px solid #efefef !important;
   background-image: none !important;
   background-color: var(--oddTableRow);
+  
 }
 .selectedTableRow {
   background-color: var(--highlight);
@@ -224,6 +225,8 @@ footer {
   color: white;
   font-weight: bolder;
   font-size: larger;
+  margin-top: 50px;
+  margin-bottom: 5px;
 }
 .google-visualization-table .gradient {
   background-image: none !important;
