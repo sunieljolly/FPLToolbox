@@ -146,7 +146,7 @@ function checkUser(){
   if(localStorage.getItem('existing-user')){
     teamId = localStorage.getItem('existing-user');
     document.getElementById("last-user").innerHTML = (
-    '<div class"previous-user" onclick="loadTeam(' + teamId + ')">' + 
+    '<div class="previous-user center" onclick="loadTeam(' + teamId + ')">' + 
     '<i class="material-icons">account_circle</i><br>' +
     '<p>' + teamId + '</p>' +
     '</div>'

@@ -311,3 +311,9 @@ footer {
   height:70px; 
   background-color:var(--fplpurple);
 }
+
+.previous-user{
+  background-color: var(--fplpurple);
+  max-width: 150px;
+  padding: 10px
+}
