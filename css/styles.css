@@ -129,6 +129,7 @@ input[type="search"] {
   height: 50px;
   vertical-align: middle;
   color: white;
+  cursor: pointer;
 }
 .share-button{
   background-color: var(--fplblue);
@@ -158,12 +159,16 @@ footer {
   padding-bottom: 20px;
   padding-top: 20px;
 }
-
-.fa-twitter {
+.fa{
   margin-top: 10px;
-  color: #1A8CD8;
   font-size: 36px !important;
+  text-decoration: none!important ;  
+
 }
+.fa-twitter { 
+  color: #1A8CD8;
+}
+
 .table {
   max-width: 900px;
   width: 98%;
@@ -230,6 +235,7 @@ footer {
   font-size: larger;
   margin-top: 50px;
   margin-bottom: 5px;
+  cursor: pointer;
 }
 .google-visualization-table .gradient {
   background-image: none !important;

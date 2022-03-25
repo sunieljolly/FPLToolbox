@@ -78,7 +78,7 @@ async function getStatus() {
       error: function (data) {
         alert(
           data.statusText +
-            ": Something went wrong. Please try again later (line 80)"
+            ": Something went wrong. Please try again later"
         );
         location.reload();
       },
