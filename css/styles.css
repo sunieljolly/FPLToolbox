@@ -10,6 +10,7 @@
   --fplgreen: #01fc7a;
   --fplpink: #ff1751;
   --fpldarkred: #80072d;
+  --red: #ff1751;
   --fplyellow: #d8bd14;
   --fpllightpurple: #963CFF;
   --fplgreenstripelight: #01ba5c;
@@ -33,6 +34,7 @@
   --oddTableRow: #1A1A2E;
   --text: whitesmoke;
   --highlight: #270082;
+  --red: #80072d;
 }
 
 
@@ -322,9 +324,9 @@ footer {
 }
 .previous-user .close {
   position: absolute;
-  top: -10px;
-  right: -1px;
+  top: -13px;
+  right: -3px;
   z-index: 100;
-  color: red;
+  color: var(--red);
   padding: 0;
 }

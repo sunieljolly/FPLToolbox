@@ -419,6 +419,6 @@ function leagueLoader() {
 
 
 function logout(){
-  location.reload()
   localStorage.removeItem("existing-user");
+  location.reload()
 }
