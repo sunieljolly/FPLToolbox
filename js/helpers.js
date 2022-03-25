@@ -218,11 +218,24 @@ input.addEventListener("keyup", function (event) {
   }
 });
 
+function checkTheme(){
+	x = localStorage.getItem("theme-choice")
+	if (x === null || x === "light") {
+	  document.documentElement.setAttribute("data-theme", "light");	
+	} else {
+	  	  document.documentElement.setAttribute("data-theme", "dark");
+	}
+}
+checkTheme()
+
+
 function switchTheme() {
   x = document.documentElement.getAttribute("data-theme");
   if (x === null || x === "light") {
+	localStorage.setItem("theme-choice", "dark")//TEST
     document.documentElement.setAttribute("data-theme", "dark");
   } else {
+	localStorage.setItem("theme-choice", "light")//TEST
     document.documentElement.setAttribute("data-theme", "light");
   }
 }

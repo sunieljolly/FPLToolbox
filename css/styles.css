@@ -192,7 +192,6 @@ footer {
   border-bottom: 1px solid #efefef !important;
   background-image: none !important;
   background-color: var(--oddTableRow);
-  
 }
 .selectedTableRow {
   background-color: var(--highlight);
@@ -299,5 +298,16 @@ footer {
 .modal-footer {
   padding: 2px 16px;
   background-color: var(--fplgreenstripelight);
-  color: white;
+  color: transparent;
+}
+
+.loading-bar-div{
+  background-color: white;
+  color: transparent;
+}
+.loading-bar{
+  text-align: right!important;
+  width:20%; 
+  height:70px; 
+  background-color:var(--fplpurple);
 }

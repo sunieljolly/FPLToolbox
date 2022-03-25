@@ -199,8 +199,8 @@ async function loadTeam(teamId) {
       },
     });
     document.getElementById("table").innerHTML =
-      '<div class="w3-light-grey">' +
-      '<div id="myBar"  w3-center" style="width:20%; height:70px; color:var(--fplpurple); background-color:var(--fplpurple)">20%</div></div>';
+    '<div class="loading-bar-div">' +
+      '<div id="myBar" class="loading-bar"></div></div>';
     leagueLoader();
     setTimeout(showLeagues, 2000);
   });
@@ -252,8 +252,8 @@ function showLeagues() {
 function submitLeague(selectedLeague) {
   hideMenu();
   document.getElementById("table").innerHTML =
-    '<div class="w3-light-grey">' +
-    '<div id="myBar"  w3-center" style="width:20%; height:70px; color:var(--fplpurple); background-color:var(--fplpurple);">0%</div></div>';
+  '<div class="loading-bar-div">' +
+  '<div id="myBar" class="loading-bar"></div></div>';
   leagueLoader();
   league = [];
   leagueInfo = [];
