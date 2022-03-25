@@ -298,7 +298,7 @@ footer {
 .modal-footer {
   padding: 2px 16px;
   background-color: var(--fplgreenstripelight);
-  color: transparent;
+  color: white;
 }
 
 .loading-bar-div{
