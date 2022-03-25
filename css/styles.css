@@ -326,13 +326,5 @@ footer {
   background-color: var(--fplpurple);
   max-width: 100px;
   padding: 10px;
-  
-}
-.previous-user .close {
-  position: absolute;
-  top: -13px;
-  right: -3px;
-  z-index: 100;
-  color: var(--red);
-  padding: 0;
+  cursor: pointer;
 }

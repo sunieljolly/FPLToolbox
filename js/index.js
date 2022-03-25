@@ -147,7 +147,6 @@ function checkUser(){
     teamId = localStorage.getItem('existing-user');
     document.getElementById("last-user").innerHTML = (
     '<div class="previous-user center" onclick="loadTeam(' + teamId + ')">' + 
-    '<span class="close" onclick="logout()">&times;</span>' +
     '<i class="material-icons">account_circle</i><br>' +
     '<p>' + teamId + '</p>' +
     '</div>'
