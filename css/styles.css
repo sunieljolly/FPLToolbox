@@ -306,7 +306,7 @@ footer {
   color: transparent;
 }
 .loading-bar{
-  text-align: right!important;
+  text-align: left!important;
   width:20%; 
   height:70px; 
   background-color:var(--fplpurple);
