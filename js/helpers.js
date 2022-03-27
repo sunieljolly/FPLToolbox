@@ -179,6 +179,7 @@ function addChips(){
 
 
 
+function startModalListener(){
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -205,9 +206,6 @@ window.onclick = function (event) {
   }
 };
 
-function exit() {
-  modal.style.display = "none";
-}
 
 // Get the input field
 var input = document.getElementById("teamId");
@@ -221,6 +219,15 @@ input.addEventListener("keyup", function (event) {
     document.getElementById("submit").click();
   }
 });
+}
+setTimeout(startModalListener, 2500)
+
+
+function exit() {
+  modal.style.display = "none";
+}
+
+
 
 function checkTheme(){
 	x = localStorage.getItem("theme-choice")

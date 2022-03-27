@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <link rel="stylesheet" href="css/navbar.css" />
+    <link rel="stylesheet" href="css/compare-modal.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -74,11 +75,15 @@
           <li id="league-table"></li>
           <li id="gameweek-activity"></li>
           <li id="chip-usage"></li>
+          <li id="compare-team"></li>
           <li id="change-league"></li>
+          <li id="support"></li>
+          <li id="contact"></li>
           <li id="logout"></li>
           <li id="theme" onclick="switchTheme()" class="material-icons">
             brightness_medium
           </li>
+          
           
         </ul>
       </nav>
@@ -90,7 +95,10 @@
           <li id="m-league-table"></li>
           <li id="m-gameweek-activity"></li>
           <li id="m-chip-usage"></li>
+          <li id="m-compare-team"></li>
           <li id="m-change-league"></li>
+          <li id="m-support"></li>
+          <li id="m-contact"></li>
           <li id="m-logout"></li>
           <li id="m-theme" onclick="switchTheme()" class="material-icons">
             brightness_medium
@@ -103,22 +111,8 @@
       <div id="score"></div>
       <div id="table" class="table center"></div>
       <div class="login" id="login">
-        <div class="form" id="form">
-          <input
-            class="input"
-            type="number"
-            id="teamId"
-            placeholder="Enter Team ID here"
-          />
-          <button id="submit" class="send-button" onclick="submitTeamId()">
-            <i class="material-icons">send</i>
-          </button>
-        </div>
-        <p id="myBtn" class="help">How do I find my Team ID?</p>
-        <div id="last-user"></div>
-      </div>
     </div>
-
+    <div id="two-tables" class="modal"></div>
     <!-- The Modal -->
     <div id="myModal" class="modal">
       <!-- Modal content -->
@@ -150,25 +144,23 @@
         </div>
       </div>
     </div>
-    <footer class="center">
-      <script
-        type="text/javascript"
-        src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
-      ></script>
-      <script type="text/javascript">
-        kofiwidget2.init("Support Me on Ko-fi", "#1A8CD8", "Z8Z3BP5RN");
-        kofiwidget2.draw();
-      </script>
-      <br />
-      <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
-      <a href="http://www.twitter.com/sunieljolly" target="_blank"
-        ><i class="fa fa-twitter"></i>
-      </a>
-    </footer>
+    <!-- Compare Team Modal -->
+    <div id="compare-team-modal"></div>
+    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('sunnysunny', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': '',
+    'floating-chat.donateButton.background-color': '#1A8CD8',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
+
   </body>
   <script src="js/index.js"></script>
   <script src="js/helpers.js"></script>
   <script src="js/chipUsage.js"></script>
   <script src="js/leagueTable.js"></script>
   <script src="js/gamweekActivity.js"></script>
+  <script src="js/compareTeam.js"></script>
 </html>

@@ -59,6 +59,10 @@ async function getStatus() {
       $.ajax({
         url: BASE_URL + "leagues-classic/314/standings/",
         type: "GET",
+        success: function(){
+          setTimeout(getBootstrap, 800)
+          setTimeout(checkUser, 1000)
+        },
         error: function (error) {
           if (error.status == 503) {
             alert(error.responseText + " Please come back later");
@@ -87,7 +91,7 @@ async function getStatus() {
 }
 setTimeout(function () {
   getStatus();
-}, 100);
+}, 500);
 async function getBootstrap() {
   $.ajax({
     url: BASE_URL + "bootstrap-static/",
@@ -138,11 +142,15 @@ async function getBootstrap() {
     });
   }, 1500);
 }
-setTimeout(function () {
-  getBootstrap();
-}, 1000);
-
 function checkUser(){
+  document.getElementById("login").innerHTML = (
+  '<div class="form" id="form">' +
+  '<input class="input" type="number" id="teamId" placeholder="Enter Team ID here"/>' +
+  '<button id="submit" class="send-button" onclick="submitTeamId()">' +
+  '<i class="material-icons">send</i></button>' +
+  '</div><p id="myBtn" class="help">How do I find my Team ID?</p>' +
+  '<div id="last-user"></div></div>'
+  )
   if(localStorage.getItem('existing-user')){
     teamId = localStorage.getItem('existing-user');
     document.getElementById("last-user").innerHTML = (
@@ -155,7 +163,6 @@ function checkUser(){
      
   }
 }
-setTimeout(checkUser, 500);
 
 
 async function submitTeamId() {
@@ -173,6 +180,7 @@ async function loadTeam(teamId) {
       success: function (data) {
         resolve(data);
         team = data;
+
       },
       error: function (error) {
         reject(error);
@@ -358,6 +366,21 @@ function createMenu() {
     '<p onclick="showLeagues()">Change League</p>';
   document.getElementById("m-change-league").innerHTML =
     '<p onclick="showLeagues()">Change League</p>';
+
+  document.getElementById("compare-team").innerHTML =
+    '<p onclick="compareTeam()">Compare Team</p>';
+  document.getElementById("m-compare-team").innerHTML =
+    '<p onclick="compareTeam()">Compare Team</p>';
+  
+  document.getElementById("support").innerHTML =
+    '<a href="https://ko-fi.com/sunnysunny" target="_blank">Support Me</a>';
+  document.getElementById("m-support").innerHTML =
+    '<a href="https://ko-fi.com/sunnysunny" target="_blank">Support Me</a>';
+
+  document.getElementById("contact").innerHTML =
+    '<a href="https://twitter.com/sunieljolly" target="_blank">Contact</a>';
+  document.getElementById("m-contact").innerHTML =
+    '<a href="https://twitter.com/sunieljolly" target="_blank">Contact</a>';
 
   document.getElementById("logout").innerHTML =
     '<p onclick="logout()">Log Out</p>';

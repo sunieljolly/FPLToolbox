@@ -43,9 +43,8 @@ body {
   color: white;
   font-family: "Poppins", sans-serif;
 }
-.page {
-  
-  min-height: 95vh;
+.page {  
+  min-height: calc(100vh + 75px);
   text-align: center;
   width: 100%;
   margin: auto;
@@ -56,9 +55,11 @@ body {
     var(--fplgreenstripedark) 50px,
     var(--fplgreenstripedark) 100px
   );
-  
+  position: relative;
 }
-
+a{
+  text-decoration: none;
+}
 .user-details {
   width: 100%;
   min-height: 20px;
@@ -140,7 +141,6 @@ input[type="search"] {
   margin: auto;
   width: 50%;
 }
-
 .score {
   background-color: var(--fplpurple);
   width: 75%;
@@ -149,15 +149,6 @@ input[type="search"] {
   display: grid;
   grid-template-columns: auto auto auto;
   margin-top: 10px;
-}
-
-footer {
-  text-align: center;
-  background-color: var(--fplpurple);
-  min-width: 100%;
-  height: 100%;
-  padding-bottom: 20px;
-  padding-top: 20px;
 }
 .fa{
   margin-top: 10px;
@@ -168,7 +159,6 @@ footer {
 .fa-twitter { 
   color: #1A8CD8;
 }
-
 .table {
   max-width: 900px;
   width: 98%;
@@ -177,14 +167,16 @@ footer {
     sans-serif;
   font-weight: bolder;
   padding-bottom: 5px;
-  padding-top: 5px;
-  
+  padding-top: 5px; 
+  margin-bottom: 65px; 
+}
+th{
+  border: none!important ; 
 }
 .headerRow {
   background-color: var(--fplpurple);
   height: 50px;
   color: white;
-  border-right: none !important;
 }
 .tableRow {
   background-color: var(--tableRow);
@@ -198,7 +190,7 @@ footer {
 }
 .tableCell {
   border: none !important;
-  border-bottom: 1px solid #efefef !important;
+  border-bottom: 1px solid var(--highlight) !important;
   background-image: none !important;
   background-color: var(--oddTableRow);
 }
@@ -328,3 +320,4 @@ footer {
   padding: 10px;
   cursor: pointer;
 }
+
