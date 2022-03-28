@@ -22,10 +22,6 @@ var eventPoints;
 var bootstrap = {};
 var overallLeagueData = {};
 var mostCaptained;
-//var mostViceCaptained;
-//var mostSelected;
-//var topPlayer;
-//var topPlayerPoints;
 var currentGw;
 var nextGw;
 var nextGwDeadline;
@@ -92,9 +88,7 @@ async function getStatus() {
     })
   );
 }
-setTimeout(function () {
-  getStatus();
-}, 500);
+setTimeout(getStatus, 500);
 
 async function getBootstrap() {
   $.ajax({
@@ -211,14 +205,11 @@ input.addEventListener("keyup", function (event) {
 
 
 }
-
-
 async function submitTeamId() {
   teamId = document.getElementById("teamId").value;
   localStorage.setItem("existing-user", teamId);  
   loadTeam(teamId);
 }
-
 async function loadTeam(teamId) {
   document.getElementById("login").innerHTML = "";
   return new Promise((resolve, reject) => {
@@ -228,7 +219,6 @@ async function loadTeam(teamId) {
       success: function (data) {
         resolve(data);
         team = data;
-
       },
       error: function (error) {
         reject(error);
@@ -257,12 +247,11 @@ async function loadTeam(teamId) {
     });
     document.getElementById("table").innerHTML =
     '<div class="loading-bar-div center middle">' +
-      '<div id="myBar" class="loading-bar"></div></div>';
+    '<div id="myBar" class="loading-bar"></div></div>';
     leagueLoader();
     setTimeout(showLeagues, 2000);
   });
 }
-
 function showLeagues() {
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
@@ -286,8 +275,7 @@ function showLeagues() {
     },
   };
 
-  var table = new google.visualization.Table(document.getElementById("table"));
- 
+  var table = new google.visualization.Table(document.getElementById("table")); 
   google.visualization.events.addListener(table, "select", selectHandler);
   var view = new google.visualization.DataView(data);
   view.hideColumns([0]);
@@ -295,9 +283,7 @@ function showLeagues() {
   
   function selectHandler() {
     var selectedItem = table.getSelection()[0];
-    if (selectedItem) {
-      var selectedLeague = data.getValue(selectedItem.row, 0);
-    }
+    if (selectedItem) selectedLeague = data.getValue(selectedItem.row, 0)
     if (selectedLeague == 00000) {
       logout()
     } else {
@@ -305,7 +291,6 @@ function showLeagues() {
     }
   }
 }
-
 function submitLeague(selectedLeague) {
   hideMenu();
   document.getElementById("table").innerHTML =
@@ -317,7 +302,6 @@ function submitLeague(selectedLeague) {
   createLeague(selectedLeague)
     .then((data) => {
       addChips();
-
       setTimeout(function () {
         addCurrentWeekData();
       }, 1500);
@@ -330,7 +314,6 @@ function submitLeague(selectedLeague) {
       }
     });
 }
-
 async function createLeague(selectedLeague) {
   return new Promise((resolve, reject) => {
     $.ajax({
@@ -342,28 +325,19 @@ async function createLeague(selectedLeague) {
           league_data.standings.has_next == true ||
           league_data.standings.results.length > 50
         ) {
-          alert(
-            "This league is too big to compare! Please try another league with 50 teams or less."
-          );
-          showLeagues(teamId);
-          return;
-        } else {
+          alert('This league is too big to compare! Please try another league with 50 teams or less.');
+          showLeagues(teamId)
+          } else {
           leagueInfo.push(league_data.league);
           for (var i = 0; i < league_data.standings.results.length; i++) {
             league.push(league_data.standings.results[i]);
           }
-          // document.getElementById("username").innerHTML =
-          //   "<p>Welcome, " + managerName + "!</p>";
-          // document.getElementById("league-name").innerHTML =
-          //   "<p>" + league_data.league.name + "</p>";
-
           setTimeout(function () {
             document.getElementById("user-details").innerHTML =
           '<div class="user-details">' +
           '<p class="left" id="username">Welcome, ' + managerName + '!</p>' +
-          '<p class="right" id="league-name">' + league_data.league.name + '</p><d/iv>'
-          
-            createMenu();
+          '<p class="right" id="league-name">' + league_data.league.name + '</p><d/iv>'          
+          createMenu();
           }, 5000);
         }
       },
@@ -373,64 +347,53 @@ async function createLeague(selectedLeague) {
     });
   });
 }
-
-function toggleMobileMenu(menu) {
-  menu.classList.toggle("open");
-}
 function hideMenu() {
   document.getElementById("table").innerHTML = "";
-
   document.getElementById("league-table").innerHTML = "";
   document.getElementById("m-league-table").innerHTML = "";
-
   document.getElementById("gameweek-activity").innerHTML = "";
   document.getElementById("m-gameweek-activity").innerHTML = "";
-
   document.getElementById("chip-usage").innerHTML = "";
   document.getElementById("m-chip-usage").innerHTML = "";
-
   document.getElementById("change-league").innerHTML = "";
   document.getElementById("m-change-league").innerHTML = "";
-
+  document.getElementById("compare-team").innerHTML = "";
+  document.getElementById("m-compare-team").innerHTML = "";
+  document.getElementById("contact").innerHTML = "";
+  document.getElementById("m-contact").innerHTML = "";
+  document.getElementById("logout").innerHTML = "";
+  document.getElementById("m-logout").innerHTML = "";
 }
 function createMenu() {
   document.getElementById("table").innerHTML = "";
-
   document.getElementById("league-table").innerHTML =
     '<p onclick="leagueTable()">League Table</p>';
   document.getElementById("m-league-table").innerHTML =
     '<p onclick="leagueTable()">League Table</p>';
-
   document.getElementById("gameweek-activity").innerHTML =
     '<p onclick="gameweekActivty()">Gameweek Activty</p>';
   document.getElementById("m-gameweek-activity").innerHTML =
     '<p onclick="gameweekActivty()">Gameweek Activty</p>';
-
   document.getElementById("chip-usage").innerHTML =
     '<p onclick="chipUsage()">Chip Usage</p>';
   document.getElementById("m-chip-usage").innerHTML =
     '<p onclick="chipUsage()">Chip Usage</p>';
-
   document.getElementById("change-league").innerHTML =
     '<p onclick="showLeagues()">Change League</p>';
   document.getElementById("m-change-league").innerHTML =
     '<p onclick="showLeagues()">Change League</p>';
-
   document.getElementById("compare-team").innerHTML =
     '<p onclick="compareTeam()">Compare Team</p>';
   document.getElementById("m-compare-team").innerHTML =
-    '<p onclick="compareTeam()">Compare Team</p>';
-  
+    '<p onclick="compareTeam()">Compare Team</p>';  
   document.getElementById("contact").innerHTML =
     '<a href="https://twitter.com/sunieljolly" target="_blank">Contact</a>';
   document.getElementById("m-contact").innerHTML =
     '<a href="https://twitter.com/sunieljolly" target="_blank">Contact</a>';
-
   document.getElementById("logout").innerHTML =
     '<p onclick="logout()">Log Out</p>';
   document.getElementById("m-logout").innerHTML =
     '<p onclick="logout()">Log Out</p>';
-
   document.getElementById("score").innerHTML =
     '<div class="score center">' +
     '<d class="center"><p>' +
@@ -445,46 +408,6 @@ function createMenu() {
   leagueTable();
 }
 
-const average = (array) => array.reduce((a, b) => a + b) / array.length;
-
-const mostFrequent = (arr) =>
-  Object.entries(
-    arr.reduce((a, v) => {
-      a[v] = a[v] ? a[v] + 1 : 1;
-      return a;
-    }, {})
-  ).reduce((a, v) => (v[1] >= a[1] ? v : a), [null, 0])[0];
-
-function leagueLoader() {
-  var elem = document.getElementById("myBar");
-  var width = 0;
-  var id = setInterval(frame, 80);
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-    } else {
-      width++;
-      elem.style.width = width + "%";
-      elem.innerHTML = width * 1 + "%";
-    }
-  }
-}
-
-
-// if("serviceWorker" in navigator){
-// navigator.serviceWorker.register("sw.js").then(registration => {
-//   //console.log("SW Registered!");
-//   //console.log(registration);
-// }).catch(error => {
-//   console.log("SW Registered Failed!");
-//   //console.log(error);
-// });
-// }
 
 
 
-
-function logout(){
-  localStorage.removeItem("existing-user");
-  location.reload()
-}

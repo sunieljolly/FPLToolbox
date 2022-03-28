@@ -145,7 +145,7 @@ input[type="search"] {
 .score {
   background-color: var(--fplpurple);
   width: 75%;
-  max-width: 900px;
+  max-width: 400px;
   height: 50px;
   display: grid;
   grid-template-columns: auto auto auto;

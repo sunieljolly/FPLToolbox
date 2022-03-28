@@ -2,7 +2,7 @@ async function gameweekActivty() {
   
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
-  data.addColumn("number", "#");
+  data.addColumn("string", "#");
   data.addColumn("string", "Team");
   data.addColumn("string", "Active" + "<br/>" + "Chip");
   data.addColumn("string", "Captain" + "<br/>" + "Name");
@@ -17,6 +17,10 @@ async function gameweekActivty() {
   data.addColumn("number", "GW" + "<br/>" + "Rank");
 
   for (var i = 0; i < league.length; i++) {
+    if (league[i].rank == league[i].last_rank) rankMovement = ''
+    if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
+    if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
+    
     var formationPicks = [];
     for (var j = 1; j < 11; j++) {
       formationPicks.push(
@@ -28,13 +32,11 @@ async function gameweekActivty() {
       counts[num] = counts[num] ? counts[num] + 1 : 1;
     }
     var formation = "" + counts[2] + "-" + counts[3] + "-" + counts[4];
-
     if (league[i].currentWeek[0].active_chip) {
-      active_chip = league[i].currentWeek[0].active_chip;
+      active_chip = convertChipName(league[i].currentWeek[0].active_chip)
     } else {
       active_chip = "❌";
     }
-
     if (league[i].currentWeek[0].picks[0].is_captain) {
       var captainChoice = getPlayerPhoto(
         league[i].currentWeek[0].picks[0].element
@@ -151,7 +153,6 @@ async function gameweekActivty() {
       captainChoice = "";
       captainPoints = 0;
     }
-
     var minutesPlayed =
       getLiveMinutesPlayed(league[i].currentWeek[0].picks[0].element) +
       getLiveMinutesPlayed(league[i].currentWeek[0].picks[1].element) +
@@ -171,7 +172,6 @@ async function gameweekActivty() {
       pointsPerMinute =
         league[i].currentWeek[0].entry_history.points / minutesPlayed;
     }
-
     var played = [];
     if (getLiveMinutesPlayed(league[i].currentWeek[0].picks[0].element) != 0) {
       played.push(league[i].currentWeek[0].picks[0].element);
@@ -206,10 +206,9 @@ async function gameweekActivty() {
     if (getLiveMinutesPlayed(league[i].currentWeek[0].picks[10].element) != 0) {
       played.push(league[i].currentWeek[0].picks[10].element);
     }
-
     data.addRows([
       [
-        league[i].rank,
+        league[i].rank + rankMovement,
         '<p class="entry-name">' + league[i].entry_name + '</p>' + '\n' +
         '<p class="player-name">' + league[i].player_name + '</p>' ,
         active_chip,
@@ -248,15 +247,13 @@ async function gameweekActivty() {
     var formatter = new google.visualization.ColorFormat();
     formatter.addRange(0.1, 10.8, "black", fplpink);
     formatter.addRange(10.9, 11.1, "black", fplgreen);
-    formatter.addRange("3xc", "3xc ", "white", fplpink);
-    formatter.addRange("bboost", "bboost ", "black", fplblue);
-    formatter.addRange("wildcard", "wildcard ", "white", fpldarkred);
-    formatter.addRange("freehit", "freehit ", "black", fplyellow);
-
+    formatter.addRange("TC", "TC ", "white", fplpink);
+    formatter.addRange("BB", "BB ", "black", fplblue);
+    formatter.addRange("WC", "WC ", "white", fpldarkred);
+    formatter.addRange("FH", "FH ", "black", fplyellow);
     formatter.format(data, 8);
     formatter.format(data, 2);
   }
-
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
 }

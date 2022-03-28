@@ -4,7 +4,6 @@ var teamB = [];
 function compareTeam() {
   snackbar()
   createTeamA();
-  console.log(league);
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
   data.addColumn("string", "Team");
@@ -12,13 +11,9 @@ function compareTeam() {
   data.addColumn("number", "Total");
   data.addColumn("number", "ID");
   for (var i = 0; i < league.length; i++) {
-    if (league[i].rank < league[i].last_rank) {
-      rankMovement = '<p class="rank-up">▲</p>';
-    } else if (league[i].rank > league[i].last_rank) {
-      rankMovement = '<p class="rank-down">▼</p>';
-    } else {
-      rankMovement = " ";
-    }
+    if (league[i].rank == league[i].last_rank) rankMovement = ''
+    if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
+    if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
     data.addRows([
       [
         league[i].rank + rankMovement,
@@ -200,10 +195,8 @@ function snackbar() {
   document.getElementById("snackbar").innerHTML = ("Tap a team to compare squads.")
   // Get the snackbar DIV
   var x = document.getElementById("snackbar");
-
   // Add the "show" class to DIV
   x.className = "show";
-
   // After 3 seconds, remove the show class from DIV
   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }

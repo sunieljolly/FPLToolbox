@@ -7,13 +7,18 @@ async function leagueTable() {
   data.addColumn("number", "Seasons" + "<br/>" + "Managed");
   data.addColumn("string", "Managing" + "<br/>" + "Since");
   for (var i = 0; i < league.length; i++) {
-    if (league[i].rank < league[i].last_rank) {
-      rankMovement = '<p class="rank-up">▲</p>';
-    } else if (league[i].rank > league[i].last_rank) {
-      rankMovement = '<p class="rank-down">▼</p>';
-    } else {
-      rankMovement = " ";
-    }
+    if (league[i].rank == league[i].last_rank) rankMovement = ''
+    if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
+    if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
+    
+    // if (league[i].rank < league[i].last_rank) {
+    //   rankMovement = '<p class="rank-up">▲</p>';
+    // } else if (league[i].rank > league[i].last_rank) {
+    //   rankMovement = '<p class="rank-down">▼</p>';
+    // } else {
+    //   rankMovement = " ";
+    // }
+    
     data.addRows([
       [
         league[i].rank + rankMovement,

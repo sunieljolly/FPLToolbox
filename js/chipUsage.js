@@ -1,7 +1,7 @@
 async function chipUsage() {
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
-  data.addColumn("number", "#");
+  data.addColumn("string", "#");
   data.addColumn("string", "Team");
   data.addColumn("string", "Chip");
   data.addColumn("string", "Chip");
@@ -12,6 +12,11 @@ async function chipUsage() {
 
   //POPULATES TABLE
   for (var i = 0; i < league.length; i++) {
+    if (league[i].rank == league[i].last_rank) rankMovement = ''
+    if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
+    if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
+    
+
     if (league[i].chips[0] === null) {
       chip1 = "";
     } else {
@@ -42,23 +47,20 @@ async function chipUsage() {
     } else {
       chip6 = league[i].chips[5].name;
     }
-
-
     data.addRows([
       [
-        league[i].rank,
+        league[i].rank + rankMovement,
         '<p class="entry-name">' + league[i].entry_name + '</p>' + '\n' +
         '<p class="player-name">' + league[i].player_name + '</p>' ,
-        chip1,
-        chip2,
-        chip3,
-        chip4,
-        chip5,
-        chip6,
+        convertChipName(chip1),
+        convertChipName(chip2),
+        convertChipName(chip3),
+        convertChipName(chip4),
+        convertChipName(chip5),
+        convertChipName(chip6),
       ],
     ]);
   }
-
   var options = {
     alternatingRowStyle: true,
     showRowNumber: false,
@@ -77,19 +79,17 @@ async function chipUsage() {
     },
   };
   var formatter = new google.visualization.ColorFormat();
-  //formatter.addRange("", " ", "black", fplgreen);
-  formatter.addRange("3xc", "3xc ", "white", fplpink);
-  formatter.addRange("bboost", "bboost ", "black", fplblue);
-  formatter.addRange("wildcard", "wildcard ", "white", fpldarkred);
-  formatter.addRange("freehit", "freehit ", "black", fplyellow);
+  formatter.addRange("TC", "TC ", "white", fplpink);
+  formatter.addRange("BB", "BB ", "black", fplblue);
+  formatter.addRange("WC", "WC ", "white", fpldarkred);
+  formatter.addRange("FH", "FH ", "black", fplyellow);
   formatter.format(data, 2);
   formatter.format(data, 3);
   formatter.format(data, 4);
   formatter.format(data, 5);
-  formatter.format(data, 6); // Apply formatter to 7th column
+  formatter.format(data, 6);
   formatter.format(data, 7);
-
   var table = new google.visualization.Table(document.getElementById("table"));
-
   table.draw(data, options);
 }
+
