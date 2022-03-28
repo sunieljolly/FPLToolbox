@@ -352,16 +352,17 @@ async function createLeague(selectedLeague) {
           for (var i = 0; i < league_data.standings.results.length; i++) {
             league.push(league_data.standings.results[i]);
           }
-          document.getElementById("user-details").innerHTML =
-          '<div class="user-details">' +
-          '<p class="left" id="username">Welcome, ' + managerName + '!</p>' +
-          '<p class="right" id="league-name">' + league_data.league.name + '</p><d/iv>'
           // document.getElementById("username").innerHTML =
           //   "<p>Welcome, " + managerName + "!</p>";
           // document.getElementById("league-name").innerHTML =
           //   "<p>" + league_data.league.name + "</p>";
 
           setTimeout(function () {
+            document.getElementById("user-details").innerHTML =
+          '<div class="user-details">' +
+          '<p class="left" id="username">Welcome, ' + managerName + '!</p>' +
+          '<p class="right" id="league-name">' + league_data.league.name + '</p><d/iv>'
+          
             createMenu();
           }, 5000);
         }

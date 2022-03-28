@@ -7,9 +7,10 @@ header {
   display: flex;
   justify-content: space-between;
   color: white;
-  
 }
-
+header a {
+    text-decoration: none;
+}
 #brand {
   font-weight: bold;
   font-size: 18px;

@@ -2,7 +2,7 @@ var teamA = [];
 var teamB = [];
 
 function compareTeam() {
-  alert("Tap a team to compare.")
+  snackbar()
   createTeamA();
   console.log(league);
   var data = new google.visualization.DataTable();
@@ -193,4 +193,17 @@ function findUnique() {
       modal1.style.display = "none";
     }
   };
+}
+
+
+function snackbar() {
+  document.getElementById("snackbar").innerHTML = ("Tap a team to compare squads.")
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 }
