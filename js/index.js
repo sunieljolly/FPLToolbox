@@ -68,10 +68,10 @@ async function getStatus() {
         },
         error: function (error) {
           if (error.status == 503) {
-            alert(error.responseText + " Please come back later");
+            alert(error.statusText + " Please come back later");
           }
           reject(error);
-          console.log(error);
+          document.getElementById("login").innerHTML = ("Please come back later")
         },
       });
     }),
@@ -95,6 +95,7 @@ async function getStatus() {
 setTimeout(function () {
   getStatus();
 }, 500);
+
 async function getBootstrap() {
   $.ajax({
     url: BASE_URL + "bootstrap-static/",
