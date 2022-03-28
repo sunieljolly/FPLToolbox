@@ -22,10 +22,10 @@ var eventPoints;
 var bootstrap = {};
 var overallLeagueData = {};
 var mostCaptained;
-var mostViceCaptained;
-var mostSelected;
-var topPlayer;
-var topPlayerPoints;
+//var mostViceCaptained;
+//var mostSelected;
+//var topPlayer;
+//var topPlayerPoints;
 var currentGw;
 var nextGw;
 var nextGwDeadline;
@@ -42,8 +42,6 @@ var plFixtures = {};
 var thisWeekFixtures = [];
 var plTeam = {};
 var manager;
-var diffA = [];
-var diffB = [];
 var eventStatusDate;
 var eventStatus;
 
@@ -53,7 +51,12 @@ var fplgreen = "#01FC7A";
 var fplyellow = "#d8bd14";
 var fplblue = "#81bcff";
 
+
 async function getStatus() {
+  document.getElementById("login").innerHTML =
+  '<div class="loading-bar-div center middle">' +
+  '<div id="myBar" class="loading-bar"></div></div>';
+  leagueLoader();
   return (
     new Promise((reject) => {
       $.ajax({
@@ -150,7 +153,8 @@ function checkUser(){
   '<i class="material-icons">send</i></button>' +
   '</div><p id="myBtn" class="help">How do I find my Team ID?</p>' +
   '<div id="last-user"></div></div>'
-  )
+  );
+
   if(localStorage.getItem('existing-user')){
     teamId = localStorage.getItem('existing-user');
     document.getElementById("last-user").innerHTML = (
@@ -161,7 +165,50 @@ function checkUser(){
      );
      document.getElementById("myBtn").innerHTML = ''
      
+  };
+
+  // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function () {
+  modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
   }
+};
+
+
+// Get the input field
+var input = document.getElementById("teamId");
+// Execute a function when the user releases a key on the keyboard
+input.addEventListener("keyup", function (event) {
+  // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("submit").click();
+  }
+});
+
+
+
 }
 
 
@@ -208,7 +255,7 @@ async function loadTeam(teamId) {
       },
     });
     document.getElementById("table").innerHTML =
-    '<div class="loading-bar-div">' +
+    '<div class="loading-bar-div center middle">' +
       '<div id="myBar" class="loading-bar"></div></div>';
     leagueLoader();
     setTimeout(showLeagues, 2000);
@@ -261,7 +308,7 @@ function showLeagues() {
 function submitLeague(selectedLeague) {
   hideMenu();
   document.getElementById("table").innerHTML =
-  '<div class="loading-bar-div">' +
+  '<div class="loading-bar-div center middle">' +
   '<div id="myBar" class="loading-bar"></div></div>';
   leagueLoader();
   league = [];
@@ -372,11 +419,6 @@ function createMenu() {
   document.getElementById("m-compare-team").innerHTML =
     '<p onclick="compareTeam()">Compare Team</p>';
   
-  document.getElementById("support").innerHTML =
-    '<a href="https://ko-fi.com/sunnysunny" target="_blank">Support Me</a>';
-  document.getElementById("m-support").innerHTML =
-    '<a href="https://ko-fi.com/sunnysunny" target="_blank">Support Me</a>';
-
   document.getElementById("contact").innerHTML =
     '<a href="https://twitter.com/sunieljolly" target="_blank">Contact</a>';
   document.getElementById("m-contact").innerHTML =
@@ -414,7 +456,7 @@ const mostFrequent = (arr) =>
 function leagueLoader() {
   var elem = document.getElementById("myBar");
   var width = 0;
-  var id = setInterval(frame, 100);
+  var id = setInterval(frame, 80);
   function frame() {
     if (width >= 100) {
       clearInterval(id);

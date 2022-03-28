@@ -1,81 +1,100 @@
 /* The Modal (background) */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
-  }
-  
-  /* Modal Content */
-  .compare-modal-content {
-    position: relative;
-    background-color: var(--fplpurple);
-    margin: auto;
-    padding: 0;
-    width: 80%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s;
-    max-width: 900px;
-  }
-  
-  /* Add Animation */
-  @-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0} 
-    to {top:0; opacity:1}
-  }
-  
-  @keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-  }
-  
-  /* The Close Button */
-  .close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close:hover,
-  .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  
-  .compare-modal-header {
-    padding: 2px 16px;
-    background-color: var(--fplblue);
-    color: white;
-    
-  }
-  
-  .compare-modal-body {
-      column-count: 2;
-      
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 10px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
 }
-  
-  .compare-modal-footer {
-    
-    padding: 2px 16px;
-    background-color: var(--fplblue);
-    color: white;
+
+/* Modal Content */
+.compare-modal-content {
+  position: relative;
+  background-color: var(--fplblue);
+  margin: auto;
+  padding: 0;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  max-width: 900px;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
   }
-  
-  .table-a{
-    column-width: 50%;
+  to {
+    top: 0;
+    opacity: 1;
   }
-  .table-b{
-    column-width: 50%;
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
   }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+/* The Close Button */
+.compare-close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.compare-close:hover,
+.compare-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.compare-modal-header {
+  background-color: var(--fplblue);
+  color: white;
+}
+
+.compare-modal-body {
+  column-count: 2;
+}
+
+.compare-modal-footer {
+  background-color: var(--fplblue);
+  color: white;
+}
+
+.table-a {
+  column-width: 50%;
+}
+.table-b {
+  column-width: 50%;
+}
+
+.tableRowCompare {
+  background-color: var(--tableRow);
+  color: var(--text);
+  height: 20px;
+}
+.oddTableRowCompare {
+  background-color: var(--tableRow);
+  color: var(--text);
+  height: 20px;
+}

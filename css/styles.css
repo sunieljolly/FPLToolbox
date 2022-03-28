@@ -44,7 +44,7 @@ body {
   font-family: "Poppins", sans-serif;
 }
 .page {  
-  min-height: calc(100vh + 75px);
+  min-height: calc(100vh - 50px);
   text-align: center;
   width: 100%;
   margin: auto;
@@ -141,6 +141,9 @@ input[type="search"] {
   margin: auto;
   width: 50%;
 }
+.middle{
+  margin-top: 45%;
+}
 .score {
   background-color: var(--fplpurple);
   width: 75%;
@@ -168,7 +171,7 @@ input[type="search"] {
   font-weight: bolder;
   padding-bottom: 5px;
   padding-top: 5px; 
-  margin-bottom: 65px; 
+  margin-bottom: 5px; 
 }
 th{
   border: none!important ; 
@@ -291,7 +294,7 @@ th{
 
 .modal-header {
   padding: 2px 16px;
-  background-color: var(--fplgreenstripedark);
+  background-color: var(--fplblue);
   color: white;
 }
 
@@ -299,7 +302,7 @@ th{
 
 .modal-footer {
   padding: 2px 16px;
-  background-color: var(--fplgreenstripelight);
+  background-color: var(--fplblue);
   color: white;
 }
 

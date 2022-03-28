@@ -2,6 +2,7 @@ var teamA = [];
 var teamB = [];
 
 function compareTeam() {
+  alert("Tap a team to compare.")
   createTeamA();
   console.log(league);
   var data = new google.visualization.DataTable();
@@ -85,7 +86,7 @@ function findUnique() {
   document.getElementById("two-tables").innerHTML =
  ' <div class="compare-modal-content">' +  
   '<div class="compare-modal-header">' +
-    '<span class="close">&times;</span><h2>Unique Players</h2></div>' +
+    '<span class="compare-close">&times;</span><h2>Unique Players</h2></div>' +
     '<div id="compare-modal-body" class="compare-modal-body">' +
     '<div id="table-a" class="table-a"></div>' +
     '<div id="table-b" class="table-b"></div></div>' +
@@ -95,7 +96,7 @@ function findUnique() {
   var modal1 = document.getElementById("two-tables");
 
   // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
+  var span = document.getElementsByClassName("compare-close")[0];
 
   const keysB = teamA.reduce(
     (acc, curr) => ((acc[curr.element] = true), acc),
@@ -147,11 +148,12 @@ function findUnique() {
     //frozenColumns: 2,
     cssClassNames: {
       headerRow: "headerRow",
-      tableRow: "tableRow",
-      oddTableRow: "oddTableRow",
+      tableRow: "tableRowCompare",
+      oddTableRow: "oddTableRowCompare",
       tableCell: "tableCell",
       hoverTableRow: "hoverTableRow",
       selectedTableRow: "selectedTableRow",
+      rowNumberCell: "rowNumberCell"
     },
   };
 
