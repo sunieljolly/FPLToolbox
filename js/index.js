@@ -140,7 +140,7 @@ async function getBootstrap() {
         location.reload();
       },
     });
-  }, 1500);
+  }, 2000);
 }
 function checkUser(){
   loginDiv.innerHTML = (
