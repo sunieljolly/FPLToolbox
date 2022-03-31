@@ -217,6 +217,7 @@ function convertChipName(chip) {
   if (chip == "freehit") return "FH";
   if (chip == "bboost") return "BB";
   if (chip == "3xc") return "TC";
+  
 }
 function toggleMobileMenu(menu) {
   menu.classList.toggle("open");
@@ -250,6 +251,8 @@ function leagueLoader() {
 	  }
 	}
 }
+
+
 
 
 // if("serviceWorker" in navigator){

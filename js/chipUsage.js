@@ -12,10 +12,10 @@ async function chipUsage() {
 
   //POPULATES TABLE
   for (var i = 0; i < league.length; i++) {
-    if (league[i].rank == league[i].last_rank) rankMovement = ''
-    if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
-    if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
-    
+   if (league[i].rank == league[i].last_rank) rankMovement = ''
+   if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
+   if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
+   
 
     if (league[i].chips[0] === null) {
       chip1 = "";
@@ -83,6 +83,7 @@ async function chipUsage() {
   formatter.addRange("BB", "BB ", "black", fplblue);
   formatter.addRange("WC", "WC ", "white", fpldarkred);
   formatter.addRange("FH", "FH ", "black", fplyellow);
+  //formatter.addRange("N/A", "N/A ", "darkgrey", "lightgrey");
   formatter.format(data, 2);
   formatter.format(data, 3);
   formatter.format(data, 4);

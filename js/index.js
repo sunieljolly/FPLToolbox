@@ -47,10 +47,12 @@ var fplgreen = "#01FC7A";
 var fplyellow = "#d8bd14";
 var fplblue = "#81bcff";
 
+const loginDiv = document.getElementById("login")
+const tableDiv = document.getElementById("table")
 
 async function getStatus() {
-  document.getElementById("login").innerHTML =
-  '<div class="loading-bar-div center middle">' +
+  loginDiv.innerHTML =
+  '<div class="loading-bar-div center">' +
   '<div id="myBar" class="loading-bar"></div></div>';
   leagueLoader();
   return (
@@ -67,7 +69,7 @@ async function getStatus() {
             alert(error.statusText + " Please come back later");
           }
           reject(error);
-          document.getElementById("login").innerHTML = ("Please come back later")
+          loginDiv.innerHTML = ("Please come back later")
         },
       });
     }),
@@ -118,9 +120,9 @@ async function getBootstrap() {
       }
     },
     error: function (data) {
-      // alert(
-      //   data.statusText + ": Something went wrong. Please try again later (line 117)"
-      // );
+      console.log(
+        data.statusText + ": Something went wrong. Please try again later (line 117)"
+      );
       location.reload();
     },
   });
@@ -132,16 +134,16 @@ async function getBootstrap() {
         gameweekLiveData = data;
       },
       error: function (data) {
-        // alert(
-        //   data.statusText + ": Something went wrong. Please try again later (line 131)"
-        // );
+        console.log(
+          data.statusText + ": Something went wrong. Please try again later (line 131)"
+        );
         location.reload();
       },
     });
   }, 1500);
 }
 function checkUser(){
-  document.getElementById("login").innerHTML = (
+  loginDiv.innerHTML = (
   '<div class="form" id="form">' +
   '<input class="input" type="number" id="teamId" placeholder="Enter Team ID here"/>' +
   '<button id="submit" class="send-button" onclick="submitTeamId()">' +
@@ -211,7 +213,7 @@ async function submitTeamId() {
   loadTeam(teamId);
 }
 async function loadTeam(teamId) {
-  document.getElementById("login").innerHTML = "";
+  loginDiv.innerHTML = "";
   return new Promise((resolve, reject) => {
     $.ajax({
       url: BASE_URL + "/entry/" + teamId + "/event/" + currentGw + "/picks/",
@@ -245,8 +247,8 @@ async function loadTeam(teamId) {
         reject(error);
       },
     });
-    document.getElementById("table").innerHTML =
-    '<div class="loading-bar-div center middle">' +
+    tableDiv.innerHTML =
+    '<div class="loading-bar-div center">' +
     '<div id="myBar" class="loading-bar"></div></div>';
     leagueLoader();
     setTimeout(showLeagues, 2000);
@@ -283,18 +285,16 @@ function showLeagues() {
   
   function selectHandler() {
     var selectedItem = table.getSelection()[0];
-    if (selectedItem) selectedLeague = data.getValue(selectedItem.row, 0)
-    if (selectedLeague == 00000) {
-      logout()
-    } else {
-      submitLeague(selectedLeague);
-    }
+    if (selectedItem) selectedLeague = data.getValue(selectedItem.row, 0);
+    if (selectedLeague == 00000) logout();
+    submitLeague(selectedLeague);
   }
+  
 }
 function submitLeague(selectedLeague) {
   hideMenu();
-  document.getElementById("table").innerHTML =
-  '<div class="loading-bar-div center middle">' +
+  tableDiv.innerHTML =
+  '<div class="loading-bar-div center">' +
   '<div id="myBar" class="loading-bar"></div></div>';
   leagueLoader();
   league = [];
@@ -348,7 +348,7 @@ async function createLeague(selectedLeague) {
   });
 }
 function hideMenu() {
-  document.getElementById("table").innerHTML = "";
+  tableDiv.innerHTML = "";
   document.getElementById("league-table").innerHTML = "";
   document.getElementById("m-league-table").innerHTML = "";
   document.getElementById("gameweek-activity").innerHTML = "";
@@ -365,7 +365,7 @@ function hideMenu() {
   document.getElementById("m-logout").innerHTML = "";
 }
 function createMenu() {
-  document.getElementById("table").innerHTML = "";
+  tableDiv.innerHTML = "";
   document.getElementById("league-table").innerHTML =
     '<p onclick="leagueTable()">League Table</p>';
   document.getElementById("m-league-table").innerHTML =
@@ -387,9 +387,9 @@ function createMenu() {
   document.getElementById("m-compare-team").innerHTML =
     '<p onclick="compareTeam()">Compare Team</p>';  
   document.getElementById("contact").innerHTML =
-    '<a href="https://twitter.com/sunieljolly" target="_blank">Contact</a>';
+    '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
   document.getElementById("m-contact").innerHTML =
-    '<a href="https://twitter.com/sunieljolly" target="_blank">Contact</a>';
+    '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
   document.getElementById("logout").innerHTML =
     '<p onclick="logout()">Log Out</p>';
   document.getElementById("m-logout").innerHTML =
