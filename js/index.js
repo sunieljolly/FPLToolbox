@@ -120,7 +120,7 @@ async function getBootstrap() {
       }
     },
     error: function (data) {
-      alert(
+      console.log(
         data.statusText + ": Something went wrong. Please try again later (line 117)"
       );
       location.reload();
@@ -134,7 +134,7 @@ async function getBootstrap() {
         gameweekLiveData = data;
       },
       error: function (data) {
-        alert(
+        console.log(
           data.statusText + ": Something went wrong. Please try again later (line 131)"
         );
         location.reload();
@@ -308,7 +308,7 @@ function submitLeague(selectedLeague) {
       leagueName = leagueInfo[0].name;
     })
     .catch((error) => {
-      alert(error);
+      console.log(error);
       if (error.status == 503) {
         alert(error.responseText + " Please come back later");
       }
