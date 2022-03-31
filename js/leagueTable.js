@@ -10,15 +10,7 @@ async function leagueTable() {
     if (league[i].rank == league[i].last_rank) rankMovement = ''
     if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
     if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
-    
-    // if (league[i].rank < league[i].last_rank) {
-    //   rankMovement = '<p class="rank-up">▲</p>';
-    // } else if (league[i].rank > league[i].last_rank) {
-    //   rankMovement = '<p class="rank-down">▼</p>';
-    // } else {
-    //   rankMovement = " ";
-    // }
-    
+        
     data.addRows([
       [
         league[i].rank + rankMovement,

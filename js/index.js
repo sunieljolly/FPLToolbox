@@ -47,29 +47,29 @@ var fplgreen = "#01FC7A";
 var fplyellow = "#d8bd14";
 var fplblue = "#81bcff";
 
-const loginDiv = document.getElementById("login")
-const tableDiv = document.getElementById("table")
+const loginDiv = document.getElementById("login");
+const tableDiv = document.getElementById("table");
 
 async function getStatus() {
   loginDiv.innerHTML =
-  '<div class="loading-bar-div center">' +
-  '<div id="myBar" class="loading-bar"></div></div>';
+    '<div class="loading-bar-div center">' +
+    '<div id="myBar" class="loading-bar"></div></div>';
   leagueLoader();
   return (
     new Promise((reject) => {
       $.ajax({
         url: BASE_URL + "leagues-classic/314/standings/",
         type: "GET",
-        success: function(){
-          setTimeout(getBootstrap, 800)
-          setTimeout(checkUser, 1000)
+        success: function () {
+          setTimeout(getBootstrap, 800);
+          setTimeout(checkUser, 1000);
         },
         error: function (error) {
           if (error.status == 503) {
             alert(error.statusText + " Please come back later");
           }
           reject(error);
-          loginDiv.innerHTML = ("Please come back later")
+          loginDiv.innerHTML = "Please come back later";
         },
       });
     }),
@@ -82,8 +82,7 @@ async function getStatus() {
       },
       error: function (data) {
         alert(
-          data.statusText +
-            ": Something went wrong. Please try again later"
+          data.statusText + ": Something went wrong. Please try again later"
         );
         location.reload();
       },
@@ -121,7 +120,8 @@ async function getBootstrap() {
     },
     error: function (data) {
       console.log(
-        data.statusText + ": Something went wrong. Please try again later (line 117)"
+        data.statusText +
+          ": Something went wrong. Please try again later (line 117)"
       );
       location.reload();
     },
@@ -135,81 +135,79 @@ async function getBootstrap() {
       },
       error: function (data) {
         console.log(
-          data.statusText + ": Something went wrong. Please try again later (line 131)"
+          data.statusText +
+            ": Something went wrong. Please try again later (line 131)"
         );
         location.reload();
       },
     });
   }, 2000);
 }
-function checkUser(){
-  loginDiv.innerHTML = (
-  '<div class="form" id="form">' +
-  '<input class="input" type="number" id="teamId" placeholder="Enter Team ID here"/>' +
-  '<button id="submit" class="send-button" onclick="submitTeamId()">' +
-  '<i class="material-icons">send</i></button>' +
-  '</div><p id="myBtn" class="help">How do I find my Team ID?</p>' +
-  '<div id="last-user"></div></div>'
-  );
+function checkUser() {
+  loginDiv.innerHTML =
+    '<div class="form" id="form">' +
+    '<input class="input" type="number" id="teamId" placeholder="Enter Team ID here"/>' +
+    '<button id="submit" class="send-button" onclick="submitTeamId()">' +
+    '<i class="material-icons">send</i></button>' +
+    '</div><p id="myBtn" class="help">How do I find my Team ID?</p>' +
+    '<div id="last-user"></div></div>';
 
-  if(localStorage.getItem('existing-user')){
-    teamId = localStorage.getItem('existing-user');
-    document.getElementById("last-user").innerHTML = (
-    '<div class="previous-user center" onclick="loadTeam(' + teamId + ')">' + 
-    '<i class="material-icons">account_circle</i><br>' +
-    '<p>' + teamId + '</p>' +
-    '</div>'
-     );
-     document.getElementById("myBtn").innerHTML = ''
-     
-  };
+  if (localStorage.getItem("existing-user")) {
+    teamId = localStorage.getItem("existing-user");
+    document.getElementById("last-user").innerHTML =
+      '<div class="previous-user center" onclick="loadTeam(' +
+      teamId +
+      ')">' +
+      '<i class="material-icons">account_circle</i><br>' +
+      "<p>" +
+      teamId +
+      "</p>" +
+      "</div>";
+    document.getElementById("myBtn").innerHTML = "";
+  }
 
   // Get the modal
-var modal = document.getElementById("myModal");
+  var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal
-btn.onclick = function () {
-  modal.style.display = "block";
-};
+  // When the user clicks the button, open the modal
+  btn.onclick = function () {
+    modal.style.display = "block";
+  };
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function () {
-  modal.style.display = "none";
-};
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function (event) {
-  if (event.target == modal) {
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function () {
     modal.style.display = "none";
-  }
-};
+  };
 
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  };
 
-// Get the input field
-var input = document.getElementById("teamId");
-// Execute a function when the user releases a key on the keyboard
-input.addEventListener("keyup", function (event) {
-  // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    document.getElementById("submit").click();
-  }
-});
-
-
-
+  // Get the input field
+  var input = document.getElementById("teamId");
+  // Execute a function when the user releases a key on the keyboard
+  input.addEventListener("keyup", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      // Cancel the default action, if needed
+      event.preventDefault();
+      // Trigger the button element with a click
+      document.getElementById("submit").click();
+    }
+  });
 }
 async function submitTeamId() {
   teamId = document.getElementById("teamId").value;
-  localStorage.setItem("existing-user", teamId);  
+  localStorage.setItem("existing-user", teamId);
   loadTeam(teamId);
 }
 async function loadTeam(teamId) {
@@ -248,8 +246,8 @@ async function loadTeam(teamId) {
       },
     });
     tableDiv.innerHTML =
-    '<div class="loading-bar-div center">' +
-    '<div id="myBar" class="loading-bar"></div></div>';
+      '<div class="loading-bar-div center">' +
+      '<div id="myBar" class="loading-bar"></div></div>';
     leagueLoader();
     setTimeout(showLeagues, 2000);
   });
@@ -277,26 +275,26 @@ function showLeagues() {
     },
   };
 
-  var table = new google.visualization.Table(document.getElementById("table")); 
+  var table = new google.visualization.Table(document.getElementById("table"));
   google.visualization.events.addListener(table, "select", selectHandler);
   var view = new google.visualization.DataView(data);
   view.hideColumns([0]);
   table.draw(view, options);
-  
+
   function selectHandler() {
     var selectedItem = table.getSelection()[0];
     if (selectedItem) selectedLeague = data.getValue(selectedItem.row, 0);
     if (selectedLeague == 00000) logout();
     submitLeague(selectedLeague);
   }
-  
 }
 function submitLeague(selectedLeague) {
   hideMenu();
   tableDiv.innerHTML =
-  '<div class="loading-bar-div center">' +
-  '<div id="myBar" class="loading-bar"></div></div>';
+    '<div class="loading-bar-div center">' +
+    '<div id="myBar" class="loading-bar"></div></div>';
   leagueLoader();
+
   league = [];
   leagueInfo = [];
   createLeague(selectedLeague)
@@ -325,19 +323,25 @@ async function createLeague(selectedLeague) {
           league_data.standings.has_next == true ||
           league_data.standings.results.length > 50
         ) {
-          alert('This league is too big to compare! Please try another league with 50 teams or less.');
-          showLeagues(teamId)
-          } else {
+          alert(
+            "This league is too big to compare! Please try another league with 50 teams or less."
+          );
+          showLeagues(teamId);
+        } else {
           leagueInfo.push(league_data.league);
           for (var i = 0; i < league_data.standings.results.length; i++) {
             league.push(league_data.standings.results[i]);
           }
           setTimeout(function () {
             document.getElementById("user-details").innerHTML =
-          '<div class="user-details">' +
-          '<p class="left" id="username">Welcome, ' + managerName + '!</p>' +
-          '<p class="right" id="league-name">' + league_data.league.name + '</p><d/iv>'          
-          createMenu();
+              '<div class="user-details">' +
+              '<p class="left" id="username">Welcome, ' +
+              managerName +
+              "!</p>" +
+              '<p class="right" id="league-name">' +
+              league_data.league.name +
+              "</p><d/iv>";
+            createMenu();
           }, 5000);
         }
       },
@@ -385,7 +389,7 @@ function createMenu() {
   document.getElementById("compare-team").innerHTML =
     '<p onclick="compareTeam()">Compare Team</p>';
   document.getElementById("m-compare-team").innerHTML =
-    '<p onclick="compareTeam()">Compare Team</p>';  
+    '<p onclick="compareTeam()">Compare Team</p>';
   document.getElementById("contact").innerHTML =
     '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
   document.getElementById("m-contact").innerHTML =
@@ -407,7 +411,3 @@ function createMenu() {
     "</p><p>Highest</p></d></div>";
   leagueTable();
 }
-
-
-
-

@@ -1,4 +1,4 @@
-///////////////////////GETTERS FOR FOOTBALLER DATA //////////////////////////////////////////////////////
+//Getters for information on football players
 function getFootballerObject(playerId) {
   for (var i = 0; i < bootstrap.elements.length; i++) {
     if (bootstrap.elements[i].id == playerId) {
@@ -71,6 +71,7 @@ function getLiveMinutesPlayed(playerId) {
   return liveFootballer.minutes;
 }
 
+//Add each teams data for current week.
 var currentWeeklyLooper = [];
 function addCurrentWeekData() {
   function makeFunction(i) {
@@ -93,14 +94,15 @@ function addCurrentWeekData() {
       });
     };
   }
-  //CREATE AS MANY FUNCTIONS AS NUMBER OF ENTRIES IN LEAGUE
+  //Create as many functions as the number of entries in the league
   for (var i = 0; i < league.length; i++) {
     currentWeeklyLooper[i] = makeFunction(i);
   }
   for (var j = 0; j < league.length; j++) {
-    currentWeeklyLooper[j](); // and now let's run each one to see
+    currentWeeklyLooper[j](); // Run each function
   }
 }
+//Add each teams chip usage for the whole season.
 var chipLooper = [];
 function addChips() {
   function makeFunction(i) {
@@ -180,12 +182,12 @@ function addChips() {
       });
     };
   }
-  //CREATE AS MANY FUNCTIONS AS NUMBER OF ENTRIES IN LEAGUE
+  //Create as many functions as the number of entries in the league
   for (var i = 0; i < league.length; i++) {
     chipLooper[i] = makeFunction(i);
   }
   for (var j = 0; j < league.length; j++) {
-    chipLooper[j](); // and now let's run each one to see
+    chipLooper[j](); // Run each function
   }
 }
 
@@ -213,11 +215,11 @@ function switchTheme() {
   }
 }
 function convertChipName(chip) {
+  //Convert FPL chip name to user friendly chip names
   if (chip == "wildcard") return "WC";
   if (chip == "freehit") return "FH";
   if (chip == "bboost") return "BB";
-  if (chip == "3xc") return "TC";
-  
+  if (chip == "3xc") return "TC";  
 }
 function toggleMobileMenu(menu) {
   menu.classList.toggle("open");

@@ -1,19 +1,25 @@
+//Empty arrays to hold players to compare
 var teamA = [];
 var teamB = [];
 
 function compareTeam() {
-  snackbar()
-  createTeamA();
-  var data = new google.visualization.DataTable();
+  snackbar();
+  createTeamA(); //Initialise logged in users squad for comparison
+  var data = new google.visualization.DataTable(); //Creates new google visualization table.
   data.addColumn("string", "#");
   data.addColumn("string", "Team");
   data.addColumn("number", "GW");
   data.addColumn("number", "Total");
   data.addColumn("number", "ID");
+  //Populates table
   for (var i = 0; i < league.length; i++) {
-    if (league[i].rank == league[i].last_rank) rankMovement = ''
-    if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
-    if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
+    //Sets icon for rank movement
+    if (league[i].rank == league[i].last_rank) rankMovement = "";
+    if (league[i].rank < league[i].last_rank)
+      rankMovement = '<p class="rank-up">▲</p>';
+    if (league[i].rank > league[i].last_rank)
+      rankMovement = '<p class="rank-down">▼</p>';
+
     data.addRows([
       [
         league[i].rank + rankMovement,
@@ -30,6 +36,7 @@ function compareTeam() {
       ],
     ]);
   }
+  // Configigures options for google visualisation table
   var options = {
     alternatingRowStyle: true,
     showRowNumber: false,
@@ -50,11 +57,12 @@ function compareTeam() {
 
   var table = new google.visualization.Table(document.getElementById("table"));
   google.visualization.events.addListener(table, "select", selectHandler);
+  //Creates view to hide ID coloumns
   var view = new google.visualization.DataView(data);
   view.hideColumns([4]);
-
+  //Displays table in div.
   table.draw(view, options);
-
+  //Creates select handler to obtain team ID of team to compare with.
   function selectHandler() {
     var selectedItem = table.getSelection()[0];
     if (selectedItem) {
@@ -65,9 +73,12 @@ function compareTeam() {
 }
 
 async function createTeamA() {
+  //Retrieve logged in players squad
   teamA = team.picks;
 }
+
 async function createTeamB(otherTeamId) {
+  //Retrieve selected team's squad for comparison
   if (otherTeamId == teamId) return;
   for (var i = 0; i < league.length; i++) {
     if (otherTeamId == league[i].entry) {
@@ -78,14 +89,17 @@ async function createTeamB(otherTeamId) {
 }
 
 function findUnique() {
+  //Compare two arrays
+
+  //Display modal of two teams side by side with unique players only. Same players have been removed.
   document.getElementById("two-tables").innerHTML =
- ' <div class="compare-modal-content">' +  
-  '<div class="compare-modal-header">' +
+    ' <div class="compare-modal-content">' +
+    '<div class="compare-modal-header">' +
     '<span class="compare-close">&times;</span><h2>Unique Players</h2></div>' +
     '<div id="compare-modal-body" class="compare-modal-body">' +
     '<div id="table-a" class="table-a"></div>' +
     '<div id="table-b" class="table-b"></div></div>' +
-    '<div class="compare-modal-footer"><p>fpltoolbox.com</p></div></div>'
+    '<div class="compare-modal-footer"><p>fpltoolbox.com</p></div></div>';
 
   // Get the modal
   var modal1 = document.getElementById("two-tables");
@@ -104,7 +118,7 @@ function findUnique() {
   );
   const teamBExcludes = teamA.filter((item) => !keysA[item.element]);
 
-  //TABLE 1
+  //Creates new google visualization table for Team A
   var data1 = new google.visualization.DataTable();
   data1.addColumn("number", "Pos");
   data1.addColumn("string", "Your Team");
@@ -118,7 +132,7 @@ function findUnique() {
       ],
     ]);
   }
-
+  //Creates new google visualization table for Team B
   var data = new google.visualization.DataTable();
   data.addColumn("number", "Pts");
   data.addColumn("string", "Team B");
@@ -129,10 +143,10 @@ function findUnique() {
         getPlayerPoints(teamAExcludes[i].element) * teamAExcludes[i].multiplier,
         getPlayerWebName(teamAExcludes[i].element),
         teamAExcludes[i].position,
-        
       ],
     ]);
   }
+  // Configures options for both google visualisation tables
   var options = {
     alternatingRowStyle: true,
     showRowNumber: false,
@@ -148,19 +162,16 @@ function findUnique() {
       tableCell: "tableCell",
       hoverTableRow: "hoverTableRow",
       selectedTableRow: "selectedTableRow",
-      rowNumberCell: "rowNumberCell"
+      rowNumberCell: "rowNumberCell",
     },
   };
-
+  //Formats cell colours depending on player positions
   var formatter = new google.visualization.ColorFormat();
-  
   formatter.addRange(0, 11.1, fplgreen, fplgreen);
   formatter.addRange(11.9, 15.1, fpldarkred, fpldarkred);
-
-  
   formatter.format(data, 2);
   formatter.format(data1, 0);
-
+  //Display both tables in modal popup
   var table = new google.visualization.Table(
     document.getElementById("table-b")
   );
@@ -190,13 +201,15 @@ function findUnique() {
   };
 }
 
-
 function snackbar() {
-  document.getElementById("snackbar").innerHTML = ("Tap a team to compare squads.")
+  document.getElementById("snackbar").innerHTML =
+    "Tap a team to compare squads.";
   // Get the snackbar DIV
   var x = document.getElementById("snackbar");
   // Add the "show" class to DIV
   x.className = "show";
   // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
 }
