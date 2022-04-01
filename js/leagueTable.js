@@ -1,12 +1,17 @@
+
+
 async function leagueTable() {
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
   data.addColumn("string", "Team");
   data.addColumn("number", "GW");
   data.addColumn("number", "Total");
+  data.addColumn("number", "To First");
   data.addColumn("number", "Seasons" + "<br/>" + "Managed");
   data.addColumn("string", "Managing" + "<br/>" + "Since");
+  
   for (var i = 0; i < league.length; i++) {
+    var firstPlace = league[0].total
     if (league[i].rank == league[i].last_rank) rankMovement = ''
     if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
     if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
@@ -18,6 +23,7 @@ async function leagueTable() {
         '<p class="player-name">' + league[i].player_name + '</p>' ,
         league[i].event_total,
         league[i].total,
+        (firstPlace - league[i].total),
         league[i].seasons,
         league[i].seasons_managed,
       ],
