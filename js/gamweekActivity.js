@@ -260,7 +260,7 @@ async function gameweekActivty() {
 
 function weeklyToast() {
   document.getElementById("snackbar").innerHTML =
-    "Game week team information at a glance";
+    "Game week information at a glance";
   // Get the snackbar DIV
   var x = document.getElementById("snackbar");
   // Add the "show" class to DIV
