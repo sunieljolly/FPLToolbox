@@ -1,6 +1,8 @@
 async function chipUsage() {
-  var data = new google.visualization.DataTable(); //Creates new google visualization table.
-  data.addColumn("string", "#"); //Creates columns for table.
+  chipToast();
+  // CREATES NEW TABLE
+  var data = new google.visualization.DataTable();
+  data.addColumn("string", "#");
   data.addColumn("string", "Team");
   data.addColumn("string", "Chip");
   data.addColumn("string", "Chip");
@@ -9,14 +11,14 @@ async function chipUsage() {
   data.addColumn("string", "Chip");
   data.addColumn("string", "Chip");
 
-  //Populates table
+  //POPULATES TABLE
   for (var i = 0; i < league.length; i++) {
-    //Sets icon for rank movement
-    if (league[i].rank == league[i].last_rank) return (rankMovement = "");
-    if (league[i].rank < league[i].last_rank) return (rankMovement = '<p class="rank-up">▲</p>');
-    if (league[i].rank > league[i].last_rank) return (rankMovement = '<p class="rank-down">▼</p>');
-    
-    //Retrieves each player's used chips
+    if (league[i].rank == league[i].last_rank) rankMovement = "";
+    if (league[i].rank < league[i].last_rank)
+      rankMovement = '<p class="rank-up">▲</p>';
+    if (league[i].rank > league[i].last_rank)
+      rankMovement = '<p class="rank-down">▼</p>';
+
     if (league[i].chips[0] === null) {
       chip1 = "";
     } else {
@@ -47,7 +49,6 @@ async function chipUsage() {
     } else {
       chip6 = league[i].chips[5].name;
     }
-    //Adds chips to table
     data.addRows([
       [
         league[i].rank + rankMovement,
@@ -67,7 +68,6 @@ async function chipUsage() {
       ],
     ]);
   }
-  // Configigures options for google visualisation table
   var options = {
     alternatingRowStyle: true,
     showRowNumber: false,
@@ -85,7 +85,6 @@ async function chipUsage() {
       selectedTableRow: "selectedTableRow",
     },
   };
-  //Formats cell colours depending on chip names
   var formatter = new google.visualization.ColorFormat();
   formatter.addRange("TC", "TC ", "white", fplpink);
   formatter.addRange("BB", "BB ", "black", fplblue);
@@ -97,7 +96,19 @@ async function chipUsage() {
   formatter.format(data, 5);
   formatter.format(data, 6);
   formatter.format(data, 7);
-  //Displays table in div.
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
+}
+
+function chipToast() {
+  document.getElementById("snackbar").innerHTML =
+"Chips used by every team in the league.";
+// Get the snackbar DIV
+var x = document.getElementById("snackbar");
+// Add the "show" class to DIV
+x.className = "show";
+// After 3 seconds, remove the show class from DIV
+setTimeout(function () {
+x.className = x.className.replace("show", "");
+}, 3000);
 }

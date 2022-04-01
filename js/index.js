@@ -309,6 +309,7 @@ function submitLeague(selectedLeague) {
       console.log(error);
       if (error.status == 503) {
         alert(error.responseText + " Please come back later");
+        location.reload();
       }
     });
 }

@@ -1,5 +1,5 @@
 async function gameweekActivty() {
-  
+  weeklyToast()
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
@@ -256,4 +256,17 @@ async function gameweekActivty() {
   }
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
+}
+
+function weeklyToast() {
+  document.getElementById("snackbar").innerHTML =
+    "Game week team information at a glance";
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+  // Add the "show" class to DIV
+  x.className = "show";
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
 }
