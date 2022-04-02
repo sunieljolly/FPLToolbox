@@ -60,15 +60,16 @@ async function getStatus() {
       $.ajax({
         url: BASE_URL + "leagues-classic/314/standings/",
         type: "GET",
-        success: function () {
+        success: function (data) {
           setTimeout(getBootstrap, 800);
           setTimeout(checkUser, 1000);
+          console.log(data)
         },
         error: function (error) {
           if (error.status == 503) {
             alert(error.statusText + " Please come back later");
           }
-          reject(error);
+          console.log(error)
           loginDiv.innerHTML = "Please come back later";
         },
       });
@@ -80,16 +81,20 @@ async function getStatus() {
         eventStatus = data.leagues;
         eventStatusDate = data.status[data.status.length - 1].date;
       },
-      error: function (data) {
-        alert(
-          data.statusText + ": Something went wrong. Please try again later"
-        );
-        location.reload();
+      error: function (error) {
+        if (error.status == 503) {
+          alert(error.statusText + " Please come back later");
+          loginDiv.innerHTML = "Please come back later";
+        }
+        closeWindow();
       },
     })
   );
 }
 setTimeout(getStatus, 500);
+
+
+
 
 async function getBootstrap() {
   $.ajax({
