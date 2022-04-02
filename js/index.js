@@ -371,6 +371,10 @@ function hideMenu() {
 }
 function createMenu() {
   tableDiv.innerHTML = "";
+  // document.getElementById("my-team").innerHTML =
+  //   '<p onclick="myTeam()">My Team</p>';
+  // document.getElementById("m-my-team").innerHTML =
+  //   '<p onclick="myTeam()">My Team</p>';
   document.getElementById("league-table").innerHTML =
     '<p onclick="leagueTable()">League Table</p>';
   document.getElementById("m-league-table").innerHTML =

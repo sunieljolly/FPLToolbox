@@ -71,6 +71,42 @@ function getLiveMinutesPlayed(playerId) {
   return liveFootballer.minutes;
 }
 
+
+function getFootballerFixture(teamCode, gameweek){
+
+	for (var i = 0; i < plFixtures.length; i++){
+		if ((gameweek == plFixtures[i].event) & (teamCode == plFixtures[i].team_a ^ teamCode == plFixtures[i].team_h)){
+			if (teamCode == plFixtures[i].team_a){	
+				return getFootballerTeamName(plFixtures[i].team_a);
+			} else {
+				return getFootballerTeamName(plFixtures[i].team_h);
+		}
+		}
+		
+}
+		
+}
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+function getFootballerTeamCode(playerId){
+	for (var i = 0; i < bootstrap.teams.length; i++){
+		if(bootstrap.teams[i].id === playerId){
+		return bootstrap.teams[i].id
+		}
+	}
+}
+
+function getFootballerTeamName(teamId){
+	for (var i = 0; i < bootstrap.teams.length; i++){
+		if(bootstrap.teams[i].id === teamId){
+		return bootstrap.teams[i].name
+		}
+	}
+}
+
+
+
 //Add each teams data for current week.
 var currentWeeklyLooper = [];
 function addCurrentWeekData() {

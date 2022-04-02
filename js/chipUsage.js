@@ -102,7 +102,7 @@ async function chipUsage() {
 
 function chipToast() {
   document.getElementById("snackbar").innerHTML =
-"Chips used by every team in the league.";
+"Chips used by used by each team.";
 // Get the snackbar DIV
 var x = document.getElementById("snackbar");
 // Add the "show" class to DIV
