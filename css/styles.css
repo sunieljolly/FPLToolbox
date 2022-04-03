@@ -19,6 +19,7 @@
   --oddTableRow: #FAFAFA;
   --text: black;
   --highlight: lightgrey;
+  --watermark: grey;
 }
 [data-theme="dark"] {
   --fplpurple: #0F3460;
@@ -35,6 +36,7 @@
   --text: whitesmoke;
   --highlight: #270082;
   --red: #80072d;
+  --watermark: lightgrey;
 }
 
 
@@ -366,4 +368,30 @@ th{
 @keyframes fadeout {
   from {bottom: 30px; opacity: 1;}
   to {bottom: 0; opacity: 0;}
+}
+
+.watermark {
+  position: absolute;
+  color: var(--watermark);
+  opacity: 0.25;
+  font-size: 3em;
+  width: 100%;
+  top: 35%;    
+  text-align: center;
+  z-index: 5;
+  
+}
+.rotate {
+  transform: rotate(-45deg);
+  /* Legacy vendor prefixes that you probably don't need... */
+  /* Safari */
+  -webkit-transform: rotate(-45deg);
+  /* Firefox */
+  -moz-transform: rotate(-45deg);
+  /* IE */
+  -ms-transform: rotate(-45deg);
+  /* Opera */
+  -o-transform: rotate(-45deg);
+  /* Internet Explorer */
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }

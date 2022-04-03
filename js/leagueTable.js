@@ -1,6 +1,5 @@
-
-
 async function leagueTable() {
+  document.getElementById("watermark").innerHTML = 'fpltoolbox.com'
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
   data.addColumn("string", "Team");
