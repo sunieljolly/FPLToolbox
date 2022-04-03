@@ -291,8 +291,7 @@ function leagueLoader() {
 }
 
 
-function closeWindow() {
-  
+function closeWindow() {  
 	// Open the new window 
 	// with the URL replacing the
 	// current page using the

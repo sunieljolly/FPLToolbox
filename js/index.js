@@ -400,6 +400,10 @@ function createMenu() {
     '<p onclick="compareTeam()">Compare Team</p>';
   document.getElementById("m-compare-team").innerHTML =
     '<p onclick="compareTeam()">Compare Team</p>';
+    document.getElementById("follow").innerHTML =
+    '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
+  document.getElementById("m-follow").innerHTML =
+    '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
   document.getElementById("contact").innerHTML =
     '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
   document.getElementById("m-contact").innerHTML =
