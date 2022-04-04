@@ -13,6 +13,9 @@ async function chipUsage() {
 
   //POPULATES TABLE
   for (var i = 0; i < league.length; i++) {
+    if(league[i].entry == teamId) {
+      var userIdRow = i;
+    }
     if (league[i].rank == league[i].last_rank) rankMovement = "";
     if (league[i].rank < league[i].last_rank)
       rankMovement = '<p class="rank-up">▲</p>';
@@ -98,6 +101,9 @@ async function chipUsage() {
   formatter.format(data, 7);
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
+
+  var userRow = document.getElementsByClassName("google-visualization-table-table")[0].children[1].rows[userIdRow]
+  userRow.classList.add("user-row");
 }
 
 function chipToast() {

@@ -13,6 +13,9 @@ function compareTeam() {
   data.addColumn("number", "ID");
   //Populates table
   for (var i = 0; i < league.length; i++) {
+    if(league[i].entry == teamId) {
+      var userIdRow = i;
+    }
     //Sets icon for rank movement
     if (league[i].rank == league[i].last_rank) rankMovement = "";
     if (league[i].rank < league[i].last_rank)
@@ -70,6 +73,8 @@ function compareTeam() {
       createTeamB(selectedTeam);
     }
   }
+  var userRow = document.getElementsByClassName("google-visualization-table-table")[0].children[1].rows[userIdRow]
+  userRow.classList.add("user-row");
 }
 
 async function createTeamA() {
@@ -199,6 +204,7 @@ function findUnique() {
       modal1.style.display = "none";
     }
   };
+
 }
 
 function snackbar() {

@@ -17,6 +17,9 @@ async function gameweekActivty() {
   data.addColumn("number", "GW" + "<br/>" + "Rank");
 
   for (var i = 0; i < league.length; i++) {
+    if(league[i].entry == teamId) {
+      var userIdRow = i;
+    }
     if (league[i].rank == league[i].last_rank) rankMovement = ''
     if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
     if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
@@ -256,6 +259,9 @@ async function gameweekActivty() {
   }
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
+
+  var userRow = document.getElementsByClassName("google-visualization-table-table")[0].children[1].rows[userIdRow]
+  userRow.classList.add("user-row");
 }
 
 function weeklyToast() {
