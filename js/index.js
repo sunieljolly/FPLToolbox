@@ -258,6 +258,9 @@ async function loadTeam(teamId) {
   });
 }
 function showLeagues() {
+  gtag('event', 'leagues_shown', {
+    'event_category' : 'options',
+  });
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
   data.addColumn("string", "League");
@@ -294,6 +297,9 @@ function showLeagues() {
   }
 }
 function submitLeague(selectedLeague) {
+  gtag('event', 'league_chosen', {
+    'event_category' : 'options',
+  });
   hideMenu();
   tableDiv.innerHTML =
     '<div class="loading-bar-div center">' +

@@ -3,6 +3,9 @@ var teamA = [];
 var teamB = [];
 
 function compareTeam() {
+  gtag('event', 'compare_team', {
+    'event_category' : 'tools',
+  });
   snackbar();
   createTeamA(); //Initialise logged in users squad for comparison
   var data = new google.visualization.DataTable(); //Creates new google visualization table.
@@ -94,6 +97,9 @@ async function createTeamB(otherTeamId) {
 }
 
 function findUnique() {
+  gtag('event', 'comparison_shown', {
+    'event_category' : 'tools',
+  });
   //Compare two arrays
 
   //Display modal of two teams side by side with unique players only. Same players have been removed.

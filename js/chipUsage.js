@@ -1,4 +1,7 @@
 async function chipUsage() {
+  gtag('event', 'chip_usage', {
+    'event_category' : 'tools',
+  });
   chipToast();
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();

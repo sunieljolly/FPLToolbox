@@ -1,4 +1,7 @@
 async function gameweekActivty() {
+  gtag('event', 'gameweek_activity', {
+    'event_category' : 'tools',
+  });
   weeklyToast()
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();

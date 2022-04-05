@@ -1,4 +1,7 @@
 async function leagueTable() {
+  gtag('event', 'league_table', {
+    'event_category' : 'tools',
+  });
   document.getElementById("watermark").innerHTML = "fpltoolbox.com";
   var data = new google.visualization.DataTable();
   
