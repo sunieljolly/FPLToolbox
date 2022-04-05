@@ -171,10 +171,14 @@ input[type="search"] {
   font-weight: bolder;
   padding-bottom: 5px;
   padding-top: 5px; 
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 }
 th{
   border: none!important ; 
+}
+
+.frozen-column{
+  background-color: var(--oddTableRow);
 }
 .headerRow {
   background-color: var(--fplpurple);
@@ -196,7 +200,6 @@ th{
   border: none !important;
   border-bottom: 1px solid var(--highlight) !important;
   background-image: none !important;
-  background-color: var(--oddTableRow);
 }
 .selectedTableRow {
   background-color: var(--highlight);
@@ -209,9 +212,10 @@ th{
   background-color: none!important;
 }
 .user-row{
-  background-color: red!important;
-  text-decoration: underline;
-  text-decoration-style: double;
+  background-color: var(--highlight)!important;
+  /* text-decoration: underline;
+  text-decoration-style: double; */
+  
 }
 .rank-down {
   color: var(--fplpink);

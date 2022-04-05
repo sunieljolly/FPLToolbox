@@ -71,4 +71,12 @@ async function leagueTable() {
 
   var userRow = document.getElementsByClassName("google-visualization-table-table")[0].children[1].rows[userIdRow]
   userRow.classList.add("user-row");
+  
+  // var rows = document.getElementsByClassName("google-visualization-table-table")[0].children[1].rows
+  // for (var i = 0; i < rows.length; i++){
+  //   rows[i].children[0].classList.add("frozen-row");
+  //   rows[i].children[1].classList.add("frozen-row");
+  // }
+  // console.log(rows)
+
 }
