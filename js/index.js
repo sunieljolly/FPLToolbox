@@ -15,7 +15,7 @@ var leagueInfo = [];
 var leagueName;
 var teamInfo = [];
 var managerData = {};
-var managerLeagues = {};
+var managerLeagues = [];
 var managerName;
 var teamName;
 var eventPoints;
@@ -63,7 +63,6 @@ async function getStatus() {
         success: function (data) {
           setTimeout(getBootstrap, 800);
           setTimeout(checkUser, 1000);
-          console.log(data)
         },
         error: function (error) {
           if (error.status == 503) {
@@ -244,7 +243,10 @@ async function loadTeam(teamId) {
         overallRank = managerData.summary_overall_rank;
         eventPoints = managerData.summary_event_points;
         eventRank = managerData.summary_event_rank;
-        managerLeagues = managerData.leagues.classic;
+        for (var i = 0; i < managerData.leagues.classic.length; i++) {
+          checkLeagueLength(managerData.leagues.classic[i].id)
+        }
+        
       },
       error: function (error) {
         reject(error);
@@ -430,4 +432,25 @@ function createMenu() {
     gwHighestScore +
     "</p><p>Highest</p></d></div>";
   leagueTable();
+}
+
+async function checkLeagueLength(leagueID) {
+  return new Promise((resolve, reject) => {
+    $.ajax({
+      url: BASE_URL + "leagues-classic/" + leagueID + "/standings/",
+      type: "GET",
+      success: function (league_data) {
+        resolve(league_data);
+        if (
+          league_data.standings.has_next == false ||
+          league_data.standings.results.length < 50
+        ) {
+          managerLeagues.push(league_data.league)
+        } 
+      },
+      error: function (error) {
+        reject(error);
+      },
+    });
+  });
 }

@@ -171,14 +171,10 @@ input[type="search"] {
   font-weight: bolder;
   padding-bottom: 5px;
   padding-top: 5px; 
-  margin-bottom: 5px;
+  margin-bottom: 5px; 
 }
 th{
   border: none!important ; 
-}
-
-.frozen-column{
-  background-color: var(--oddTableRow);
 }
 .headerRow {
   background-color: var(--fplpurple);
@@ -200,6 +196,7 @@ th{
   border: none !important;
   border-bottom: 1px solid var(--highlight) !important;
   background-image: none !important;
+  background-color: var(--oddTableRow);
 }
 .selectedTableRow {
   background-color: var(--highlight);
@@ -212,10 +209,9 @@ th{
   background-color: none!important;
 }
 .user-row{
-  background-color: var(--highlight)!important;
-  /* text-decoration: underline;
-  text-decoration-style: double; */
-  
+  background-color: red!important;
+  text-decoration: underline;
+  text-decoration-style:solid;
 }
 .rank-down {
   color: var(--fplpink);
@@ -384,9 +380,8 @@ th{
   color: var(--watermark);
   opacity: 0.25;
   font-size: 3em;
-  font-weight: bolder;
   width: 100%;
-  top: 30%;    
+  top: 35%;    
   text-align: center;
   z-index: 5;
   
