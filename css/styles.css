@@ -384,8 +384,9 @@ th{
   color: var(--watermark);
   opacity: 0.25;
   font-size: 3em;
+  font-weight: bolder;
   width: 100%;
-  top: 35%;    
+  top: 30%;    
   text-align: center;
   z-index: 5;
   
