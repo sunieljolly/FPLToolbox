@@ -40,6 +40,7 @@ var plTeam = {};
 var manager;
 var eventStatusDate;
 var eventStatus;
+var managerDetails;
 
 var fplpink = "#FF1751";
 var fpldarkred = "#80072D";
@@ -228,6 +229,7 @@ async function loadTeam(teamId) {
         reject(error);
         if ((error.statusText = "error")) {
           alert("Team ID incorrect");
+          localStorage.removeItem("existing-user");
           location.reload();
         }
       },
@@ -237,16 +239,23 @@ async function loadTeam(teamId) {
       url: BASE_URL + "/entry/" + teamId + "/",
       type: "GET",
       success: function (managerData) {
+        console.log(managerData)
         teamName = managerData.name;
         managerName = managerData.player_first_name;
+        managerLastName = managerData.player_last_name;
         overallPoints = managerData.summary_overall_points;
         overallRank = managerData.summary_overall_rank;
         eventPoints = managerData.summary_event_points;
         eventRank = managerData.summary_event_rank;
+        managerLocation = managerData.player_region_name
+        managerDetails = managerName + " " + managerLastName + " - " + managerLocation
+        gtag('event', managerDetails);
         for (var i = 0; i < managerData.leagues.classic.length; i++) {
           checkLeagueLength(managerData.leagues.classic[i].id)
         }
-        
+        gtag("event", managerDetails, {
+          'theme': document.documentElement.getAttribute("data-theme"),
+        });
       },
       error: function (error) {
         reject(error);
@@ -260,9 +269,10 @@ async function loadTeam(teamId) {
   });
 }
 function showLeagues() {
-  gtag('event', 'leagues_shown', {
-    'event_category' : 'options',
+  gtag("event", managerDetails, {
+    'change_league': 'user changed leagues',
   });
+  document.getElementById("watermark").innerHTML = '';
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
   data.addColumn("string", "League");
@@ -299,9 +309,6 @@ function showLeagues() {
   }
 }
 function submitLeague(selectedLeague) {
-  gtag('event', 'league_chosen', {
-    'event_category' : 'options',
-  });
   hideMenu();
   tableDiv.innerHTML =
     '<div class="loading-bar-div center">' +
@@ -334,8 +341,7 @@ async function createLeague(selectedLeague) {
       success: function (league_data) {
         resolve(league_data);
         if (
-          league_data.standings.has_next == true ||
-          league_data.standings.results.length > 50
+          league_data.standings.has_next == true
         ) {
           alert(
             "This league is too big to compare! Please try another league with 50 teams or less."
@@ -442,8 +448,7 @@ async function checkLeagueLength(leagueID) {
       success: function (league_data) {
         resolve(league_data);
         if (
-          league_data.standings.has_next == false ||
-          league_data.standings.results.length < 50
+          league_data.standings.has_next == false
         ) {
           managerLeagues.push(league_data.league)
         } 

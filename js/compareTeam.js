@@ -3,9 +3,6 @@ var teamA = [];
 var teamB = [];
 
 function compareTeam() {
-  gtag('event', 'compare_team', {
-    'event_category' : 'tools',
-  });
   snackbar();
   createTeamA(); //Initialise logged in users squad for comparison
   var data = new google.visualization.DataTable(); //Creates new google visualization table.
@@ -91,15 +88,19 @@ async function createTeamB(otherTeamId) {
   for (var i = 0; i < league.length; i++) {
     if (otherTeamId == league[i].entry) {
       teamB = league[i].currentWeek[0].picks;
+      teamBName = league[i].entry_name
+      teamBManager = league[i].player_name
+      teamBRank = league[i].rank
       setTimeout(findUnique, 200);
+      gtag('event', managerDetails, {
+        'compare_team_screen' : teamBManager + ": Rank " + teamBRank
+    });
+    
     }
   }
 }
 
 function findUnique() {
-  gtag('event', 'comparison_shown', {
-    'event_category' : 'tools',
-  });
   //Compare two arrays
 
   //Display modal of two teams side by side with unique players only. Same players have been removed.

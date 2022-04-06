@@ -1,7 +1,4 @@
 async function chipUsage() {
-  gtag('event', 'chip_usage', {
-    'event_category' : 'tools',
-  });
   chipToast();
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
@@ -16,8 +13,11 @@ async function chipUsage() {
 
   //POPULATES TABLE
   for (var i = 0; i < league.length; i++) {
-    if(league[i].entry == teamId) {
+    if (league[i].entry == teamId) {
       var userIdRow = i;
+      gtag("event", managerDetails, {
+        'chips_usage_screen': 'chips used =  ' + league[i].chips.length,
+      });
     }
     if (league[i].rank == league[i].last_rank) rankMovement = "";
     if (league[i].rank < league[i].last_rank)
@@ -105,19 +105,21 @@ async function chipUsage() {
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
 
-  var userRow = document.getElementsByClassName("google-visualization-table-table")[0].children[1].rows[userIdRow]
+  var userRow = document.getElementsByClassName(
+    "google-visualization-table-table"
+  )[0].children[1].rows[userIdRow];
   userRow.classList.add("user-row");
 }
 
 function chipToast() {
   document.getElementById("snackbar").innerHTML =
-"Chips used by used by each team.";
-// Get the snackbar DIV
-var x = document.getElementById("snackbar");
-// Add the "show" class to DIV
-x.className = "show";
-// After 3 seconds, remove the show class from DIV
-setTimeout(function () {
-x.className = x.className.replace("show", "");
-}, 3000);
+    "Chips used by used by each team.";
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+  // Add the "show" class to DIV
+  x.className = "show";
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3000);
 }

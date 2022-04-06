@@ -1,6 +1,7 @@
 async function gameweekActivty() {
-  gtag('event', 'gameweek_activity', {
-    'event_category' : 'tools',
+  console.log(league)
+  gtag("event", managerDetails, {
+    'gameweek_activty_screen': 'league: ' + leagueName,
   });
   weeklyToast()
   // CREATES NEW TABLE

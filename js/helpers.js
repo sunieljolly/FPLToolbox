@@ -249,6 +249,9 @@ function switchTheme() {
     localStorage.setItem("theme-choice", "light");
     document.documentElement.setAttribute("data-theme", "light");
   }
+  gtag("event", managerDetails, {
+    'theme': document.documentElement.getAttribute("data-theme"),
+  });
 }
 function convertChipName(chip) {
   //Convert FPL chip name to user friendly chip names
