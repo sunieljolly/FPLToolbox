@@ -239,7 +239,6 @@ async function loadTeam(teamId) {
       url: BASE_URL + "/entry/" + teamId + "/",
       type: "GET",
       success: function (managerData) {
-        console.log(managerData)
         teamName = managerData.name;
         managerName = managerData.player_first_name;
         managerLastName = managerData.player_last_name;
@@ -269,9 +268,7 @@ async function loadTeam(teamId) {
   });
 }
 function showLeagues() {
-  gtag("event", managerDetails, {
-    'change_league': 'user changed leagues',
-  });
+
   document.getElementById("watermark").innerHTML = '';
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
@@ -362,6 +359,9 @@ async function createLeague(selectedLeague) {
               league_data.league.name +
               "</p><d/iv>";
             createMenu();
+            gtag("event", managerDetails, {
+              'change_league': league_data.league.name,
+            });
           }, 5000);
         }
       },
