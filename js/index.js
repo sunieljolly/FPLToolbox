@@ -268,7 +268,7 @@ async function loadTeam(teamId) {
   });
 }
 function showLeagues() {
-
+leagueToast()
   document.getElementById("watermark").innerHTML = '';
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
@@ -303,6 +303,18 @@ function showLeagues() {
     if (selectedItem) selectedLeague = data.getValue(selectedItem.row, 0);
     if (selectedLeague == 00000) logout();
     submitLeague(selectedLeague);
+  }
+  function leagueToast() {
+    document.getElementById("snackbar").innerHTML =
+      "Currently supported leagues";
+    // Get the snackbar DIV
+    var x = document.getElementById("snackbar");
+    // Add the "show" class to DIV
+    x.className = "show";
+    // After 3 seconds, remove the show class from DIV
+    setTimeout(function () {
+      x.className = x.className.replace("show", "");
+    }, 3000);
   }
 }
 function submitLeague(selectedLeague) {
