@@ -1,5 +1,4 @@
 async function gameweekActivty() {
-  console.log(league)
   gtag("event", managerDetails, {
     'gameweek_activty_screen': 'league: ' + leagueName,
   });

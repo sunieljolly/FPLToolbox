@@ -10,7 +10,6 @@ async function leagueTable() {
   data.addColumn("string", "OR");
   data.addColumn("number", "Seasons" + "<br/>" + "Managed");
   data.addColumn("string", "Managing" + "<br/>" + "Since");
-  console.log(league);
   for (var i = 0; i < league.length; i++) {
     if (league[i].entry == teamId) {
       var userIdRow = i;
