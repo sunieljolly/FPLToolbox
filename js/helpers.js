@@ -138,6 +138,9 @@ function addCurrentWeekData() {
     currentWeeklyLooper[j](); // Run each function
   }
 }
+
+
+
 //Add each teams chip usage for the whole season.
 var chipLooper = [];
 function addChips() {
@@ -149,6 +152,7 @@ function addChips() {
         success: function (team_data) {
           league[i].chips = [];
           league[i].seasons = team_data.past.length;
+          league[i].previousRank = '';
           if (team_data.past[0]) {
             league[i].seasons_managed = team_data.past[0].season_name;
           } else {
@@ -214,6 +218,8 @@ function addChips() {
           } else {
             league[i].chips.push(null);
           }
+          league[i].previousRank = team_data.current[(team_data.current.length - 2)].overall_rank
+
         },
       });
     };
