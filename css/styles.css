@@ -44,12 +44,6 @@ body {
   background-color: #ffffff;
   color: white;
   font-family: "Poppins", sans-serif;
-}
-.page {  
-  min-height: calc(100vh - 50px);
-  text-align: center;
-  width: 100%;
-  margin: auto;
   background: repeating-linear-gradient(
     135deg,
     var(--fplgreenstripelight) 0px,
@@ -57,35 +51,17 @@ body {
     var(--fplgreenstripedark) 50px,
     var(--fplgreenstripedark) 100px
   );
-  position: relative;
 }
-
-.user-details {
+.page {  
+  min-height: calc(100vh - 50px);
+  text-align: center;
   width: 100%;
-  min-height: 20px;
-  display: flex;
-  color: whitesmoke;
-  border-radius: 10px;
-}
+  margin: auto;
+  
+  
 
-.user-details .left {
-  min-height: 100%;
-  width: 50%;
-  text-align: left;
-  float: left;
-  background-color: var(--fplblue);
-  padding: 10px;
-  border: 2px solid #ffffff;
-}
-
-.user-details .right {
-  min-height: 100%;
-  width: 50%;
-  text-align: right;
-  float: right;
-  background-color: var(--fplblue);
-  padding: 10px;
-  border: 2px solid #ffffff;
+  position: relative;
+  
 }
 
 .form {
@@ -150,8 +126,12 @@ input[type="search"] {
   max-width: 400px;
   height: 50px;
   display: grid;
-  grid-template-columns: auto auto auto;
-  margin-top: 10px;
+  grid-template-columns: auto auto auto;  
+}
+#myscore {
+  color: var(--fplgreen);
+  font-size: 2em;
+  font-weight: 900;
 }
 .fa{
   margin-top: 10px;
@@ -209,9 +189,11 @@ th{
   background-color: none!important;
 }
 .user-row{
-  background-color: red!important;
-  text-decoration: underline;
-  text-decoration-style:solid;
+  /*background-color: red!important;
+   text-decoration: underline;
+  text-decoration-style:solid; */
+  color: var(--fpldarkred);
+  font-weight: 1500;
 }
 .rank-down {
   color: var(--fplpink);
@@ -223,6 +205,7 @@ th{
 .entry-name{
   font-weight: bolder;
   text-align: left;
+  
 }
 .player-name{
   font-weight: lighter;
@@ -400,4 +383,5 @@ th{
   /* Internet Explorer */
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
+
 

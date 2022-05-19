@@ -3,7 +3,7 @@ var teamA = [];
 var teamB = [];
 
 function compareTeam() {
-  snackbar();
+  showToast("Tap a team to compare squads.")
   createTeamA(); //Initialise logged in users squad for comparison
   var data = new google.visualization.DataTable(); //Creates new google visualization table.
   data.addColumn("string", "#");
@@ -214,15 +214,3 @@ function findUnique() {
 
 }
 
-function snackbar() {
-  document.getElementById("snackbar").innerHTML =
-    "Tap a team to compare squads.";
-  // Get the snackbar DIV
-  var x = document.getElementById("snackbar");
-  // Add the "show" class to DIV
-  x.className = "show";
-  // After 3 seconds, remove the show class from DIV
-  setTimeout(function () {
-    x.className = x.className.replace("show", "");
-  }, 3000);
-}

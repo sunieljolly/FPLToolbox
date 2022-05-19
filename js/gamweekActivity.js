@@ -2,7 +2,7 @@ async function gameweekActivty() {
   gtag("event", managerDetails, {
     'gameweek_activty_screen': 'league: ' + leagueName,
   });
-  weeklyToast()
+  showToast("Game week information at a glance.")
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
@@ -265,17 +265,4 @@ async function gameweekActivty() {
 
   var userRow = document.getElementsByClassName("google-visualization-table-table")[0].children[1].rows[userIdRow]
   userRow.classList.add("user-row");
-}
-
-function weeklyToast() {
-  document.getElementById("snackbar").innerHTML =
-    "Game week information at a glance";
-  // Get the snackbar DIV
-  var x = document.getElementById("snackbar");
-  // Add the "show" class to DIV
-  x.className = "show";
-  // After 3 seconds, remove the show class from DIV
-  setTimeout(function () {
-    x.className = x.className.replace("show", "");
-  }, 3000);
 }

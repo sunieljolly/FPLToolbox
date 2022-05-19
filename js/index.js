@@ -80,6 +80,7 @@ async function getStatus() {
       url: BASE_URL + "event-status/",
       type: "GET",
       success: function (data) {
+        console.log(data)
         eventStatus = data.leagues;
         eventStatusDate = data.status[data.status.length - 1].date;
       },
@@ -268,7 +269,7 @@ async function loadTeam(teamId) {
   });
 }
 function showLeagues() {
-  leagueToast();
+  showToast("Currently supported leagues.")
   document.getElementById("watermark").innerHTML = "";
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
@@ -304,18 +305,7 @@ function showLeagues() {
     if (selectedLeague == 00000) logout();
     submitLeague(selectedLeague);
   }
-  function leagueToast() {
-    document.getElementById("snackbar").innerHTML =
-      "Currently supported leagues";
-    // Get the snackbar DIV
-    var x = document.getElementById("snackbar");
-    // Add the "show" class to DIV
-    x.className = "show";
-    // After 3 seconds, remove the show class from DIV
-    setTimeout(function () {
-      x.className = x.className.replace("show", "");
-    }, 3000);
-  }
+
 }
 function submitLeague(selectedLeague) {
   hideMenu();
@@ -360,14 +350,6 @@ async function createLeague(selectedLeague) {
             league.push(league_data.standings.results[i]);
           }
           setTimeout(function () {
-            document.getElementById("user-details").innerHTML =
-              '<div class="user-details">' +
-              '<p class="left" id="username">Welcome, ' +
-              managerName +
-              "!</p>" +
-              '<p class="right" id="league-name">' +
-              league_data.league.name +
-              "</p><d/iv>";
             createMenu();
             gtag("event", managerDetails, {
               change_league: league_data.league.name,
@@ -441,9 +423,9 @@ function createMenu() {
     '<d class="center"><p>' +
     gWAverageScore +
     "</p><p>Average</p></d>" +
-    '<d class="center"><p>' +
+    '<d class="center"><p id="myscore">' +
     eventPoints +
-    "</p><p>Score</p></d>" +
+    "</p><p></p></d>" +
     '<d class="center"><p>' +
     gwHighestScore +
     "</p><p>Highest</p></d></div>";
@@ -525,3 +507,18 @@ document.querySelector("#m-shareButton").addEventListener("click", (event) => {
     alert("Browser doesn't support this API !");
   }
 });
+
+function showToast(message) {  
+  document.getElementById("snackbar").innerHTML = message;
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function () {
+    x.className = x.className.replace("show", "");
+  }, 3500);
+}
+

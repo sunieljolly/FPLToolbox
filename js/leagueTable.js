@@ -1,4 +1,5 @@
 async function leagueTable() {
+  showToast(" " + eventStatusDate + " " + eventStatus)
   document.getElementById("watermark").innerHTML = "fpltoolbox.com";
   var data = new google.visualization.DataTable();
 

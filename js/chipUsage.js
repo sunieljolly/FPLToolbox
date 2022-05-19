@@ -1,5 +1,5 @@
 async function chipUsage() {
-  chipToast();
+  showToast("Chips used by used by each team.")
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
@@ -111,15 +111,4 @@ async function chipUsage() {
   userRow.classList.add("user-row");
 }
 
-function chipToast() {
-  document.getElementById("snackbar").innerHTML =
-    "Chips used by used by each team.";
-  // Get the snackbar DIV
-  var x = document.getElementById("snackbar");
-  // Add the "show" class to DIV
-  x.className = "show";
-  // After 3 seconds, remove the show class from DIV
-  setTimeout(function () {
-    x.className = x.className.replace("show", "");
-  }, 3000);
-}
+
