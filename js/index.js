@@ -506,8 +506,8 @@ document.querySelector("#m-shareButton").addEventListener("click", (event) => {
     navigator
       .share({
         title: "FPL Toolbox",
-        text: 'Compare your FPL team with your opponents' + '\n' + '⚽⚽⚽⚽⚽', 
-        url: 'fpltoolbox.com',
+        text: 'Compare your FPL team with your opponents!' + '\n' + '\n' + '⚽⚽⚽⚽⚽' + '\n', 
+        url: 'https://fpltoolbox.com',
       })
       .then(() => {
         console.log("Thanks for sharing!");
