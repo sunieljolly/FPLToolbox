@@ -86,7 +86,7 @@ async function getStatus() {
           alert(error.statusText + " Please come back later");
           loginDiv.innerHTML = "Please come back later";
         }
-        closeWindow();
+        //closeWindow();
       },
     })
   );
@@ -338,7 +338,7 @@ function submitLeague(selectedLeague) {
       console.log(error);
       if (error.status == 503) {
         alert(error.responseText + " Please come back later");
-        location.reload();
+        //location.reload();
       }
     });
 }
