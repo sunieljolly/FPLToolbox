@@ -497,3 +497,31 @@ document.querySelector("#shareButton").addEventListener("click", (event) => {
     alert("Browser doesn't support this API !");
   }
 });
+
+document.querySelector("#m-shareButton").addEventListener("click", (event) => {
+  // Fallback, Tries to use API only
+  // if navigator.share function is
+  // available
+  if (navigator.share) {
+    navigator
+      .share({
+        title: "FPL Toolbox",
+        text: 'Compare your FPL team with your opponents', 
+        url: 'https://fpltoolbox.com',
+      })
+      .then(() => {
+        console.log("Thanks for sharing!");
+        gtag('event', 'Player', {
+          'Clicked:' : 'Share Button'
+        });
+      })
+      .catch((err) => {
+        // Handle errors, if occured
+        console.log("Error while using Web share API:");
+        console.log(err);
+      });
+  } else {
+    // Alerts user if API not available
+    alert("Browser doesn't support this API !");
+  }
+});
