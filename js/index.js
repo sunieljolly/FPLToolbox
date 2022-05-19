@@ -1,6 +1,8 @@
 //////////////////////////BASE URLS/////////////////////////////////////////////////////////////////////
 BASE_URL =
   "https://myfpl-proxy.herokuapp.com/http://fantasy.premierleague.com/api/";
+//BASE_URL =
+//  "http://cors-anywhere.herokuapp.com/http://fantasy.premierleague.com/api/";
 IMAGE_URL =
   "https://myfpl-proxy.herokuapp.com/http://resources.premierleague.com/premierleague/photos/players/110x140/p";
 ////////////////GOOGLE CHARTS CODE//////////////////////////////////////////////////////////////////////
@@ -69,7 +71,7 @@ async function getStatus() {
           if (error.status == 503) {
             alert(error.statusText + " Please come back later");
           }
-          console.log(error)
+          console.log(error);
           loginDiv.innerHTML = "Please come back later";
         },
       });
@@ -92,9 +94,6 @@ async function getStatus() {
   );
 }
 setTimeout(getStatus, 500);
-
-
-
 
 async function getBootstrap() {
   $.ajax({
@@ -246,14 +245,15 @@ async function loadTeam(teamId) {
         overallRank = managerData.summary_overall_rank;
         eventPoints = managerData.summary_event_points;
         eventRank = managerData.summary_event_rank;
-        managerLocation = managerData.player_region_name
-        managerDetails = managerName + " " + managerLastName + " - " + managerLocation
-        gtag('event', managerDetails);
+        managerLocation = managerData.player_region_name;
+        managerDetails =
+          managerName + " " + managerLastName + " - " + managerLocation;
+        gtag("event", managerDetails);
         for (var i = 0; i < managerData.leagues.classic.length; i++) {
-          checkLeagueLength(managerData.leagues.classic[i].id)
+          checkLeagueLength(managerData.leagues.classic[i].id);
         }
         gtag("event", managerDetails, {
-          'theme': document.documentElement.getAttribute("data-theme"),
+          theme: document.documentElement.getAttribute("data-theme"),
         });
       },
       error: function (error) {
@@ -268,8 +268,8 @@ async function loadTeam(teamId) {
   });
 }
 function showLeagues() {
-leagueToast()
-  document.getElementById("watermark").innerHTML = '';
+  leagueToast();
+  document.getElementById("watermark").innerHTML = "";
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
   data.addColumn("string", "League");
@@ -349,9 +349,7 @@ async function createLeague(selectedLeague) {
       type: "GET",
       success: function (league_data) {
         resolve(league_data);
-        if (
-          league_data.standings.has_next == true
-        ) {
+        if (league_data.standings.has_next == true) {
           alert(
             "This league is too big to compare! Please try another league with 50 teams or less."
           );
@@ -372,7 +370,7 @@ async function createLeague(selectedLeague) {
               "</p><d/iv>";
             createMenu();
             gtag("event", managerDetails, {
-              'change_league': league_data.league.name,
+              change_league: league_data.league.name,
             });
           }, 5000);
         }
@@ -426,7 +424,7 @@ function createMenu() {
     '<p onclick="compareTeam()">Compare Team</p>';
   document.getElementById("m-compare-team").innerHTML =
     '<p onclick="compareTeam()">Compare Team</p>';
-    document.getElementById("follow").innerHTML =
+  document.getElementById("follow").innerHTML =
     '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
   document.getElementById("m-follow").innerHTML =
     '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
@@ -459,11 +457,9 @@ async function checkLeagueLength(leagueID) {
       type: "GET",
       success: function (league_data) {
         resolve(league_data);
-        if (
-          league_data.standings.has_next == false
-        ) {
-          managerLeagues.push(league_data.league)
-        } 
+        if (league_data.standings.has_next == false) {
+          managerLeagues.push(league_data.league);
+        }
       },
       error: function (error) {
         reject(error);
@@ -471,3 +467,33 @@ async function checkLeagueLength(leagueID) {
     });
   });
 }
+
+
+
+document.querySelector("#shareButton").addEventListener("click", (event) => {
+  // Fallback, Tries to use API only
+  // if navigator.share function is
+  // available
+  if (navigator.share) {
+    navigator
+      .share({
+        title: "FPL Toolbox",
+        text: 'Compare your FPL team with your opponents', 
+        url: 'https://fpltoolbox.com',
+      })
+      .then(() => {
+        console.log("Thanks for sharing!");
+        gtag('event', 'Player', {
+          'Clicked:' : 'Share Button'
+        });
+      })
+      .catch((err) => {
+        // Handle errors, if occured
+        console.log("Error while using Web share API:");
+        console.log(err);
+      });
+  } else {
+    // Alerts user if API not available
+    alert("Browser doesn't support this API !");
+  }
+});

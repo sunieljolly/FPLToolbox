@@ -3,13 +3,13 @@ async function chipUsage() {
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
-  data.addColumn("string", "Team");
-  data.addColumn("string", "Chip");
-  data.addColumn("string", "Chip");
-  data.addColumn("string", "Chip");
-  data.addColumn("string", "Chip");
-  data.addColumn("string", "Chip");
-  data.addColumn("string", "Chip");
+  data.addColumn("string", "");
+  data.addColumn("string", "1");
+  data.addColumn("string", "2");
+  data.addColumn("string", "3");
+  data.addColumn("string", "4");
+  data.addColumn("string", "5");
+  data.addColumn("string", "6");
 
   //POPULATES TABLE
   for (var i = 0; i < league.length; i++) {

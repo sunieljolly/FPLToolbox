@@ -132,9 +132,9 @@ function findUnique() {
 
   //Creates new google visualization table for Team A
   var data1 = new google.visualization.DataTable();
-  data1.addColumn("number", "Pos");
+  data1.addColumn("number", "");
   data1.addColumn("string", "Your Team");
-  data1.addColumn("number", "Pts");
+  data1.addColumn("number", "");
   for (var i = 0; i < teamBExcludes.length; i++) {
     data1.addRows([
       [
@@ -146,9 +146,9 @@ function findUnique() {
   }
   //Creates new google visualization table for Team B
   var data = new google.visualization.DataTable();
-  data.addColumn("number", "Pts");
+  data.addColumn("number", "");
   data.addColumn("string", "Team B");
-  data.addColumn("number", "Pos");
+  data.addColumn("number", "");
   for (var i = 0; i < teamAExcludes.length; i++) {
     data.addRows([
       [
