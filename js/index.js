@@ -375,8 +375,6 @@ function hideMenu() {
   document.getElementById("m-change-league").innerHTML = "";
   document.getElementById("compare-team").innerHTML = "";
   document.getElementById("m-compare-team").innerHTML = "";
-  document.getElementById("contact").innerHTML = "";
-  document.getElementById("m-contact").innerHTML = "";
   document.getElementById("logout").innerHTML = "";
   document.getElementById("m-logout").innerHTML = "";
 }
@@ -406,14 +404,14 @@ function createMenu() {
     '<p onclick="compareTeam()">Compare Team</p>';
   document.getElementById("m-compare-team").innerHTML =
     '<p onclick="compareTeam()">Compare Team</p>';
-  document.getElementById("follow").innerHTML =
-    '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
-  document.getElementById("m-follow").innerHTML =
-    '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
-  document.getElementById("contact").innerHTML =
-    '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
-  document.getElementById("m-contact").innerHTML =
-    '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
+  // document.getElementById("follow").innerHTML =
+  //   '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
+  // document.getElementById("m-follow").innerHTML =
+  //   '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
+  // document.getElementById("contact").innerHTML =
+  //   '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
+  // document.getElementById("m-contact").innerHTML =
+  //   '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
   document.getElementById("logout").innerHTML =
     '<p onclick="logout()">Log Out</p>';
   document.getElementById("m-logout").innerHTML =

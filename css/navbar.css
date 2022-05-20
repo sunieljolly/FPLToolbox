@@ -37,7 +37,9 @@ ul {
 ul a {
   color: white;
 }
-
+li a {
+  padding: 5px;
+}
 ul li {  
   padding: 5px;
   margin-left: 10px;
