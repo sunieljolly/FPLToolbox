@@ -264,7 +264,8 @@ function convertChipName(chip) {
   if (chip == "wildcard") return "WC";
   if (chip == "freehit") return "FH";
   if (chip == "bboost") return "BB";
-  if (chip == "3xc") return "TC";  
+  if (chip == "3xc") return "TC";
+  if (chip == "") return "";   
 }
 function toggleMobileMenu(menu) {
   menu.classList.toggle("open");

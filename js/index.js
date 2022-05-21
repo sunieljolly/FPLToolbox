@@ -1,9 +1,9 @@
 ////////////////////////BASE URLS/////////////////////////////////////////////////////////////////////
 BASE_URL =
-"https://myfpl-proxy.herokuapp.com/http://fantasy.premierleague.com/api/";
+  "https://myfpl-proxy.herokuapp.com/http://fantasy.premierleague.com/api/";
 // BASE_URL = "https://fantasy.premierleague.com/api/";
 IMAGE_URL =
-"https://myfpl-proxy.herokuapp.com/http://resources.premierleague.com/premierleague/photos/players/110x140/p";
+  "https://myfpl-proxy.herokuapp.com/http://resources.premierleague.com/premierleague/photos/players/110x140/p";
 ////////////////GOOGLE CHARTS CODE//////////////////////////////////////////////////////////////////////
 google.charts.load("current", { packages: ["table"] });
 google.charts.load("current", { packages: ["corechart"] });
@@ -402,14 +402,6 @@ function createMenu() {
     '<p onclick="compareTeam()">Compare Team</p>';
   document.getElementById("m-compare-team").innerHTML =
     '<p onclick="compareTeam()">Compare Team</p>';
-  // document.getElementById("follow").innerHTML =
-  //   '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
-  // document.getElementById("m-follow").innerHTML =
-  //   '<a href="https://twitter.com/fpltoolbox" target="_blank">Follow Me</a>';
-  // document.getElementById("contact").innerHTML =
-  //   '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
-  // document.getElementById("m-contact").innerHTML =
-  //   '<a href="mailto:fpltoolbox@email.com" target="_blank">Contact</a>';
   document.getElementById("logout").innerHTML =
     '<p onclick="logout()">Log Out</p>';
   document.getElementById("m-logout").innerHTML =

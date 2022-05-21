@@ -2,7 +2,7 @@ async function gameweekActivty() {
   gtag("event", managerDetails, {
     gameweek_activty_screen: "league: " + leagueName,
   });
-  shareString = "Game Week Activity: \n";
+  shareString = "Game Week Activity for " +  leagueName + ": \n" + "*Team   Chip   Captain* \n\n";
   showToast("Game week information at a glance.");
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
@@ -215,10 +215,10 @@ async function gameweekActivty() {
     if (getLiveMinutesPlayed(league[i].currentWeek[0].picks[10].element) != 0) {
       played.push(league[i].currentWeek[0].picks[10].element);
     }
-
+    
     shareString = shareString.concat(
-      league[i].rank + " " +
-      league[i].player_name +
+      league[i].rank + "." +
+      league[i].player_name.split(" ", 1) +
         " " +
         active_chip +
         " " +
@@ -226,7 +226,7 @@ async function gameweekActivty() {
         "\n"
     );
 
-    console.log(shareString);
+    
     data.addRows([
       [
         league[i].rank + rankMovement,
@@ -250,7 +250,7 @@ async function gameweekActivty() {
         league[i].currentWeek[0].entry_history.rank,
       ],
     ]);
-
+    
     var options = {
       alternatingRowStyle: true,
       showRowNumber: false,
@@ -280,6 +280,8 @@ async function gameweekActivty() {
     formatter.format(data, 8);
     formatter.format(data, 2);
   }
+
+  console.log(shareString);
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
   sharebutton = document.createElement("button");

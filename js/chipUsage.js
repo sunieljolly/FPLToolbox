@@ -1,5 +1,8 @@
 async function chipUsage() {
   showToast("Chips used by used by each team.")
+
+  shareString = "Chip usage for " +  leagueName + ": \n";
+
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
@@ -55,6 +58,25 @@ async function chipUsage() {
     } else {
       chip6 = league[i].chips[5].name;
     }
+
+    shareString = shareString.concat(
+      league[i].rank + "." +
+      league[i].player_name.split(" ", 1) +
+        " " +
+        convertChipName(chip1) +
+        " " +
+        convertChipName(chip2) +
+        " " +
+        convertChipName(chip3) +
+        " " +
+        convertChipName(chip4) +
+        " " +
+        convertChipName(chip5) +
+        " " +
+        convertChipName(chip6) +
+        " " +
+        "\n"
+    );
     data.addRows([
       [
         league[i].rank + rankMovement,
@@ -102,9 +124,36 @@ async function chipUsage() {
   formatter.format(data, 5);
   formatter.format(data, 6);
   formatter.format(data, 7);
+  console.log(shareString);
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
-
+  sharebutton = document.createElement("button");
+  sharebutton.innerHTML = '<i id="gwshare" class="material-icons">share</i>';
+  document.getElementById("table").appendChild(sharebutton);
+  sharebutton.addEventListener("click", function () {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "FPL Toolbox",
+          text: shareString + '\n',
+          url: "https://fpltoolbox.com",
+        })
+        .then(() => {
+          console.log("Thanks for sharing!");
+          gtag("event", managerDetails, {
+            shared_gameweek_stats: "league: " + leagueName,
+          });
+        })
+        .catch((err) => {
+          // Handle errors, if occured
+          console.log("Error while using Web share API:");
+          console.log(err);
+        });
+    } else {
+      // Alerts user if API not available
+      alert("Browser doesn't support this API !");
+    }
+  });
   var userRow = document.getElementsByClassName(
     "google-visualization-table-table"
   )[0].children[1].rows[userIdRow];
