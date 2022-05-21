@@ -283,7 +283,7 @@ async function gameweekActivty() {
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
   sharebutton = document.createElement("button");
-  sharebutton.innerHTML = '<i class="material-icons">share</i>';
+  sharebutton.innerHTML = '<i id="gwshare" class="material-icons">share</i>';
   document.getElementById("table").appendChild(sharebutton);
   var userRow = document.getElementsByClassName(
     "google-visualization-table-table"
@@ -294,7 +294,7 @@ async function gameweekActivty() {
       navigator
         .share({
           title: "FPL Toolbox",
-          text: shareString,
+          text: shareString + '\n',
           url: "https://fpltoolbox.com",
         })
         .then(() => {

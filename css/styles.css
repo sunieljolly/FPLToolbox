@@ -6,39 +6,38 @@
 }
 :root {
   --fplpurple: #37003c;
-  --fplblue: #1A8CD8;
+  --fplblue: #1a8cd8;
   --fplgreen: #01fc7a;
   --fplpink: #ff1751;
   --fpldarkred: #80072d;
   --red: #ff1751;
   --fplyellow: #d8bd14;
-  --fpllightpurple: #963CFF;
+  --fpllightpurple: #963cff;
   --fplgreenstripelight: #01ba5c;
   --fplgreenstripedark: #00ae55;
-  --tableRow: #FFFFFF;
-  --oddTableRow: #FAFAFA;
+  --tableRow: #ffffff;
+  --oddTableRow: #fafafa;
   --text: black;
   --highlight: lightgrey;
   --watermark: grey;
 }
 [data-theme="dark"] {
-  --fplpurple: #0F3460;
-  --fplblue: #16213E;
+  --fplpurple: #0f3460;
+  --fplblue: #16213e;
   --fplgreen: #01fc7a;
   --fplpink: #ff1751;
   --fpldarkred: darkred;
   --fplyellow: yellow;
   --fpllightpurple: darkblue;
-  --fplgreenstripelight: #16213E;
-  --fplgreenstripedark: #1A1A2E;
-  --tableRow: #16213E;
-  --oddTableRow: #1A1A2E;
+  --fplgreenstripelight: #16213e;
+  --fplgreenstripedark: #1a1a2e;
+  --tableRow: #16213e;
+  --oddTableRow: #1a1a2e;
   --text: whitesmoke;
   --highlight: #270082;
   --red: #80072d;
   --watermark: lightgrey;
 }
-
 
 body {
   background-color: #ffffff;
@@ -52,19 +51,19 @@ body {
     var(--fplgreenstripedark) 100px
   );
 }
-.page {  
+.page {
   min-height: calc(100vh - 50px);
   text-align: center;
   width: 100%;
   margin: auto;
-  position: relative;  
+  position: relative;
 }
 
 .form {
   background-color: var(--fplpurple);
   padding: 20px;
   margin: auto;
-  width: 70%;  
+  width: 70%;
   height: 100px;
   max-width: 600px;
   display: flex;
@@ -104,7 +103,7 @@ input[type="search"] {
   color: white;
   cursor: pointer;
 }
-.share-button{
+.share-button {
   background-color: var(--fplblue);
   color: white;
   max-width: 100px;
@@ -113,7 +112,7 @@ input[type="search"] {
   margin: auto;
   width: 50%;
 }
-.middle{
+.middle {
   margin-top: 45%;
 }
 .score {
@@ -122,21 +121,20 @@ input[type="search"] {
   max-width: 400px;
   height: 50px;
   display: grid;
-  grid-template-columns: auto auto auto;  
+  grid-template-columns: auto auto auto;
 }
 #myscore {
   color: var(--fplgreen);
   font-size: 2em;
   font-weight: 900;
 }
-.fa{
+.fa {
   margin-top: 10px;
   font-size: 36px !important;
-  text-decoration: none!important ;  
-
+  text-decoration: none !important ;
 }
-.fa-twitter { 
-  color: #1A8CD8;
+.fa-twitter {
+  color: #1a8cd8;
 }
 .table {
   max-width: 900px;
@@ -146,11 +144,11 @@ input[type="search"] {
     sans-serif;
   font-weight: bolder;
   padding-bottom: 5px;
-  padding-top: 5px; 
-  margin-bottom: 5px; 
+  padding-top: 5px;
+  margin-bottom: 5px;
 }
-th{
-  border: none!important ; 
+th {
+  border: none !important ;
 }
 .headerRow {
   background-color: var(--fplpurple);
@@ -178,13 +176,13 @@ th{
   background-color: var(--highlight);
 }
 .hoverTableRow1 {
-  background-color: none!important;
+  background-color: none !important;
   text-decoration: underline;
 }
 .hoverTableRow {
-  background-color: none!important;
+  background-color: none !important;
 }
-.user-row{
+.user-row {
   /*background-color: red!important;
    text-decoration: underline;
   text-decoration-style:solid; */
@@ -198,17 +196,16 @@ th{
   color: var(--fplgreen);
 }
 
-.entry-name{
+.entry-name {
   font-weight: bolder;
   text-align: left;
-  
 }
-.player-name{
+.player-name {
   font-weight: lighter;
   text-align: left;
 }
 
-.help{
+.help {
   color: white;
   font-weight: bolder;
   font-size: larger;
@@ -219,7 +216,6 @@ th{
 .google-visualization-table .gradient {
   background-image: none !important;
 }
-
 
 /* The Modal (background) */
 .modal {
@@ -232,8 +228,8 @@ th{
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.6); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -243,22 +239,34 @@ th{
   margin: auto;
   padding: 0;
   width: 80%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
-  animation-duration: 0.4s
+  animation-duration: 0.4s;
 }
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-  from {top:-300px; opacity:0} 
-  to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 @keyframes animatetop {
-  from {top:-300px; opacity:0}
-  to {top:0; opacity:1}
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
 /* The Close Button */
@@ -282,7 +290,9 @@ th{
   color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  padding: 2px 16px;
+}
 
 .modal-footer {
   padding: 2px 16px;
@@ -290,17 +300,17 @@ th{
   color: white;
 }
 
-.loading-bar-div{
+.loading-bar-div {
   background-color: white;
   color: transparent;
 }
-.loading-bar{
-  text-align: left!important; 
-  height:40px; 
-  background-color:var(--fplpurple);
+.loading-bar {
+  text-align: left !important;
+  height: 40px;
+  background-color: var(--fplpurple);
 }
 
-.previous-user{
+.previous-user {
   position: relative;
   background-color: var(--fplpurple);
   max-width: 100px;
@@ -335,23 +345,47 @@ th{
 
 /* Animations to fade the snackbar in and out */
 @-webkit-keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 
 @keyframes fadein {
-  from {bottom: 0; opacity: 0;}
-  to {bottom: 30px; opacity: 1;}
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
 }
 
 @-webkit-keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
 @keyframes fadeout {
-  from {bottom: 30px; opacity: 1;}
-  to {bottom: 0; opacity: 0;}
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
 }
 
 .watermark {
@@ -360,10 +394,9 @@ th{
   opacity: 0.25;
   font-size: 3em;
   width: 100%;
-  top: 35%;    
+  top: 35%;
   text-align: center;
   z-index: 5;
-  
 }
 .rotate {
   transform: rotate(-45deg);
@@ -380,4 +413,10 @@ th{
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
+#gwshare {
+  background-color: var(--fplpurple);
+  color: var(--highlight);
+  border: none;
+  width: 200px;
 
+}
