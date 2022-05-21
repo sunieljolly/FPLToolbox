@@ -1,8 +1,9 @@
 async function gameweekActivty() {
   gtag("event", managerDetails, {
-    'gameweek_activty_screen': 'league: ' + leagueName,
+    gameweek_activty_screen: "league: " + leagueName,
   });
-  showToast("Game week information at a glance.")
+  shareString = "Game Week Activity: \n";
+  showToast("Game week information at a glance.");
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
   data.addColumn("string", "#");
@@ -20,13 +21,15 @@ async function gameweekActivty() {
   data.addColumn("number", "GW" + "<br/>" + "Rank");
 
   for (var i = 0; i < league.length; i++) {
-    if(league[i].entry == teamId) {
+    if (league[i].entry == teamId) {
       var userIdRow = i;
     }
-    if (league[i].rank == league[i].last_rank) rankMovement = ''
-    if (league[i].rank < league[i].last_rank)  rankMovement = '<p class="rank-up">▲</p>'
-    if (league[i].rank > league[i].last_rank)  rankMovement = '<p class="rank-down">▼</p>'
-    
+    if (league[i].rank == league[i].last_rank) rankMovement = "";
+    if (league[i].rank < league[i].last_rank)
+      rankMovement = '<p class="rank-up">▲</p>';
+    if (league[i].rank > league[i].last_rank)
+      rankMovement = '<p class="rank-down">▼</p>';
+
     var formationPicks = [];
     for (var j = 1; j < 11; j++) {
       formationPicks.push(
@@ -39,7 +42,7 @@ async function gameweekActivty() {
     }
     var formation = "" + counts[2] + "-" + counts[3] + "-" + counts[4];
     if (league[i].currentWeek[0].active_chip) {
-      active_chip = convertChipName(league[i].currentWeek[0].active_chip)
+      active_chip = convertChipName(league[i].currentWeek[0].active_chip);
     } else {
       active_chip = "❌";
     }
@@ -212,11 +215,28 @@ async function gameweekActivty() {
     if (getLiveMinutesPlayed(league[i].currentWeek[0].picks[10].element) != 0) {
       played.push(league[i].currentWeek[0].picks[10].element);
     }
+
+    shareString = shareString.concat(
+      league[i].rank + " " +
+      league[i].player_name +
+        " " +
+        active_chip +
+        " " +
+        getPlayerWebName(league[i].captain) +
+        "\n"
+    );
+
+    console.log(shareString);
     data.addRows([
       [
         league[i].rank + rankMovement,
-        '<p class="entry-name">' + league[i].entry_name + '</p>' + '\n' +
-        '<p class="player-name">' + league[i].player_name + '</p>' ,
+        '<p class="entry-name">' +
+          league[i].entry_name +
+          "</p>" +
+          "\n" +
+          '<p class="player-name">' +
+          league[i].player_name +
+          "</p>",
         active_chip,
         getPlayerWebName(league[i].captain),
         captainPoints,
@@ -247,7 +267,7 @@ async function gameweekActivty() {
         oddTableRow: "oddTableRow",
         tableCell: "tableCell",
         hoverTableRow: "hoverTableRow",
-        selectedTableRow: "selectedTableRow"
+        selectedTableRow: "selectedTableRow",
       },
     };
     var formatter = new google.visualization.ColorFormat();
@@ -262,7 +282,35 @@ async function gameweekActivty() {
   }
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
-
-  var userRow = document.getElementsByClassName("google-visualization-table-table")[0].children[1].rows[userIdRow]
+  sharebutton = document.createElement("button");
+  sharebutton.innerHTML = '<i class="material-icons">share</i>';
+  document.getElementById("table").appendChild(sharebutton);
+  var userRow = document.getElementsByClassName(
+    "google-visualization-table-table"
+  )[0].children[1].rows[userIdRow];
   userRow.classList.add("user-row");
+  sharebutton.addEventListener("click", function () {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "FPL Toolbox",
+          text: shareString,
+          url: "https://fpltoolbox.com",
+        })
+        .then(() => {
+          console.log("Thanks for sharing!");
+          gtag("event", managerDetails, {
+            shared_gameweek_stats: "league: " + leagueName,
+          });
+        })
+        .catch((err) => {
+          // Handle errors, if occured
+          console.log("Error while using Web share API:");
+          console.log(err);
+        });
+    } else {
+      // Alerts user if API not available
+      alert("Browser doesn't support this API !");
+    }
+  });
 }

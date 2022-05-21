@@ -1,10 +1,9 @@
-//////////////////////////BASE URLS/////////////////////////////////////////////////////////////////////
+////////////////////////BASE URLS/////////////////////////////////////////////////////////////////////
 BASE_URL =
-  "https://myfpl-proxy.herokuapp.com/http://fantasy.premierleague.com/api/";
-//BASE_URL =
-//  "http://cors-anywhere.herokuapp.com/http://fantasy.premierleague.com/api/";
+"https://myfpl-proxy.herokuapp.com/http://fantasy.premierleague.com/api/";
+// BASE_URL = "https://fantasy.premierleague.com/api/";
 IMAGE_URL =
-  "https://myfpl-proxy.herokuapp.com/http://resources.premierleague.com/premierleague/photos/players/110x140/p";
+"https://myfpl-proxy.herokuapp.com/http://resources.premierleague.com/premierleague/photos/players/110x140/p";
 ////////////////GOOGLE CHARTS CODE//////////////////////////////////////////////////////////////////////
 google.charts.load("current", { packages: ["table"] });
 google.charts.load("current", { packages: ["corechart"] });
@@ -80,7 +79,7 @@ async function getStatus() {
       url: BASE_URL + "event-status/",
       type: "GET",
       success: function (data) {
-        console.log(data)
+        console.log(data);
         eventStatus = data.leagues;
         eventStatusDate = data.status[data.status.length - 1].date;
       },
@@ -269,7 +268,7 @@ async function loadTeam(teamId) {
   });
 }
 function showLeagues() {
-  showToast("Currently supported leagues.")
+  showToast("Currently supported leagues.");
   document.getElementById("watermark").innerHTML = "";
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
@@ -305,7 +304,6 @@ function showLeagues() {
     if (selectedLeague == 00000) logout();
     submitLeague(selectedLeague);
   }
-
 }
 function submitLeague(selectedLeague) {
   hideMenu();
@@ -448,8 +446,6 @@ async function checkLeagueLength(leagueID) {
   });
 }
 
-
-
 document.querySelector("#shareButton").addEventListener("click", (event) => {
   // Fallback, Tries to use API only
   // if navigator.share function is
@@ -458,13 +454,13 @@ document.querySelector("#shareButton").addEventListener("click", (event) => {
     navigator
       .share({
         title: "FPL Toolbox",
-        text: 'Compare your FPL team with your opponents', 
-        url: 'https://fpltoolbox.com',
+        text: "Compare your FPL team with your opponents",
+        url: "https://fpltoolbox.com",
       })
       .then(() => {
         console.log("Thanks for sharing!");
-        gtag('event', 'Player', {
-          'Clicked:' : 'Share Button'
+        gtag("event", "Player", {
+          "Clicked:": "Share Button",
         });
       })
       .catch((err) => {
@@ -486,13 +482,19 @@ document.querySelector("#m-shareButton").addEventListener("click", (event) => {
     navigator
       .share({
         title: "FPL Toolbox",
-        text: 'Compare your FPL team with your opponents!' + '\n' + '\n' + '⚽⚽⚽⚽⚽' + '\n'+ '\n', 
-        url: 'https://fpltoolbox.com',
+        text:
+          "Compare your FPL team with your opponents!" +
+          "\n" +
+          "\n" +
+          "⚽⚽⚽⚽⚽" +
+          "\n" +
+          "\n",
+        url: "https://fpltoolbox.com",
       })
       .then(() => {
         console.log("Thanks for sharing!");
-        gtag('event', 'Player', {
-          'Clicked:' : 'Share Button'
+        gtag("event", "Player", {
+          "Clicked:": "Share Button",
         });
       })
       .catch((err) => {
@@ -506,7 +508,7 @@ document.querySelector("#m-shareButton").addEventListener("click", (event) => {
   }
 });
 
-function showToast(message) {  
+function showToast(message) {
   document.getElementById("snackbar").innerHTML = message;
   // Get the snackbar DIV
   var x = document.getElementById("snackbar");
@@ -519,4 +521,3 @@ function showToast(message) {
     x.className = x.className.replace("show", "");
   }, 3500);
 }
-
