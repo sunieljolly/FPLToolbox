@@ -101,6 +101,7 @@ async function createTeamB(otherTeamId) {
 }
 
 function findUnique() {
+  shareString = "Unique players vs "+ teamBManager.split(" ", 1) + ": \n\n";
   //Compare two arrays
 
   //Display modal of two teams side by side with unique players only. Same players have been removed.
@@ -111,6 +112,7 @@ function findUnique() {
     '<div id="compare-modal-body" class="compare-modal-body">' +
     '<div id="table-a" class="table-a"></div>' +
     '<div id="table-b" class="table-b"></div></div>' +
+    '<i id="gwshare" class="material-icons">share</i>' + 
     '<div class="compare-modal-footer"><p>fpltoolbox.com</p></div></div>';
 
   // Get the modal
@@ -133,9 +135,13 @@ function findUnique() {
   //Creates new google visualization table for Team A
   var data1 = new google.visualization.DataTable();
   data1.addColumn("number", "");
-  data1.addColumn("string", "Your Team");
+  data1.addColumn("string", "My Team");
   data1.addColumn("number", "");
   for (var i = 0; i < teamBExcludes.length; i++) {
+    shareString = shareString.concat(
+      "⚽ " + getPlayerWebName(teamBExcludes[i].element) + "\n"
+    );
+    
     data1.addRows([
       [
         teamBExcludes[i].position,
@@ -147,9 +153,16 @@ function findUnique() {
   //Creates new google visualization table for Team B
   var data = new google.visualization.DataTable();
   data.addColumn("number", "");
-  data.addColumn("string", "Team B");
+  data.addColumn("string", teamBManager.split(" ", 1));
   data.addColumn("number", "");
+
+  shareString = shareString.concat("\n\n")
+
   for (var i = 0; i < teamAExcludes.length; i++) {
+
+    shareString = shareString.concat(
+      "⚽ " + getPlayerWebName(teamAExcludes[i].element) + "\n"
+    );
     data.addRows([
       [
         getPlayerPoints(teamAExcludes[i].element) * teamAExcludes[i].multiplier,
@@ -158,6 +171,7 @@ function findUnique() {
       ],
     ]);
   }
+
   // Configures options for both google visualisation tables
   var options = {
     alternatingRowStyle: true,
@@ -211,6 +225,29 @@ function findUnique() {
       modal1.style.display = "none";
     }
   };
-
+  
+  document.getElementById("gwshare").addEventListener("click", function () {
+    if (navigator.share) {
+      navigator
+        .share({
+          title: "FPL Toolbox",
+          text: shareString + '\n',
+          url: "https://fpltoolbox.com",
+        })
+        .then(() => {
+          gtag("event", managerDetails, {
+            shared_team_comparison: "league: " + leagueName,
+          });
+        })
+        .catch((err) => {
+          // Handle errors, if occured
+          console.log("Error while using Web share API:");
+          console.log(err);
+        });
+    } else {
+      // Alerts user if API not available
+      alert("Browser doesn't support this API !");
+    }
+  });
 }
 

@@ -281,7 +281,6 @@ async function gameweekActivty() {
     formatter.format(data, 2);
   }
 
-  console.log(shareString);
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
   sharebutton = document.createElement("button");
@@ -300,9 +299,8 @@ async function gameweekActivty() {
           url: "https://fpltoolbox.com",
         })
         .then(() => {
-          console.log("Thanks for sharing!");
           gtag("event", managerDetails, {
-            shared_gameweek_stats: "league: " + leagueName,
+            shared_gameweek_activity: "league: " + leagueName,
           });
         })
         .catch((err) => {

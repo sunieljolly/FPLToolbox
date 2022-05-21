@@ -1,7 +1,7 @@
 async function chipUsage() {
   showToast("Chips used by used by each team.")
 
-  shareString = "Chip usage for " +  leagueName + ": \n";
+  shareString = "Chip usage for " +  leagueName + ": \n\n";
 
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
@@ -124,7 +124,6 @@ async function chipUsage() {
   formatter.format(data, 5);
   formatter.format(data, 6);
   formatter.format(data, 7);
-  console.log(shareString);
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
   sharebutton = document.createElement("button");
@@ -139,9 +138,8 @@ async function chipUsage() {
           url: "https://fpltoolbox.com",
         })
         .then(() => {
-          console.log("Thanks for sharing!");
           gtag("event", managerDetails, {
-            shared_gameweek_stats: "league: " + leagueName,
+            shared_chip_usage: "league: " + leagueName,
           });
         })
         .catch((err) => {
