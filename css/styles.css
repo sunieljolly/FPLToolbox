@@ -413,10 +413,10 @@ th {
   filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
-#gwshare {
-  background-color: var(--fplpurple);
-  color: var(--highlight);
+#gwshare {  
+  color: white;
   border: none;
-  width: 200px;
-
+  padding-left: 75%;
+  padding-top: 10px;
+  font-size: 2em;
 }

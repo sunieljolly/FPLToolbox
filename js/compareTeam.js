@@ -112,7 +112,7 @@ function findUnique() {
     '<div id="compare-modal-body" class="compare-modal-body">' +
     '<div id="table-a" class="table-a"></div>' +
     '<div id="table-b" class="table-b"></div></div>' +
-    '<i id="gwshare" class="material-icons">share</i>' + 
+    '<p><i id="gwshare" class="material-icons">share</i></p>' + 
     '<div class="compare-modal-footer"><p>fpltoolbox.com</p></div></div>';
 
   // Get the modal

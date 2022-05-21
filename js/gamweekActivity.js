@@ -283,7 +283,7 @@ async function gameweekActivty() {
 
   var table = new google.visualization.Table(document.getElementById("table"));
   table.draw(data, options);
-  sharebutton = document.createElement("button");
+  sharebutton = document.createElement("p");
   sharebutton.innerHTML = '<i id="gwshare" class="material-icons">share</i>';
   document.getElementById("table").appendChild(sharebutton);
   var userRow = document.getElementsByClassName(
