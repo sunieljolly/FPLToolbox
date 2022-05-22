@@ -94,13 +94,13 @@ async function createTeamB(otherTeamId) {
 }
 
 function findUnique() {
-  shareString = "Unique players vs "+ teamBManager.split(" ", 1) + ": \n\n";
+  shareString = '*Unique players vs '+ teamBManager.split(" ", 1) + '.* \n';
   //Compare two arrays
 
   //Display modal of two teams side by side with unique players only. Same players have been removed.
   document.getElementById("two-tables").innerHTML =
     ' <div class="compare-modal-content">' +
-    '<div class="compare-modal-header">' +
+    '<div id="compare-modal-header" class="compare-modal-header">' +
     '<span class="compare-close">&times;</span><h2>Unique Players</h2></div>' +
     '<div id="compare-modal-body" class="compare-modal-body">' +
     '<div id="table-a" class="table-a"></div>' +
@@ -124,7 +124,14 @@ function findUnique() {
     {}
   );
   const teamBExcludes = teamA.filter((item) => !keysA[item.element]);
-
+  var similarity = (((15-teamBExcludes.length)/15)*100)
+  similarityDiv = document.createElement("p");
+  similarityDiv.innerHTML = 'Your teams are ' + Math.round(similarity) + '% similar!';
+  document.getElementById("compare-modal-header").appendChild(similarityDiv);
+  shareString = shareString.concat(
+    'Your teams are ' + Math.round(similarity) + '% similar! \n\n'
+    );
+  
   //Creates new google visualization table for Team A
   var data1 = new google.visualization.DataTable();
   data1.addColumn("number", "");
@@ -218,7 +225,7 @@ function findUnique() {
       modal1.style.display = "none";
     }
   };
-  
+  console.log(shareString)
   document.getElementById("gwshare").addEventListener("click", function () {
     if (navigator.share) {
       navigator

@@ -1,7 +1,7 @@
 async function chipUsage() {
-  showToast("Chips used by used by each team.")
+  showToast("Chips used by used by each team.");
 
-  shareString = "Chip usage for " +  leagueName + ": \n\n";
+  shareString = "Chip usage for " + leagueName + ": \n\n";
 
   // CREATES NEW TABLE
   var data = new google.visualization.DataTable();
@@ -19,7 +19,7 @@ async function chipUsage() {
     if (league[i].entry == teamId) {
       var userIdRow = i;
       gtag("event", managerDetails, {
-        'chips_usage_screen': 'chips used =  ' + league[i].chips.length,
+        chips_usage_screen: "chips used =  " + league[i].chips.length,
       });
     }
     if (league[i].rank == league[i].last_rank) rankMovement = "";
@@ -60,8 +60,9 @@ async function chipUsage() {
     }
 
     shareString = shareString.concat(
-      league[i].rank + "." +
-      league[i].player_name.split(" ", 1) +
+      league[i].rank +
+        "." +
+        league[i].player_name.split(" ", 1) +
         " " +
         convertChipName(chip1) +
         " " +
@@ -96,6 +97,7 @@ async function chipUsage() {
       ],
     ]);
   }
+
   var options = {
     alternatingRowStyle: true,
     showRowNumber: false,
@@ -127,7 +129,7 @@ async function chipUsage() {
       navigator
         .share({
           title: "FPL Toolbox",
-          text: shareString + '\n',
+          text: shareString + "\n",
           url: "https://fpltoolbox.com",
         })
         .then(() => {
@@ -150,5 +152,3 @@ async function chipUsage() {
   )[0].children[1].rows[userIdRow];
   userRow.classList.add("user-row");
 }
-
-
