@@ -52,6 +52,15 @@ var fplblue = "#81bcff";
 const loginDiv = document.getElementById("login");
 const tableDiv = document.getElementById("table");
 
+const cssClasses = {
+  headerRow: "headerRow",
+  tableRow: "tableRow",
+  oddTableRow: "oddTableRow",
+  tableCell: "tableCell",
+  hoverTableRow: "hoverTableRow",
+  selectedTableRow: "selectedTableRow",
+}
+
 async function getStatus() {
   loginDiv.innerHTML =
     '<div class="loading-bar-div center">' +
@@ -79,7 +88,6 @@ async function getStatus() {
       url: BASE_URL + "event-status/",
       type: "GET",
       success: function (data) {
-        console.log(data);
         eventStatus = data.leagues;
         eventStatusDate = data.status[data.status.length - 1].date;
       },
@@ -269,7 +277,7 @@ async function loadTeam(teamId) {
 }
 function showLeagues() {
   showToast("Currently supported leagues.");
-  document.getElementById("watermark").innerHTML = "";
+  
   var data = new google.visualization.DataTable();
   data.addColumn("number", "ID");
   data.addColumn("string", "League");

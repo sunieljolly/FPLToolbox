@@ -1,6 +1,6 @@
 async function leagueTable() {
   showToast(" " + eventStatusDate + " " + eventStatus)
-  document.getElementById("watermark").innerHTML = "fpltoolbox.com";
+  
   var data = new google.visualization.DataTable();
 
   data.addColumn("string", "#");
@@ -58,14 +58,7 @@ async function leagueTable() {
     title: "League Table",
     allowHtml: true,
     frozenColumns: 2,
-    cssClassNames: {
-      headerRow: "headerRow",
-      tableRow: "tableRow",
-      oddTableRow: "oddTableRow",
-      tableCell: "tableCell",
-      hoverTableRow: "hoverTableRow",
-      selectedTableRow: "selectedTableRow",
-    },
+    cssClassNames: cssClasses,
   };
 
   var formatter = new google.visualization.ColorFormat();

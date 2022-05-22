@@ -19,7 +19,6 @@
   --oddTableRow: #fafafa;
   --text: black;
   --highlight: lightgrey;
-  --watermark: grey;
 }
 [data-theme="dark"] {
   --fplpurple: #0f3460;
@@ -36,7 +35,6 @@
   --text: whitesmoke;
   --highlight: #270082;
   --red: #80072d;
-  --watermark: lightgrey;
 }
 
 body {
@@ -388,35 +386,9 @@ th {
   }
 }
 
-.watermark {
-  position: absolute;
-  color: var(--watermark);
-  opacity: 0.25;
-  font-size: 3em;
-  width: 100%;
-  top: 35%;
-  text-align: center;
-  z-index: 5;
-}
-.rotate {
-  transform: rotate(-45deg);
-  /* Legacy vendor prefixes that you probably don't need... */
-  /* Safari */
-  -webkit-transform: rotate(-45deg);
-  /* Firefox */
-  -moz-transform: rotate(-45deg);
-  /* IE */
-  -ms-transform: rotate(-45deg);
-  /* Opera */
-  -o-transform: rotate(-45deg);
-  /* Internet Explorer */
-  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
-}
-
 #gwshare{  
   color: white;
   border: none;
-  padding-left: 75%;
   padding-top: 10px;
   font-size: 2em;
 }

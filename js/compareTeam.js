@@ -48,14 +48,7 @@ function compareTeam() {
     title: "League Table",
     allowHtml: true,
     frozenColumns: 2,
-    cssClassNames: {
-      headerRow: "headerRow",
-      tableRow: "tableRow",
-      oddTableRow: "oddTableRow",
-      tableCell: "tableCell",
-      hoverTableRow: "hoverTableRow",
-      selectedTableRow: "selectedTableRow",
-    },
+    cssClassNames: cssClasses,
   };
 
   var table = new google.visualization.Table(document.getElementById("table"));

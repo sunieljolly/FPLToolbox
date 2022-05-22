@@ -261,14 +261,7 @@ async function gameweekActivty() {
       title: "League Table",
       allowHtml: true,
       frozenColumns: 2,
-      cssClassNames: {
-        headerRow: "headerRow",
-        tableRow: "tableRow",
-        oddTableRow: "oddTableRow",
-        tableCell: "tableCell",
-        hoverTableRow: "hoverTableRow",
-        selectedTableRow: "selectedTableRow",
-      },
+      cssClassNames: cssClasses,
     };
     var formatter = new google.visualization.ColorFormat();
     formatter.addRange(0.1, 10.8, "black", fplpink);
