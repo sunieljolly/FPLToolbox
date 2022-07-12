@@ -146,11 +146,17 @@ async function getBootstrap() {
         gameweekLiveData = data;
       },
       error: function (data) {
+        console.log(data)
         console.log(
           data.statusText +
             ": Something went wrong. Please try again later (line 131)"
         );
-        location.reload();
+        if (data.statusText == 'Not Found'){
+          loginDiv.innerHTML = "Please come back once season has started.<br><br>" +
+          '<iframe src="https://www.youtube.com/embed/4fyJtLOd6Qc"></iframe><br>' +
+          'As featured on ' + '<a href="https://www.youtube.com/c/FPLFocal">FPL Focal</a>'
+        }
+        //location.reload();
       },
     });
   }, 2000);
