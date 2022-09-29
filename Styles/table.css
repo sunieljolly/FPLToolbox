@@ -1,0 +1,149 @@
+table {
+  max-width: 800px;
+  text-align: center;
+  font-family: "PremierSans-Regular", Arial, "Helvetica Neue", Helvetica,
+    sans-serif;
+  padding: 0px;
+  background-color: white;
+  border-collapse: collapse;
+  border-spacing: 0px;
+  display: block;
+  overflow-y:auto;
+  overflow-x: auto;
+  table-layout: auto;
+  
+}
+#table{
+  width: 100%;
+}
+thead{
+  padding: 0px;
+  width: 100%;
+
+
+}
+
+
+th {
+  width: 100%;
+  padding: 0.25em;
+ 
+  color: hsl(0,2%,49%);
+}
+th.first{
+  width: 30px;
+}
+
+tr {
+  padding: 0px;
+  height: 3em;
+  transition: all 1s ease-in-out;
+  border-bottom: 0.1px solid #ddd!important;  
+}
+.slide-out{
+  transform:translateX(100%);
+  
+}
+td {
+  padding: 0.15em;
+  width: 0px;  
+}
+
+
+#current-user{
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 254, 136),
+    rgb(2, 239, 253)
+  );
+}
+.team-name{
+  font-size: 1em;
+  font-weight: bolder;
+}
+.manager-name{
+  font-size: 0.75em;
+}
+table div{
+  text-align: left;
+}
+
+.TC{
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 254, 136),
+    rgb(2, 239, 253)
+  );
+}
+.WC{
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 254, 136),
+    rgb(2, 239, 253)
+  );
+}
+.BB{
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 254, 136),
+    rgb(2, 239, 253)
+  );
+}
+.FH{
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 254, 136),
+    rgb(2, 239, 253)
+  );
+}
+
+.rank-up{
+  color: #05FA87
+}
+.rank-down{
+  color: #FC2C80
+}
+.rank-equal{
+  color: #808080
+}
+/*
+  .headerRow {
+    background-color: var(--fplpurple);
+    height: 50px;
+    color: white;
+  }
+  
+  .tableRow {
+    background-color: var(--tableRow);
+    color: var(--text);
+    height: 50px;
+  }
+  .oddTableRow {
+    background-color: var(--oddTableRow);
+    color: var(--text);
+    height: 50px;
+  }
+  .tableCell {
+    border: none !important;
+    border-bottom: 1px solid var(--highlight) !important;
+    background-image: none !important;
+    background-color: var(--oddTableRow);
+  }
+  .selectedTableRow {
+    background-color: var(--highlight);
+  }
+  .hoverTableRow1 {
+    background-color: none !important;
+    text-decoration: underline;
+  }
+  .hoverTableRow {
+    background-color: none !important;
+  }
+  .user-row {
+    /*background-color: red!important;
+     text-decoration: underline;
+    text-decoration-style:solid; 
+    color: var(--fpldarkred);
+    font-weight: 1500;
+  } 
+  */

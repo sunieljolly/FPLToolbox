@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <!-- Google Tag Manager -->
+     <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-PBR659G");
+    </script>
+    <!-- End Google Tag Manager -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3XLGXFHQSS"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-3XLGXFHQSS");
+    </script>
+    <meta
+    property="og:title"
+    content="FPL Toolbox"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+    property="og:image"
+    content="https://i0.wp.com/thesportsgrail.com/wp-content/uploads/2021/06/FPL.jpg"
+    />
+    <meta property="og:description" content="Compare your FPL team with your opponent's!" />
+    <meta property="og:url" content="https://fpltoolbox.com" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FPLToolbox</title>
+    <script type="module" src="firebase.js" defer></script>
+    <script type="module" src="script.js" defer></script>
+    <script type="module" src="fpl.js" defer></script>
+    <script type="module" src="./Componets/Navbar.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="./Componets/GetStatus.js" defer></script>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <link rel="stylesheet" href="./Styles/style.css" />
+    <link rel="stylesheet" href="./Styles/toast.css" />
+    <link rel="stylesheet" href="./Styles/modal.css" />
+    <link rel="stylesheet" href="./Styles/comparemodal.css" />
+    <link rel="stylesheet" href="./Styles/table.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+  </head>
+  <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript
+        ><iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-PBR659G"
+          height="0"
+          width="0"
+          style="display: none; visibility: hidden"
+        ></iframe
+      ></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    <div class="full-screen-container">
+      <div id="screen" class="center">
+        <div id="login-container" class="login-container">
+          <h1 class="login-title">FPL Toolbox</h1>
+          <div id="form" type="form" class="form">
+            <div class="input-group">
+              <input type="email" name="email" id="email" placeholder="Email" />
+            </div>
+            <div class="input-group">
+              <input
+                placeholder="Password"
+                type="password"
+                name="password"
+                id="password"
+              />
+            </div>
+          </div>
+          <button id="login" type="submit" class="login-button">Login</button
+          ><br />
+          <p id="forgotemail">Forgot Email?</p>
+          <p id="new-account">Don't have an account? Sign up for free.</p>
+        </div>
+      </div>
+      <div id="toast-bar"></div>
+      <!-- The Modal -->
+      <div id="myModal" class="modal"></div>
+      <div id="mycompareModal" class="compareModal"></div>
+      <div id="navbar"></div>
+    </div>
+  </body>
+</html>
