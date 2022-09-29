@@ -4,9 +4,6 @@ import { createLeague, managerData } from "../fpl.js";
 
 
 function setNewLeague(teamID) {
-  gtag('event', 'User: ' + managerData.id, {
-    'Clicked': 'Set New League to ' + teamID,
-  });
   managerData.leagues.classic.forEach((element) => {
     if (element.id == teamID) {
       localStorage.setItem("currentLeagueID", element.id);
