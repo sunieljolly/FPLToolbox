@@ -59,7 +59,7 @@ auth.onAuthStateChanged((user) => {
       "click",
       function () {
         leagueTable();
-        gtag('event', 'Log in: ' + user.displayName, {
+        gtag('event', 'User: ' + user.displayName, {
           'Clicked': 'League Table',
         });
       },
@@ -69,7 +69,7 @@ auth.onAuthStateChanged((user) => {
       "click",
       function () {
         gameweekActivity();
-        gtag('event', 'Log in: ' + user.displayName, {
+        gtag('event', 'User: ' + user.displayName, {
           'Clicked': 'Gameweek Activity',
         });
       },
@@ -79,7 +79,7 @@ auth.onAuthStateChanged((user) => {
       "click",
       function () {
         chipUsage();
-        gtag('event', 'Log in: ' + user.displayName, {
+        gtag('event', 'User: ' + user.displayName, {
           'Clicked': 'Chip Usage',
         });
       },
@@ -89,7 +89,7 @@ auth.onAuthStateChanged((user) => {
       "click",
       function () {
         compareTeam();
-        gtag('event', 'Log in: ' + user.displayName, {
+        gtag('event', 'User: ' + user.displayName, {
           'Clicked': 'Compare Team',
         });
       },
