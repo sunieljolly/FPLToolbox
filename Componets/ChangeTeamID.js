@@ -13,7 +13,12 @@ export default function changeTeamID(user) {
     nextLine.innerHTML = '<br>'
     let div = document.createElement('div')
     let inputText = document.createElement('p')
-    inputText.innerText = "Please enter a new Team ID"
+    inputText.innerHTML = "<div><p>Please enter a new Team ID</p>" + 
+    "<p>Login to your account at the official <a href='https://fantasy.premierleague.com' target='_blank' >FPL Website.</a> (Not the app)</p>" +
+  "<p>Select the 'Pick Team' tab.</p>" + 
+  "<p>On the right (below if using a mobile browser), you will see a link titled 'View gameweek history'.</p>" +
+  "<p>Click on the link. The page will then reload and your numerical team ID will be revealed in the address bar.</p></div>"
+  
     let button = document.createElement('Button')
     button.innerText = "Submit"
     button.onclick = function(){
