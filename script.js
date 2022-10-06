@@ -5,6 +5,7 @@ import {
   sendPasswordResetEmail,
   updateProfile,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import showModal from "./Componets/Modal.js";
 
 
 
@@ -91,6 +92,28 @@ document.getElementById("new-account").addEventListener("click", function () {
   element0.appendChild(element01);
   document.getElementById("form").appendChild(element0);
 
+  let help = document.createElement("p");
+  help.setAttribute("id", "help");
+  help.innerText = "What's my team ID?";
+
+  
+
+
+  document.getElementById("form").appendChild(help);
+  
+  document.getElementById("help").onclick = function () {
+    let help = document.createElement("p");
+  help.setAttribute("id", "help");
+  help.innerHTML =   "<div><p>Login to your account at the official <a href='https://fantasy.premierleague.com' target='_blank' >FPL Website.</a> (Not the app)</p>" +
+  "<p>Select the 'Pick Team' tab.</p>" + 
+  "<p>On the right (below if using a mobile browser), you will see a link titled 'View gameweek history'.<p>" +
+  "<p>Click on the link. The page will then reload and your numerical team ID will be revealed in the address bar.</p></div>"
+  
+  showModal('Help', help)
+  };
+
+
+
   let element1 = document.createElement("button");
   element1.setAttribute("id", "sign-up");
   element1.innerText = "Sign up";
@@ -136,6 +159,7 @@ document.getElementById("new-account").addEventListener("click", function () {
     document.getElementById("forgotemail").onclick = function () {
       location.reload();
     };
+
     console.log(document.getElementById("sign-up"));
   }),
     false;
