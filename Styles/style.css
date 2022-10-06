@@ -279,3 +279,10 @@ button {
     0 0 0 0px rgba(255, 255,255, 1)
   }
 }
+
+
+#google-login{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
