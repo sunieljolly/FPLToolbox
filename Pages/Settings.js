@@ -18,7 +18,7 @@ export default function settings() {
 
     const menuItems = [
       {
-        settingName: "Change Team",
+        settingName: "Change Team ID",
         settingSubtitle: user.displayName,
         iconName: "autorenew",
         divID: "change-team",

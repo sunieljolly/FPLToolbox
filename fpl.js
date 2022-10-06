@@ -279,7 +279,7 @@ export default async function callFPL(teamID) {
       error: function (error) {
         reject(error);
         if ((error.statusText = "error")) {
-          alert("Team ID incorrect - try refreshing");
+          alert("Team ID incorrect - try refreshing or changing team ID in settings");
         }
       },
     });
