@@ -299,7 +299,8 @@ export default async function callFPL(teamID) {
           })
         },
         error: function (error) {
-          reject(error);
+          console.log(error)
+          alert(error.responseText + " Please come back later")
         },
       });
   });
