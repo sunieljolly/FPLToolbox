@@ -282,7 +282,7 @@ function shareScore() {
         .share({
           title: "Match Match",
           text: shareText + '\n' + a + '\n' + b + '\n' + c + '\n' + d + '\n' + e + '\n' + f + '\n' + g + '\n' + h + '\n', 
-          url: 'https://bit.ly/39Bzg6x',
+          url: 'https://www.fpltoolbox.com/matchmatch',
         })
         .then(() => {
           console.log("Thanks for sharing!");
