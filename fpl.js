@@ -27,7 +27,7 @@ let footballer = {};
 
 var leagueInfo = [];
 
-
+alert("....Season starts 11/08/2023")
 async function getBootstrap() {
   $.ajax({
     url: BASE_URL + "bootstrap-static/",
